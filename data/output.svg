@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<svg height="150.0" width="1000.0">
+<svg
+
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+
+ height="150.0" width="1000.0">
     <polygon
         points="276.0,12.0 277.1045694996616,12.0 278.0,12.895430500338414 278.0,14.0 278.0,15.104569499661586 277.1045694996616,16.0 276.0,16.0 274.8954305003384,16.0 274.0,15.104569499661586 274.0,14.0 274.0,12.895430500338414 274.8954305003384,12.0 276.0,12.0" style="fill:none;stroke:black;stroke-width:1;fill-rule:evenodd;"/>
     <polygon
