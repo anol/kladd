@@ -30,8 +30,8 @@
     </komp>
     <del name="sideplate">
         <emne h="150" b="1000">
-            <rect h="60" b="100" r="25" x="-500" y="50"/>
-            <rect h="60" b="100" r="25" x="-500" y="-75"/>
+            <rekt h="60" b="100" r="25" x="-500" y="50"/>
+            <rekt h="60" b="100" r="25" x="-500" y="-75"/>
             <sylinder x="-350" y="-20"/>
             <akselhorn x="-200" y="-50"/>
             <akselhorn x="0" y="-50"/>
