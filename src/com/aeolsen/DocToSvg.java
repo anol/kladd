@@ -1,9 +1,6 @@
 package com.aeolsen;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -17,49 +14,111 @@ public class DocToSvg {
     private Area mainArea;
     private Document doc;
 
-    double x = 0.0;
-    double y = 0.0;
-
     public DocToSvg(Document doc) throws Throwable {
         mainArea = new Area();
         this.doc = doc;
-        convertToAwt(doc);
+        traverseAllElements();
     }
 
-    private void convertToAwt(Document doc) {
-        NodeList nodeList = doc.getElementsByTagName("rekt");
+    public Document convert() throws ParserConfigurationException {
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        Document svgDoc = dBuilder.newDocument();
+        convertToAwt("del", 0.0, 0.0);
+        convertToSvg(svgDoc, mainArea);
+        return svgDoc;
+    }
+
+    private void traverseAllElements() {
+        NodeList nodeList = doc.getElementsByTagName("*");
         for (int k = 0; k < nodeList.getLength(); k++) {
-            toAwt((Element) nodeList.item(k));
-        }
-        nodeList = doc.getElementsByTagName("sirk");
-        for (int k = 0; k < nodeList.getLength(); k++) {
-            toAwt((Element) nodeList.item(k));
+            Node node = nodeList.item(k);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element element = (Element) node;
+                if (element.hasAttribute("id")) {
+                    element.setIdAttribute("id", true);
+                }
+            }
         }
     }
 
-    private void toAwt(Element element) {
-        int height = 0;
-        int width = 0;
-        int radius = 0;
+    private void convertToAwt(String tagName, double x, double y) {
+        NodeList nodeList = doc.getElementsByTagName(tagName);
+        for (int k = 0; k < nodeList.getLength(); k++) {
+            Node node = nodeList.item(k);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element element = (Element) node;
+                toAwt(element, x, y);
+            }
+        }
+    }
+
+    private void convertById(String id, double x, double y) {
+        Element element = doc.getElementById(id);
+        if (null == element) {
+            System.out.println("Fant ikke \"" + id + "\" elementet");
+        } else {
+            toAwt(element, x, y);
+        }
+    }
+
+    private void convertToAwt(Element element, double x, double y) {
+        NodeList nodeList = element.getChildNodes();
+        for (int k = 0; k < nodeList.getLength(); k++) {
+            Node node = nodeList.item(k);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element childElement = (Element) node;
+                toAwt(childElement, x, y);
+            }
+        }
+    }
+
+    private double getAttribute(Element element, String attribute) {
+        if (element.hasAttribute(attribute)) {
+            return Double.parseDouble(element.getAttribute(attribute));
+        } else {
+            return 0.0;
+        }
+    }
+
+    private void toAwt(Element element, double x, double y) {
+        double height = getAttribute(element, "h");
+        double width = getAttribute(element, "b");
+        double radius = getAttribute(element, "r");
+        double xOffset = getAttribute(element, "x");
+        double yOffset = getAttribute(element, "y");
         Area sirk = null;
         Area rekt = null;
         switch (element.getTagName()) {
+            case "del":
+                convertToAwt("emne", x, y);
+                break;
+            case "emne":
+                System.out.println("emne x=\"" + x + "\" y=" + y + "\" h=" + height + "\" b=" + width);
+                mainArea.add(new Area(new Rectangle2D.Double(x, y, width, height)));
+                convertToAwt(element, x, y);
+                break;
+            case "komp":
+                System.out.println("komp x=\"" + x + "\" y=" + y);
+                convertToAwt(element, x, y);
+                break;
             case "rekt":
-                height = Integer.parseInt(element.getAttribute("h"));
-                width = Integer.parseInt(element.getAttribute("b"));
-                radius = Integer.parseInt(element.getAttribute("r"));
+                x = x + xOffset + width / 2;
+                y = y + yOffset + height / 2;
+                System.out.println("rekt x=\"" + x + "\" y=" + y + "\" h=" + height + "\" b=" + width + "\" r=" + radius);
                 rekt = new Area(new RoundRectangle2D.Double(x, y, width, height, radius, radius));
-                mainArea.add(rekt);
-                x += width + 10;
+                mainArea.subtract(rekt);
                 break;
             case "sirk":
-                radius = Integer.parseInt(element.getAttribute("r"));
+                x = x + xOffset + radius / 2;
+                y = y + yOffset + radius / 2;
                 width = height = radius * 2;
+                System.out.println("sirk x=\"" + x + "\" y=" + y + "\" r=" + radius);
                 sirk = new Area(new Ellipse2D.Double(x, y, width, height));
-                mainArea.add(sirk);
-                y += height + 10;
+                mainArea.subtract(sirk);
                 break;
             default:
+                convertById(element.getTagName(), x, y);
         }
     }
 
@@ -98,66 +157,6 @@ public class DocToSvg {
                     break;
                 default:
                     System.out.print("?");
-            }
-        }
-    }
-
-    private void printCoords(Area area) {
-        System.out.println("area:\n" + area.toString());
-        for (PathIterator pi = area.getPathIterator(null); !pi.isDone(); pi.next()) {
-            double[] coords = new double[6];
-            int type = pi.currentSegment(coords);
-            switch (type) {
-                case SEG_MOVETO: // 1 point
-                    System.out.print("\n< coord=\"" + coords[0] + "&" + coords[1]);
-                    break;
-                case SEG_LINETO: // 1 point
-                    System.out.print(", " + coords[0] + "&" + coords[1]);
-                    break;
-                case SEG_QUADTO: // 2 point
-                    System.out.print(", " + coords[0] + "&" + coords[1]);
-                    System.out.print(", " + coords[2] + "&" + coords[3]);
-                    break;
-                case SEG_CUBICTO: // 3 points
-                    System.out.print(", " + coords[0] + "&" + coords[1]);
-                    System.out.print(", " + coords[2] + "&" + coords[3]);
-                    System.out.print(", " + coords[4] + "&" + coords[5]);
-                    break;
-                case SEG_CLOSE: // 0 points
-                    System.out.println("\"/>");
-                    break;
-                default:
-                    System.out.print("?");
-            }
-        }
-    }
-
-    public Document dump() throws ParserConfigurationException {
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document svgDoc = dBuilder.newDocument();
-        convertToSvg(svgDoc, mainArea);
-        return svgDoc;
-    }
-
-    public void print() {
-        NodeList nList = doc.getChildNodes();
-        for (int temp = 0; temp < nList.getLength(); temp++) {
-            Node node = nList.item(temp);
-            printChildren(node, 0);
-        }
-    }
-
-    private void printChildren(Node node, int level) {
-        if (node.getNodeType() == Node.ELEMENT_NODE) {
-            for (int col = 0; col < level; col++) {
-                System.out.print("   ");
-            }
-            System.out.println(node.getNodeName());
-            NodeList nList = node.getChildNodes();
-            for (int temp = 0; temp < nList.getLength(); temp++) {
-                Node child = nList.item(temp);
-                printChildren(child, level + 1);
             }
         }
     }
