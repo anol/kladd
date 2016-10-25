@@ -10,19 +10,24 @@ import javax.xml.parsers.DocumentBuilderFactory;
 public class MiscTest {
 
     @Test
-    public void dump2SvgTest() throws Throwable {
-        Dump2Svg dump2Svg = new Dump2Svg(load());
+    public void mainTest() throws Throwable {
+        Processor processos = new Processor("data/input.xml", "data/output.svg");
     }
 
-    private Document load() throws Throwable {
+    @Test
+    public void dump2SvgTest() throws Throwable {
+        DocToSvg dump2Svg = new DocToSvg(loadDummyData());
+    }
+
+    private Document loadDummyData() throws Throwable {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document doc = dBuilder.newDocument();
         Element element = doc.createElement("rect");
-        element.setAttribute("name", "pincode");
-        element.setAttribute("height", "150");
-        element.setAttribute("width", "1000");
-        element.setAttribute("radius", "20");
+        element.setAttribute("n", "pincode");
+        element.setAttribute("h", "150");
+        element.setAttribute("b", "1000");
+        element.setAttribute("r", "20");
         return doc;
     }
 
