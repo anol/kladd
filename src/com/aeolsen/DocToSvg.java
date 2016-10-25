@@ -96,28 +96,34 @@ public class DocToSvg {
             case "emne":
                 System.out.println("emne x=\"" + x + "\" y=" + y + "\" h=" + height + "\" b=" + width);
                 mainArea.add(new Area(new Rectangle2D.Double(x, y, width, height)));
+                x = x  + width / 2;
+                y = y  + height / 2;
                 convertToAwt(element, x, y);
                 break;
             case "komp":
+                x = x - xOffset;
+                y = y + yOffset;
                 System.out.println("komp x=\"" + x + "\" y=" + y);
                 convertToAwt(element, x, y);
                 break;
             case "rekt":
-                x = x + xOffset + width / 2;
-                y = y + yOffset + height / 2;
+                x = x - xOffset - width / 2;
+                y = y + yOffset - height / 2;
                 System.out.println("rekt x=\"" + x + "\" y=" + y + "\" h=" + height + "\" b=" + width + "\" r=" + radius);
                 rekt = new Area(new RoundRectangle2D.Double(x, y, width, height, radius, radius));
                 mainArea.subtract(rekt);
                 break;
             case "sirk":
-                x = x + xOffset + radius / 2;
-                y = y + yOffset + radius / 2;
+                x = x - xOffset - radius / 2;
+                y = y + yOffset - radius / 2;
                 width = height = radius * 2;
                 System.out.println("sirk x=\"" + x + "\" y=" + y + "\" r=" + radius);
                 sirk = new Area(new Ellipse2D.Double(x, y, width, height));
                 mainArea.subtract(sirk);
                 break;
             default:
+                x = x - xOffset;
+                y = y + yOffset;
                 convertById(element.getTagName(), x, y);
         }
     }
