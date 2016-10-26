@@ -20,9 +20,14 @@ public class Processor {
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document inputDoc = dBuilder.parse(inputFile);
         inputDoc.getDocumentElement().normalize();
-        Converter dumper = new Converter(inputDoc);
-        Document outputDoc = dumper.convertToSvg();
-        String outputString = serialize(outputDoc);
+        Converter converter = new Converter(inputDoc);
+        String outputString;
+        if (outputFile.getName().endsWith(".svg")) {
+            Document outputDoc = converter.convertToSvg();
+            outputString = serialize(outputDoc);
+        } else {
+            outputString = converter.convertToPs();
+        }
         new FileOutputStream(outputFile).write(outputString.getBytes());
     }
 

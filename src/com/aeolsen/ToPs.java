@@ -1,6 +1,5 @@
 package com.aeolsen;
 
-import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import java.awt.geom.Area;
@@ -11,42 +10,47 @@ import static java.awt.geom.PathIterator.*;
 
 public class ToPs {
 
-    private void ToPs(Area sourceArea, Document doc) {
-        Rectangle2D bounds = sourceArea.getBounds2D();
-        Element rootElement = doc.createElement("svg");
-        rootElement.setAttribute("height", Double.toString(bounds.getHeight()));
-        rootElement.setAttribute("width", Double.toString(bounds.getWidth()));
-        doc.appendChild(rootElement);
+    public Area inputArea;
+
+    public ToPs(Area inputArea ) {
+        this.inputArea = inputArea;
+    }
+
+    public String convert() {
+        String outputString = "% kladd \n";
+        this.inputArea = inputArea;
+        Rectangle2D bounds = inputArea.getBounds2D();
         String points = "";
         Element polygon = null;
-        for (PathIterator pi = sourceArea.getPathIterator(null); !pi.isDone(); pi.next()) {
+        for (PathIterator pi = inputArea.getPathIterator(null); !pi.isDone(); pi.next()) {
             double[] coords = new double[6];
             int type = pi.currentSegment(coords);
             switch (type) {
                 case SEG_MOVETO: // 1 point
-                    polygon = doc.createElement("polygon");
-                    rootElement.appendChild(polygon);
-                    points = coords[0] + "," + coords[1];
+                    outputString += "newpath\n";
+                    outputString += coords[0] + " " + coords[1] + " moveto\n";
                     break;
                 case SEG_LINETO: // 1 point
-                    points += " " + coords[0] + "," + coords[1];
+                    outputString += coords[0] + " " + coords[1] + " lineto\n";
                     break;
                 case SEG_QUADTO: // 2 point
-                    points += " " + coords[0] + "," + coords[1];
-                    points += " " + coords[2] + "," + coords[3];
+                    outputString += coords[0] + " " + coords[1] + " lineto\n";
+                    outputString += coords[0] + " " + coords[1] + " lineto\n";
                     break;
                 case SEG_CUBICTO: // 3 points
-                    points += " " + coords[0] + "," + coords[1];
-                    points += " " + coords[2] + "," + coords[3];
-                    points += " " + coords[4] + "," + coords[5];
+                    outputString += coords[0] + " " + coords[1] + " lineto\n";
+                    outputString += coords[2] + " " + coords[3] + " lineto\n";
+                    outputString += coords[4] + " " + coords[5] + " lineto\n";
                     break;
                 case SEG_CLOSE: // 0 points
-                    polygon.setAttribute("points", points);
-                    polygon.setAttribute("style", "fill:none;stroke:black;stroke-width:1;fill-rule:evenodd;");
+                    outputString += "closepath\n";
+                    outputString += "stroke\n";
                     break;
                 default:
                     System.out.print("?");
             }
+            System.out.print(".");
         }
+        return outputString;
     }
 }

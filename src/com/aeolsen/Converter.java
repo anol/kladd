@@ -30,6 +30,13 @@ public class Converter {
         return svgDoc;
     }
 
+    public String convertToPs() throws Throwable {
+        Area mainArea = new Area();
+        new ToAwt(kladdDoc, mainArea);
+        ToPs toPs = new ToPs(mainArea);
+        return toPs.convert();
+    }
+
     private void traverseAllElements() {
         NodeList nodeList = kladdDoc.getElementsByTagName("*");
         for (int k = 0; k < nodeList.getLength(); k++) {
