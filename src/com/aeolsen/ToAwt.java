@@ -1,45 +1,24 @@
 package com.aeolsen;
 
-import org.w3c.dom.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.awt.geom.*;
+import java.awt.geom.Area;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
+import java.awt.geom.RoundRectangle2D;
 
-import static java.awt.geom.PathIterator.*;
-
-public class DocToSvg {
+public class ToAwt {
 
     private Area mainArea;
     private Document doc;
 
-    public DocToSvg(Document doc) throws Throwable {
-        mainArea = new Area();
-        this.doc = doc;
-        traverseAllElements();
-    }
-
-    public Document convert() throws ParserConfigurationException {
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document svgDoc = dBuilder.newDocument();
+    public ToAwt(Document sourceDocument, Area destinationArea) throws Throwable {
+        mainArea = destinationArea;
+        this.doc = sourceDocument;
         convertToAwt("del", 0.0, 0.0);
-        convertToSvg(svgDoc, mainArea);
-        return svgDoc;
-    }
-
-    private void traverseAllElements() {
-        NodeList nodeList = doc.getElementsByTagName("*");
-        for (int k = 0; k < nodeList.getLength(); k++) {
-            Node node = nodeList.item(k);
-            if (node.getNodeType() == Node.ELEMENT_NODE) {
-                Element element = (Element) node;
-                if (element.hasAttribute("id")) {
-                    element.setIdAttribute("id", true);
-                }
-            }
-        }
     }
 
     private void convertToAwt(String tagName, double x, double y) {
@@ -125,45 +104,6 @@ public class DocToSvg {
                 x = x - xOffset;
                 y = y + yOffset;
                 convertById(element.getTagName(), x, y);
-        }
-    }
-
-    private void convertToSvg(Document doc, Area area) {
-        Rectangle2D bounds = area.getBounds2D();
-        Element rootElement = doc.createElement("svg");
-        rootElement.setAttribute("height", Double.toString(bounds.getHeight()));
-        rootElement.setAttribute("width", Double.toString(bounds.getWidth()));
-        doc.appendChild(rootElement);
-        String points = "";
-        Element polygon = null;
-        for (PathIterator pi = area.getPathIterator(null); !pi.isDone(); pi.next()) {
-            double[] coords = new double[6];
-            int type = pi.currentSegment(coords);
-            switch (type) {
-                case SEG_MOVETO: // 1 point
-                    polygon = doc.createElement("polygon");
-                    rootElement.appendChild(polygon);
-                    points = coords[0] + "," + coords[1];
-                    break;
-                case SEG_LINETO: // 1 point
-                    points += " " + coords[0] + "," + coords[1];
-                    break;
-                case SEG_QUADTO: // 2 point
-                    points += " " + coords[0] + "," + coords[1];
-                    points += " " + coords[2] + "," + coords[3];
-                    break;
-                case SEG_CUBICTO: // 3 points
-                    points += " " + coords[0] + "," + coords[1];
-                    points += " " + coords[2] + "," + coords[3];
-                    points += " " + coords[4] + "," + coords[5];
-                    break;
-                case SEG_CLOSE: // 0 points
-                    polygon.setAttribute("points", points);
-                    polygon.setAttribute("style", "fill:none;stroke:black;stroke-width:1;fill-rule:evenodd;");
-                    break;
-                default:
-                    System.out.print("?");
-            }
         }
     }
 }

@@ -16,7 +16,7 @@ public class MiscTest {
 
     @Test
     public void dump2SvgTest() throws Throwable {
-        DocToSvg dump2Svg = new DocToSvg(loadDummyData());
+        Converter dump2Svg = new Converter(loadDummyData());
     }
 
     private Document loadDummyData() throws Throwable {

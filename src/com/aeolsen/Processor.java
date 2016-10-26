@@ -20,8 +20,8 @@ public class Processor {
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document inputDoc = dBuilder.parse(inputFile);
         inputDoc.getDocumentElement().normalize();
-        DocToSvg dumper = new DocToSvg(inputDoc);
-        Document outputDoc = dumper.convert();
+        Converter dumper = new Converter(inputDoc);
+        Document outputDoc = dumper.convertToSvg();
         String outputString = serialize(outputDoc);
         new FileOutputStream(outputFile).write(outputString.getBytes());
     }
