@@ -34,7 +34,9 @@ public class Converter {
         Area mainArea = new Area();
         new ToAwt(kladdDoc, mainArea);
         ToPs toPs = new ToPs(mainArea);
-        return toPs.convert(title);
+        String body = toPs.convert();
+        String header = toPs.getHeader(title);
+        return (header + body + toPs.getTrailer());
     }
 
     private void traverseAllElements() {

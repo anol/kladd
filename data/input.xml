@@ -3,7 +3,7 @@
     <sirk id="skrue" r="2"/>
     <sirk id="nagle" r="1"/>
     <komp id="akselhorn">
-        <rekt h="45" b="35" r="1"/>
+        <rekt h="55" b="35" r="1"/>
         <skrue x="-25" y="24"/>
         <skrue x="-25" y="12"/>
         <skrue x="-25" y="0"/>
@@ -16,26 +16,26 @@
         <skrue x="25" y="-24"/>
     </komp>
     <komp id="sylinder">
-        <rekt h="30" b="50" r="5"/>
-        <skrue x="-35" y="24"/>
-        <skrue x="-35" y="12"/>
-        <skrue x="-35" y="0"/>
-        <skrue x="-35" y="-12"/>
-        <skrue x="-35" y="-24"/>
-        <skrue x="35" y="24"/>
-        <skrue x="35" y="12"/>
-        <skrue x="35" y="0"/>
-        <skrue x="35" y="-12"/>
-        <skrue x="35" y="-24"/>
+        <rekt h="34" b="80" r="10"/>
+        <skrue x="-48" y="18"/>
+        <skrue x="-48" y="6"/>
+        <skrue x="-48" y="-6"/>
+        <skrue x="-48" y="-18"/>
+        <skrue x="-48" y="-30"/>
+        <skrue x="48" y="18"/>
+        <skrue x="48" y="6"/>
+        <skrue x="48" y="-6"/>
+        <skrue x="48" y="-18"/>
+        <skrue x="48" y="-30"/>
     </komp>
     <del name="sideplate">
         <emne h="150" b="1000">
-            <rekt h="60" b="100" r="25" x="-500" y="50"/>
-            <rekt h="60" b="100" r="25" x="-500" y="-75"/>
-            <sylinder x="-350" y="-20"/>
-            <akselhorn x="-200" y="-50"/>
-            <akselhorn x="0" y="-50"/>
-            <akselhorn x="200" y="-50"/>
+            <rekt h="40" b="136" r="12.5" x="-500" y="75"/>
+            <rekt h="172" b="104" r="25" x="-500" y="-75"/>
+            <sylinder x="-375" y="-35"/>
+            <akselhorn x="-200" y="-55"/>
+            <akselhorn x="0" y="-55"/>
+            <akselhorn x="200" y="-55"/>
         </emne>
     </del>
 </ark>
