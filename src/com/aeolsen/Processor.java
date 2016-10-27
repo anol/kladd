@@ -26,7 +26,7 @@ public class Processor {
             Document outputDoc = converter.convertToSvg();
             outputString = serialize(outputDoc);
         } else {
-            outputString = converter.convertToPs();
+            outputString = converter.convertToPs(outputFile.getName());
         }
         new FileOutputStream(outputFile).write(outputString.getBytes());
     }

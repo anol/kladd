@@ -30,11 +30,11 @@ public class Converter {
         return svgDoc;
     }
 
-    public String convertToPs() throws Throwable {
+    public String convertToPs(String title) throws Throwable {
         Area mainArea = new Area();
         new ToAwt(kladdDoc, mainArea);
         ToPs toPs = new ToPs(mainArea);
-        return toPs.convert();
+        return toPs.convert(title);
     }
 
     private void traverseAllElements() {

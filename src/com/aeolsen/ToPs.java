@@ -12,12 +12,19 @@ public class ToPs {
 
     public Area inputArea;
 
-    public ToPs(Area inputArea ) {
+    public ToPs(Area inputArea) {
         this.inputArea = inputArea;
     }
 
-    public String convert() {
-        String outputString = "% kladd \n";
+    private static double mm(double points) {
+        return points * 72.0 / 24.5;
+    }
+
+    public String convert(String title) {
+        String outputString =
+                "%!PS-Adobe-2.0\n" +
+                        "%%Title: " + title + "\n" +
+                        "%%EndComments\n";
         this.inputArea = inputArea;
         Rectangle2D bounds = inputArea.getBounds2D();
         String points = "";
@@ -28,19 +35,19 @@ public class ToPs {
             switch (type) {
                 case SEG_MOVETO: // 1 point
                     outputString += "newpath\n";
-                    outputString += coords[0] + " " + coords[1] + " moveto\n";
+                    outputString += mm(coords[0]) + " " + mm(coords[1]) + " moveto\n";
                     break;
                 case SEG_LINETO: // 1 point
-                    outputString += coords[0] + " " + coords[1] + " lineto\n";
+                    outputString += mm(coords[0]) + " " + mm(coords[1]) + " lineto\n";
                     break;
                 case SEG_QUADTO: // 2 point
-                    outputString += coords[0] + " " + coords[1] + " lineto\n";
-                    outputString += coords[0] + " " + coords[1] + " lineto\n";
+                    outputString += mm(coords[0]) + " " + mm(coords[1]) + " lineto\n";
+                    outputString += mm(coords[0]) + " " + mm(coords[1]) + " lineto\n";
                     break;
                 case SEG_CUBICTO: // 3 points
-                    outputString += coords[0] + " " + coords[1] + " lineto\n";
-                    outputString += coords[2] + " " + coords[3] + " lineto\n";
-                    outputString += coords[4] + " " + coords[5] + " lineto\n";
+                    outputString += mm(coords[0]) + " " + mm(coords[1]) + " lineto\n";
+                    outputString += mm(coords[2]) + " " + mm(coords[3]) + " lineto\n";
+                    outputString += mm(coords[4]) + " " + mm(coords[5]) + " lineto\n";
                     break;
                 case SEG_CLOSE: // 0 points
                     outputString += "closepath\n";
