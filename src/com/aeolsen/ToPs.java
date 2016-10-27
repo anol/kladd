@@ -45,9 +45,9 @@ public class ToPs {
                     outputString += mm(coords[0]) + " " + mm(coords[1]) + " lineto\n";
                     break;
                 case SEG_CUBICTO: // 3 points
-                    outputString += mm(coords[0]) + " " + mm(coords[1]) + " lineto\n";
-                    outputString += mm(coords[2]) + " " + mm(coords[3]) + " lineto\n";
-                    outputString += mm(coords[4]) + " " + mm(coords[5]) + " lineto\n";
+                    outputString += mm(coords[0]) + " " + mm(coords[1]) + " ";
+                    outputString += mm(coords[2]) + " " + mm(coords[3]) + " ";
+                    outputString += mm(coords[4]) + " " + mm(coords[5]) + " curveto\n";
                     break;
                 case SEG_CLOSE: // 0 points
                     outputString += "closepath\n";
