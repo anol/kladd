@@ -29,9 +29,9 @@ public class ToPs {
 
     String getBoundingBox() {
         Rectangle2D bounds = inputArea.getBounds2D();
-        String boundingBox = immi(bounds.getMinX()) + " " +
+        String boundingBox = immi(-bounds.getMinX()) + " " +
                 immi(bounds.getMinY()) + " " +
-                immi(bounds.getMaxX()) + " " +
+                immi(-bounds.getMaxX()) + " " +
                 immi(bounds.getMaxY());
         return boundingBox;
     }
@@ -64,7 +64,7 @@ public class ToPs {
         String outputString = "%%Page: 1 1\n" +
                 "%%BeginPageSetup\n" +
                 "/pagelevel save def\n" +
-                "90 rotate 200 -2000 translate\n" +
+                "90 rotate 3100 -2000 translate\n" +
                 "%%EndPageSetup\n";
         this.inputArea = inputArea;
         String points = "";
@@ -75,19 +75,19 @@ public class ToPs {
             switch (type) {
                 case SEG_MOVETO: // 1 point
                     outputString += "newpath\n";
-                    outputString += mm(coords[0]) + " " + mm(coords[1]) + " moveto\n";
+                    outputString += mm(-coords[0]) + " " + mm(coords[1]) + " moveto\n";
                     break;
                 case SEG_LINETO: // 1 point
-                    outputString += mm(coords[0]) + " " + mm(coords[1]) + " lineto\n";
+                    outputString += mm(-coords[0]) + " " + mm(coords[1]) + " lineto\n";
                     break;
                 case SEG_QUADTO: // 2 point
-                    outputString += mm(coords[0]) + " " + mm(coords[1]) + " lineto\n";
-                    outputString += mm(coords[0]) + " " + mm(coords[1]) + " lineto\n";
+                    outputString += mm(-coords[0]) + " " + mm(coords[1]) + " lineto\n";
+                    outputString += mm(-coords[2]) + " " + mm(coords[3]) + " lineto\n";
                     break;
                 case SEG_CUBICTO: // 3 points
-                    outputString += mm(coords[0]) + " " + mm(coords[1]) + " ";
-                    outputString += mm(coords[2]) + " " + mm(coords[3]) + " ";
-                    outputString += mm(coords[4]) + " " + mm(coords[5]) + " curveto\n";
+                    outputString += mm(-coords[0]) + " " + mm(coords[1]) + " ";
+                    outputString += mm(-coords[2]) + " " + mm(coords[3]) + " ";
+                    outputString += mm(-coords[4]) + " " + mm(coords[5]) + " curveto\n";
                     break;
                 case SEG_CLOSE: // 0 points
                     outputString += "closepath\n";
