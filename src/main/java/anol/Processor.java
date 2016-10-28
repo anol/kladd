@@ -1,4 +1,4 @@
-package com.aeolsen;
+package anol;
 
 import com.sun.org.apache.xml.internal.serialize.OutputFormat;
 import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
@@ -25,10 +25,17 @@ public class Processor {
         if (outputFile.getName().endsWith(".svg")) {
             Document outputDoc = converter.convertToSvg();
             outputString = serialize(outputDoc);
-        } else {
+            new FileOutputStream(outputFile).write(outputString.getBytes());
+        } else if (outputFile.getName().endsWith(".ps")) {
             outputString = converter.convertToPs(outputFile.getName());
+            new FileOutputStream(outputFile).write(outputString.getBytes());
+        } else {
+            String temp = "data/temp.ps";
+            File tempFile = new File(temp);
+            outputString = converter.convertToPs(outputFile.getName());
+            new FileOutputStream(tempFile).write(outputString.getBytes());
+            (new ToPdf()).convert(temp,outputFile);
         }
-        new FileOutputStream(outputFile).write(outputString.getBytes());
     }
 
     public String serialize(Document document) throws IOException {

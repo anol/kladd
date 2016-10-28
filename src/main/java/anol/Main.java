@@ -1,4 +1,4 @@
-package com.aeolsen;
+package anol;
 
 public class Main {
 

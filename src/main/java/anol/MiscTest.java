@@ -1,4 +1,4 @@
-package com.aeolsen;
+package anol;
 
 import org.junit.Test;
 import org.w3c.dom.Document;
