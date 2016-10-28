@@ -64,7 +64,7 @@ public class ToPs {
         String outputString = "%%Page: 1 1\n" +
                 "%%BeginPageSetup\n" +
                 "/pagelevel save def\n" +
-                "90 rotate 3100 -2000 translate\n" +
+                "90 rotate 3000 -2000 translate\n" +
                 "%%EndPageSetup\n";
         this.inputArea = inputArea;
         String points = "";

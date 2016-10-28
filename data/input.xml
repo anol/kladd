@@ -18,18 +18,17 @@
     <komp id="sylinder">
         <rekt h="34" b="80" r="10"/>
     </komp>
-    <komp id="naglerad_11">
+    <komp id="naglerad_3">
+        <nagle x="0"/>
+        <nagle x="8"/>
+        <nagle x="16"/>
+    </komp>
+    <komp id="naglerad_5">
         <nagle x="0"/>
         <nagle x="8"/>
         <nagle x="16"/>
         <nagle x="24"/>
         <nagle x="32"/>
-        <nagle x="40"/>
-        <nagle x="48"/>
-        <nagle x="56"/>
-        <nagle x="64"/>
-        <nagle x="72"/>
-        <nagle x="80"/>
     </komp>
     <komp id="naglerad_6">
         <nagle x="0"/>
@@ -59,6 +58,12 @@
         <skrue y="47"/>
         <skrue y="65"/>
     </komp>
+    <komp id="feste">
+        <skrue y="47" x="-6"/>
+        <skrue y="65" x="-6"/>
+        <skrue y="47" x="6"/>
+        <skrue y="65" x="6"/>
+    </komp>
     <del name="sideplate">
         <emne h="150" b="1000">
             <rekt h="40" b="136" r="12.5" x="-500" y="75"/>
@@ -68,18 +73,30 @@
             <rekt h="88" b="75" r="25" x="291" y="-75"/>
             <skruekol_3 x="-495" y="23"/>
             <skruekol_3 x="495" y="23"/>
+            <skruekol_3 x="405" y="23"/>
             <skruekol_6a x="-423"/>
             <skruekol_5 x="-423" y="-65"/>
             <sylinder x="-375" y="-35"/>
-            <skruekol_6a x="-327"/>
-            <skruekol_5 x="-327" y="-65"/>
+            <skruekol_6a x="-326"/>
+            <skruekol_5 x="-326" y="-65"/>
             <skruekol_6a x="69"/>
             <skruekol_5 x="69" y="-65"/>
-            <naglerad_11 x="-415" y="70"/>
+            <naglerad_6 x="-415" y="70"/>
+            <naglerad_5 x="-367" y="70"/>
             <naglerad_6 x="-319" y="70"/>
-            <akselhorn x="-200" y="-55"/>
-            <akselhorn x="0" y="-55"/>
-            <akselhorn x="200" y="-55"/>
+            <naglerad_5 x="-247" y="70"/>
+            <naglerad_5 x="-207" y="70"/>
+            <naglerad_5 x="-167" y="70"/>
+            <naglerad_5 x="-103" y="70"/>
+            <naglerad_5 x="-63" y="70"/>
+            <naglerad_5 x="-23" y="70"/>
+            <naglerad_3 x="41" y="70"/>
+            <akselhorn x="-220" y="-55"/>
+            <akselhorn x="-20" y="-55"/>
+            <akselhorn x="180" y="-55"/>
+            <feste x="-265"/>
+            <feste x="-120"/>
+            <feste x="25"/>
         </emne>
     </del>
 </ark>
