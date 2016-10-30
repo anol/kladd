@@ -1,5 +1,5 @@
-package anol;
-
+import anol.Converter;
+import anol.Processor;
 import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -12,6 +12,10 @@ public class MiscTest {
     @Test
     public void mainTest() throws Throwable {
         Processor processos = new Processor("data/input.xml", "data/output.svg", "a4");
+    }
+    @Test
+    public void sizeTest() throws Throwable {
+        Processor processos = new Processor("data/test.xml", "data/output.pdf", "a4");
     }
 
     @Test

@@ -18,7 +18,8 @@ public class ToPs {
     }
 
     static double mm2pt(double mm) {
-        return mm * 72.0 / 24.5;
+        double points = mm * 72.0 / 25.4;
+        return points;
     }
 
     static String mm2pti(double mm) {
