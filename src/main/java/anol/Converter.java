@@ -8,6 +8,7 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.awt.geom.Area;
+import java.io.File;
 
 public class Converter {
 
@@ -30,12 +31,12 @@ public class Converter {
         return svgDoc;
     }
 
-    public String convertToPs(String title) throws Throwable {
+    public String convertToPs(String title, String pageSize) throws Throwable {
         Area mainArea = new Area();
         new ToAwt(kladdDoc, mainArea);
         ToPs toPs = new ToPs(mainArea);
         String body = toPs.convert();
-        String header = toPs.getHeader(title);
+        String header = toPs.getDocumentHeader(title, pageSize) + toPs.getPageHeader(title, pageSize);
         return (header + body + toPs.getTrailer());
     }
 
@@ -50,5 +51,9 @@ public class Converter {
                 }
             }
         }
+    }
+
+    public void convertToPdf(String temp, File outputFile, String pageSize) throws Throwable {
+        (new ToPdf()).convert(temp, outputFile, pageSize);
     }
 }

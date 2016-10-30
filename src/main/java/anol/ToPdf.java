@@ -12,7 +12,7 @@ import static org.ghost4j.converter.PDFConverter.OPTION_AUTOROTATEPAGES_ALL;
 public class ToPdf {
 
     public void convert(String inputFileName,
-                        File outputFile) throws Throwable {
+                        File outputFile, String pageSize) throws Throwable {
         System.out.println("ps2pdf input=\"" + inputFileName + " output=\"" + outputFile.getCanonicalPath() + "\"");
         //load PostScript document
         PSDocument document = new PSDocument();
@@ -23,7 +23,25 @@ public class ToPdf {
         PDFConverter converter = new PDFConverter();
         //set options
         converter.setPDFSettings(PDFConverter.OPTION_PDFSETTINGS_DEFAULT);
-        converter.setPaperSize(PaperSize.A0);
+        switch(pageSize){
+            case "a4":
+                converter.setPaperSize(PaperSize.A4);
+                break;
+            case "a3":
+                converter.setPaperSize(PaperSize.A3);
+                break;
+            case "a2":
+                converter.setPaperSize(PaperSize.A2);
+                break;
+            case "a1":
+                converter.setPaperSize(PaperSize.A1);
+                break;
+            case "a0":
+                converter.setPaperSize(PaperSize.A0);
+                break;
+            default:
+                break;
+        }
         converter.setAutoRotatePages(OPTION_AUTOROTATEPAGES_ALL);
         //convert
         converter.convert(document, fos);

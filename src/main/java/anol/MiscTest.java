@@ -11,7 +11,7 @@ public class MiscTest {
 
     @Test
     public void mainTest() throws Throwable {
-        Processor processos = new Processor("data/input.xml", "data/output.svg");
+        Processor processos = new Processor("data/input.xml", "data/output.svg", "a4");
     }
 
     @Test
