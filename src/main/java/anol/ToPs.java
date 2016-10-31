@@ -17,8 +17,8 @@ public class ToPs {
     // The PostScript coordinate system has origo in the bottom-left corner
 
     public Area inputArea;
-    private double oldX = 0.0;
-    private double oldY = 0.0;
+    private double oldX = 0.111111111;
+    private double oldY = 0.111111111;
 
     public ToPs(Area inputArea) {
         this.inputArea = inputArea;
@@ -141,11 +141,11 @@ public class ToPs {
         return outputString;
     }
 
-    private String drawMarker(Point2D.Double point) {
-        double newX = point.getX();
-        double newY = point.getY();
-        double x = mm2pt(-newX);
-        double y = mm2pt(newY);
+    private String drawMarker(Point2D.Double point, Point2D.Double origo) {
+        double x = mm2pt(-point.getX());
+        double y = mm2pt(point.getY());
+        double newX = origo.getX() - point.getX();
+        double newY = point.getY() - origo.getY();
         String outputString = "";
         outputString += "newpath\n";
         outputString += (x - 8) + " " + (y) + " moveto\n";
@@ -157,28 +157,30 @@ public class ToPs {
         outputString += "closepath stroke\n";
         if (oldY != newY) {
             outputString += "newpath\n";
-            outputString += (x + 9) + " " + (y - 3) + " moveto\n";
+            outputString += (x + 9) + " " + (y - 2) + " moveto\n";
             outputString += "(" + newY + ") show\n";
-            outputString += "closepath stroke\n";
+            outputString += "stroke\n";
             oldY = newY;
         }
         if (oldX != newX) {
             outputString += "newpath\n";
             outputString += (x - 8) + " " + (y + 8) + " moveto\n";
             outputString += "(" + newX + ") show\n";
-            outputString += "closepath stroke\n";
+            outputString += "stroke\n";
             oldX = newX;
         }
         return outputString;
     }
 
     public String convertPoints(MajorPoints pointList) {
+        Rectangle2D bounds = inputArea.getBounds2D();
+        Point2D.Double origo = new Point2D.Double(bounds.getCenterX(), bounds.getCenterY());
         String outputString = "0.25 setlinewidth 1 setlinecap 1 0.2 0.2 setrgbcolor\n";
         outputString += "/Times-Roman findfont 7 scalefont setfont\n";
         Iterator<Point2D.Double> iterator = pointList.getIterator();
         while (iterator.hasNext()) {
             Point2D.Double point = iterator.next();
-            outputString += drawMarker(point);
+            outputString += drawMarker(point, origo);
         }
         return outputString;
     }
