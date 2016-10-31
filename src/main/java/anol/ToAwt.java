@@ -5,20 +5,26 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import java.awt.geom.Area;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.RoundRectangle2D;
+import java.awt.geom.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ToAwt {
 
     private Area mainArea;
+    private MajorPoints pointList;
     private Document doc;
 
-    public ToAwt(Document sourceDocument, Area destinationArea) throws Throwable {
-        mainArea = destinationArea;
+    public ToAwt(Document sourceDocument, Area mainArea, MajorPoints pointList) throws Throwable {
+        this.mainArea = mainArea;
+        this.pointList = pointList;
         this.doc = sourceDocument;
         convertToAwt("del", 0.0, 0.0);
+    }
+
+    private void savePoint(double x, double y) {
+        Point2D.Double point = new Point2D.Double(x, y);
+        pointList.add(point);
     }
 
     private void convertToAwt(String tagName, double x, double y) {
@@ -77,6 +83,10 @@ public class ToAwt {
                 mainArea.add(new Area(new Rectangle2D.Double(x, y, width, height)));
                 x = x  + width / 2;
                 y = y  + height / 2;
+                savePoint(x+1, y);
+                savePoint(x-1, y);
+                savePoint(x, y+1);
+                savePoint(x, y-1);
                 convertToAwt(element, x, y);
                 break;
             case "komp":
@@ -86,6 +96,7 @@ public class ToAwt {
                 convertToAwt(element, x, y);
                 break;
             case "rekt":
+                savePoint(x, y);
                 x = x - xOffset - width / 2;
                 y = y + yOffset - height / 2;
                 System.out.println("rekt x=\"" + x + "\" y=" + y + "\" h=" + height + "\" b=" + width + "\" r=" + radius);
@@ -93,8 +104,9 @@ public class ToAwt {
                 mainArea.subtract(rekt);
                 break;
             case "sirk":
-                x = x - xOffset - radius / 2;
-                y = y + yOffset - radius / 2;
+                savePoint(x, y);
+                x = x - radius;
+                y = y - radius;
                 width = height = radius * 2;
                 System.out.println("sirk x=\"" + x + "\" y=" + y + "\" r=" + radius);
                 sirk = new Area(new Ellipse2D.Double(x, y, width, height));

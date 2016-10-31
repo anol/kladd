@@ -43,7 +43,7 @@ public class ToPdf {
                 break;
         }
         converter.setAutoRotatePages(OPTION_AUTOROTATEPAGES_ALL);
-        //convert
+        //convertArea
         converter.convert(document, fos);
     }
 

@@ -4,8 +4,11 @@ import org.w3c.dom.Element;
 
 import java.awt.geom.Area;
 import java.awt.geom.PathIterator;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.ListIterator;
 
 import static java.awt.geom.PathIterator.*;
 
@@ -56,6 +59,19 @@ public class ToPs {
         return header;
     }
 
+    public String getDocumentTrailer() {
+        String trailer = "%%EOF\n";
+        return trailer;
+    }
+
+/*
+    A0 = 2384 x 3370
+    A1 = 1684 x 2384
+    A2 = 1191 x 1684
+    A3 = 842 x 1191
+    A4 = 595 x 842
+*/
+
     public String getPageHeader(String title, String pageSize) {
         String header = "%%Page: 1 1\n" +
                 "%%BeginPageSetup\n" +
@@ -84,16 +100,13 @@ public class ToPs {
         return header;
     }
 
-    public String getTrailer() {
-        String trailer = "%%EOF\n";
+    public String getPageTrailer() {
+        String trailer = "pagelevel restore\n" + "showpage\n";
         return trailer;
     }
 
-    public String convert() {
+    public String convertArea() {
         String outputString = "";
-        this.inputArea = inputArea;
-        String points = "";
-        Element polygon = null;
         for (PathIterator pi = inputArea.getPathIterator(null); !pi.isDone(); pi.next()) {
             double[] coords = new double[6];
             int type = pi.currentSegment(coords);
@@ -122,8 +135,44 @@ public class ToPs {
                     System.out.print("?");
             }
         }
-        outputString += "pagelevel restore\n" +
-                "showpage\n";
+        return outputString;
+    }
+
+    private String drawMarker(Point2D.Double point) {
+        double x = mm2pt(-point.getX());
+        double y = mm2pt(point.getY());
+        String outputString = "";
+        outputString += "newpath\n";
+        outputString += (x - 8) + " " + (y) + " moveto\n";
+        outputString += (x + 8) + " " + (y) + " lineto\n";
+        outputString += "closepath\n";
+        outputString += "stroke\n";
+        outputString += "newpath\n";
+        outputString += (x) + " " + (y - 8) + " moveto\n";
+        outputString += (x) + " " + (y + 8) + " lineto\n";
+        outputString += "closepath\n";
+        outputString += "stroke\n";
+        outputString += "newpath\n";
+        outputString += (x + 12) + " " + (y - 3) + " moveto\n";
+        outputString += "(" + point.getY() + ") show\n";
+        outputString += "closepath\n";
+        outputString += "stroke\n";
+        outputString += "newpath\n";
+        outputString += (x - 16) + " " + (y + 12) + " moveto\n";
+        outputString += "(" + point.getX() + ") show\n";
+        outputString += "closepath\n";
+        outputString += "stroke\n";
+        return outputString;
+    }
+
+    public String convertPoints(MajorPoints pointList) {
+        String outputString = "0.25 setlinewidth 1 setlinecap 1 0.2 0.2 setrgbcolor\n";
+        outputString += "/Times-Roman findfont 7 scalefont setfont\n";
+        Iterator<Point2D.Double> iterator = pointList.getIterator();
+        while (iterator.hasNext()) {
+            Point2D.Double point = iterator.next();
+            outputString += drawMarker(point);
+        }
         return outputString;
     }
 }

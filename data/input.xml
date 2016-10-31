@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ark>
-    <sirk id="skrue" r="2"/>
-    <sirk id="nagle" r="1"/>
+    <sirk id="skrue" r="2.0"/>
+    <sirk id="nagle" r="1.5"/>
     <komp id="akselhorn">
         <rekt h="55" b="35" r="1"/>
         <skrue x="-25" y="24"/>
