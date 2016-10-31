@@ -1,5 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ark>
+<ark type="a0">
+    <del name="sideplate" x="1050" y="-250">
+        <emne h="150" b="1000">
+            <rekt h="40" b="136" r="12.5" x="-500" y="75"/>
+            <rekt h="40" b="600" r="12.5" x="374" y="75"/>
+            <rekt h="172" b="104" r="25" x="-500" y="-75"/>
+            <rekt h="172" b="200" r="25" x="473" y="-75"/>
+            <rekt h="88" b="75" r="25" x="291" y="-75"/>
+            <skruekol_3 x="-495" y="23"/>
+            <skruekol_3 x="495" y="23"/>
+            <skruekol_3 x="405" y="23"/>
+            <skruekol_6a x="-423"/>
+            <skruekol_5 x="-423" y="-65"/>
+            <sylinder x="-375" y="-35"/>
+            <skruekol_6a x="-326"/>
+            <skruekol_5 x="-326" y="-65"/>
+            <skruekol_6a x="69"/>
+            <skruekol_5 x="69" y="-65"/>
+            <naglerad_5 x="-367" y="70"/>
+            <naglerad_6 x="-415" y="70"/>
+            <naglerad_6 x="-319" y="70"/>
+            <naglerad_5 x="-247" y="70"/>
+            <naglerad_5 x="-207" y="70"/>
+            <naglerad_5 x="-167" y="70"/>
+            <naglerad_5 x="-103" y="70"/>
+            <naglerad_5 x="-63" y="70"/>
+            <naglerad_5 x="-23" y="70"/>
+            <naglerad_3 x="41" y="70"/>
+            <akselhorn x="-220" y="-55"/>
+            <akselhorn x="-20" y="-55"/>
+            <akselhorn x="180" y="-55"/>
+            <feste x="-265"/>
+            <feste x="-120"/>
+            <feste x="25"/>
+        </emne>
+    </del>
     <sirk id="skrue" r="2.0"/>
     <sirk id="nagle" r="1.5"/>
     <komp id="akselhorn">
@@ -24,11 +59,11 @@
         <nagle x="16"/>
     </komp>
     <komp id="naglerad_5">
-        <nagle x="0"/>
-        <nagle x="8"/>
-        <nagle x="16"/>
-        <nagle x="24"/>
         <nagle x="32"/>
+        <nagle x="24"/>
+        <nagle x="16"/>
+        <nagle x="8"/>
+        <nagle x="0"/>
     </komp>
     <komp id="naglerad_6">
         <nagle x="0"/>
@@ -64,39 +99,4 @@
         <skrue y="47" x="6"/>
         <skrue y="65" x="6"/>
     </komp>
-    <del name="sideplate" y="-800">
-        <emne h="150" b="1000">
-            <rekt h="40" b="136" r="12.5" x="-500" y="75"/>
-            <rekt h="40" b="600" r="12.5" x="374" y="75"/>
-            <rekt h="172" b="104" r="25" x="-500" y="-75"/>
-            <rekt h="172" b="200" r="25" x="473" y="-75"/>
-            <rekt h="88" b="75" r="25" x="291" y="-75"/>
-            <skruekol_3 x="-495" y="23"/>
-            <skruekol_3 x="495" y="23"/>
-            <skruekol_3 x="405" y="23"/>
-            <skruekol_6a x="-423"/>
-            <skruekol_5 x="-423" y="-65"/>
-            <sylinder x="-375" y="-35"/>
-            <skruekol_6a x="-326"/>
-            <skruekol_5 x="-326" y="-65"/>
-            <skruekol_6a x="69"/>
-            <skruekol_5 x="69" y="-65"/>
-            <naglerad_6 x="-415" y="70"/>
-            <naglerad_5 x="-367" y="70"/>
-            <naglerad_6 x="-319" y="70"/>
-            <naglerad_5 x="-247" y="70"/>
-            <naglerad_5 x="-207" y="70"/>
-            <naglerad_5 x="-167" y="70"/>
-            <naglerad_5 x="-103" y="70"/>
-            <naglerad_5 x="-63" y="70"/>
-            <naglerad_5 x="-23" y="70"/>
-            <naglerad_3 x="41" y="70"/>
-            <akselhorn x="-220" y="-55"/>
-            <akselhorn x="-20" y="-55"/>
-            <akselhorn x="180" y="-55"/>
-            <feste x="-265"/>
-            <feste x="-120"/>
-            <feste x="25"/>
-        </emne>
-    </del>
 </ark>

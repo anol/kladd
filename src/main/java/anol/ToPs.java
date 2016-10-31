@@ -81,25 +81,6 @@ public class ToPs {
                 "%%BeginPageSetup\n" +
                 "/pagelevel save def\n" +
                 "90 rotate\n";
-        switch (pageSize) {
-            case "a4":
-                header += "3000 0 translate\n";
-                break;
-            case "a3":
-                header += "3000 0 translate\n";
-                break;
-            case "a2":
-                header += "3000 0 translate\n";
-                break;
-            case "a1":
-                header += "3000 0 translate\n";
-                break;
-            case "a0":
-                header += "3000 0 translate\n";
-                break;
-            default:
-                break;
-        }
         header += "%%EndPageSetup\n";
         return header;
     }

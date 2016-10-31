@@ -13,14 +13,23 @@ import java.io.File;
 public class Converter {
 
     private Area mainArea;
-    MajorPoints pointList;
+    private MajorPoints pointList;
     private Document kladdDoc;
+    private String pageSize = "a4";
 
     public Converter(Document kladdDoc) throws Throwable {
         this.mainArea = new Area();
         this.pointList = new MajorPoints();
         this.kladdDoc = kladdDoc;
         traverseAllElements();
+        NodeList nodeList = kladdDoc.getElementsByTagName("ark");
+        if (0 < nodeList.getLength()) {
+            Node node = nodeList.item(0);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element element = (Element) node;
+                pageSize = element.getAttribute("type");
+            }
+        }
     }
 
     public Document convertToSvg() throws Throwable {
@@ -33,7 +42,7 @@ public class Converter {
         return svgDoc;
     }
 
-    public String convertToPs(String title, String pageSize) throws Throwable {
+    public String convertToPs(String title) throws Throwable {
         Area mainArea = new Area();
         new ToAwt(kladdDoc, mainArea, pointList);
         ToPs toPs = new ToPs(mainArea);
@@ -59,7 +68,7 @@ public class Converter {
         }
     }
 
-    public void convertToPdf(String temp, File outputFile, String pageSize) throws Throwable {
+    public void convertToPdf(String temp, File outputFile) throws Throwable {
         (new ToPdf()).convert(temp, outputFile, pageSize);
     }
 }
