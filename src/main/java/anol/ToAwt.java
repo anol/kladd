@@ -78,6 +78,7 @@ public class ToAwt {
         Area rekt = null;
         switch (element.getTagName()) {
             case "del":
+                pointList.setOrigo(new Point2D.Double(xOffset, yOffset));
                 convertToAwt("emne", x, y);
                 break;
             case "emne":

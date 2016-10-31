@@ -83,19 +83,19 @@ public class ToPs {
                 "90 rotate\n";
         switch (pageSize) {
             case "a4":
-                header += "3000 -500 translate\n";
+                header += "3000 0 translate\n";
                 break;
             case "a3":
-                header += "3000 -750 translate\n";
+                header += "3000 0 translate\n";
                 break;
             case "a2":
-                header += "3000 -1000 translate\n";
+                header += "3000 0 translate\n";
                 break;
             case "a1":
-                header += "3000 -1500 translate\n";
+                header += "3000 0 translate\n";
                 break;
             case "a0":
-                header += "3000 -2000 translate\n";
+                header += "3000 0 translate\n";
                 break;
             default:
                 break;
@@ -109,7 +109,9 @@ public class ToPs {
         return trailer;
     }
 
-    public String convertArea() {
+    public String convertArea(Point2D.Double globalOrigo) {
+        double origoX = globalOrigo.getX();
+        double origoY = globalOrigo.getY();
         String outputString = "";
         for (PathIterator pi = inputArea.getPathIterator(null); !pi.isDone(); pi.next()) {
             double[] coords = new double[6];
@@ -117,19 +119,19 @@ public class ToPs {
             switch (type) {
                 case SEG_MOVETO: // 1 point
                     outputString += "newpath\n";
-                    outputString += mm2pt(-coords[0]) + " " + mm2pt(coords[1]) + " moveto\n";
+                    outputString += mm2pt(-coords[0] + origoX) + " " + mm2pt(coords[1] + origoY) + " moveto\n";
                     break;
                 case SEG_LINETO: // 1 point
-                    outputString += mm2pt(-coords[0]) + " " + mm2pt(coords[1]) + " lineto\n";
+                    outputString += mm2pt(-coords[0] + origoX) + " " + mm2pt(coords[1] + origoY) + " lineto\n";
                     break;
                 case SEG_QUADTO: // 2 point
-                    outputString += mm2pt(-coords[0]) + " " + mm2pt(coords[1]) + " lineto\n";
-                    outputString += mm2pt(-coords[2]) + " " + mm2pt(coords[3]) + " lineto\n";
+                    outputString += mm2pt(-coords[0] + origoX) + " " + mm2pt(coords[1] + origoY) + " lineto\n";
+                    outputString += mm2pt(-coords[2] + origoX) + " " + mm2pt(coords[3] + origoY) + " lineto\n";
                     break;
                 case SEG_CUBICTO: // 3 points
-                    outputString += mm2pt(-coords[0]) + " " + mm2pt(coords[1]) + " ";
-                    outputString += mm2pt(-coords[2]) + " " + mm2pt(coords[3]) + " ";
-                    outputString += mm2pt(-coords[4]) + " " + mm2pt(coords[5]) + " curveto\n";
+                    outputString += mm2pt(-coords[0] + origoX) + " " + mm2pt(coords[1] + origoY) + " ";
+                    outputString += mm2pt(-coords[2] + origoX) + " " + mm2pt(coords[3] + origoY) + " ";
+                    outputString += mm2pt(-coords[4] + origoX) + " " + mm2pt(coords[5] + origoY) + " curveto\n";
                     break;
                 case SEG_CLOSE: // 0 points
                     outputString += "closepath stroke\n";
@@ -141,11 +143,11 @@ public class ToPs {
         return outputString;
     }
 
-    private String drawMarker(Point2D.Double point, Point2D.Double origo) {
-        double x = mm2pt(-point.getX());
-        double y = mm2pt(point.getY());
-        double newX = origo.getX() - point.getX();
-        double newY = point.getY() - origo.getY();
+    private String drawMarker(Point2D.Double point, Point2D.Double localOrigo, Point2D.Double globalOrigo) {
+        double x = mm2pt(-point.getX() + globalOrigo.getX());
+        double y = mm2pt(point.getY() + globalOrigo.getY());
+        double newX = localOrigo.getX() - point.getX();
+        double newY = -localOrigo.getY() + point.getY();
         String outputString = "";
         outputString += "newpath\n";
         outputString += (x - 8) + " " + (y) + " moveto\n";
@@ -174,13 +176,14 @@ public class ToPs {
 
     public String convertPoints(MajorPoints pointList) {
         Rectangle2D bounds = inputArea.getBounds2D();
-        Point2D.Double origo = new Point2D.Double(bounds.getCenterX(), bounds.getCenterY());
+        Point2D.Double localOrigo = new Point2D.Double(bounds.getCenterX(), bounds.getCenterY());
+        Point2D.Double globalOrigo = pointList.getOrigo();
         String outputString = "0.25 setlinewidth 1 setlinecap 1 0.2 0.2 setrgbcolor\n";
         outputString += "/Times-Roman findfont 7 scalefont setfont\n";
         Iterator<Point2D.Double> iterator = pointList.getIterator();
         while (iterator.hasNext()) {
             Point2D.Double point = iterator.next();
-            outputString += drawMarker(point, origo);
+            outputString += drawMarker(point, localOrigo, globalOrigo);
         }
         return outputString;
     }

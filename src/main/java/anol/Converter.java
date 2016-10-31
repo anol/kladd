@@ -39,7 +39,7 @@ public class Converter {
         ToPs toPs = new ToPs(mainArea);
         String postScript = toPs.getDocumentHeader(title, pageSize);
         postScript += toPs.getPageHeader(title, pageSize);
-        postScript += toPs.convertArea();
+        postScript += toPs.convertArea(pointList.getOrigo());
         postScript += toPs.convertPoints(pointList);
         postScript += toPs.getPageTrailer();
         postScript += toPs.getDocumentTrailer();

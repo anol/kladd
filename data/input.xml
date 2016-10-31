@@ -64,7 +64,7 @@
         <skrue y="47" x="6"/>
         <skrue y="65" x="6"/>
     </komp>
-    <del name="sideplate">
+    <del name="sideplate" y="-800">
         <emne h="150" b="1000">
             <rekt h="40" b="136" r="12.5" x="-500" y="75"/>
             <rekt h="40" b="600" r="12.5" x="374" y="75"/>
