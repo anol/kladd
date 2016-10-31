@@ -14,7 +14,11 @@ import static java.awt.geom.PathIterator.*;
 
 public class ToPs {
 
+    // The PostScript coordinate system has origo in the bottom-left corner
+
     public Area inputArea;
+    private double oldX = 0.0;
+    private double oldY = 0.0;
 
     public ToPs(Area inputArea) {
         this.inputArea = inputArea;
@@ -128,8 +132,7 @@ public class ToPs {
                     outputString += mm2pt(-coords[4]) + " " + mm2pt(coords[5]) + " curveto\n";
                     break;
                 case SEG_CLOSE: // 0 points
-                    outputString += "closepath\n";
-                    outputString += "stroke\n";
+                    outputString += "closepath stroke\n";
                     break;
                 default:
                     System.out.print("?");
@@ -139,29 +142,33 @@ public class ToPs {
     }
 
     private String drawMarker(Point2D.Double point) {
-        double x = mm2pt(-point.getX());
-        double y = mm2pt(point.getY());
+        double newX = point.getX();
+        double newY = point.getY();
+        double x = mm2pt(-newX);
+        double y = mm2pt(newY);
         String outputString = "";
         outputString += "newpath\n";
         outputString += (x - 8) + " " + (y) + " moveto\n";
         outputString += (x + 8) + " " + (y) + " lineto\n";
-        outputString += "closepath\n";
-        outputString += "stroke\n";
+        outputString += "closepath stroke\n";
         outputString += "newpath\n";
         outputString += (x) + " " + (y - 8) + " moveto\n";
-        outputString += (x) + " " + (y + 8) + " lineto\n";
-        outputString += "closepath\n";
-        outputString += "stroke\n";
-        outputString += "newpath\n";
-        outputString += (x + 12) + " " + (y - 3) + " moveto\n";
-        outputString += "(" + point.getY() + ") show\n";
-        outputString += "closepath\n";
-        outputString += "stroke\n";
-        outputString += "newpath\n";
-        outputString += (x - 16) + " " + (y + 12) + " moveto\n";
-        outputString += "(" + point.getX() + ") show\n";
-        outputString += "closepath\n";
-        outputString += "stroke\n";
+        outputString += (x) + " " + (y + 7) + " lineto\n";
+        outputString += "closepath stroke\n";
+        if (oldY != newY) {
+            outputString += "newpath\n";
+            outputString += (x + 9) + " " + (y - 3) + " moveto\n";
+            outputString += "(" + newY + ") show\n";
+            outputString += "closepath stroke\n";
+            oldY = newY;
+        }
+        if (oldX != newX) {
+            outputString += "newpath\n";
+            outputString += (x - 8) + " " + (y + 8) + " moveto\n";
+            outputString += "(" + newX + ") show\n";
+            outputString += "closepath stroke\n";
+            oldX = newX;
+        }
         return outputString;
     }
 

@@ -11,6 +11,8 @@ import java.util.List;
 
 public class ToAwt {
 
+    // The AWT coordinate system has origo in the top-left corner
+
     private Area mainArea;
     private MajorPoints pointList;
     private Document doc;
@@ -83,10 +85,6 @@ public class ToAwt {
                 mainArea.add(new Area(new Rectangle2D.Double(x, y, width, height)));
                 x = x  + width / 2;
                 y = y  + height / 2;
-                savePoint(x+1, y);
-                savePoint(x-1, y);
-                savePoint(x, y+1);
-                savePoint(x, y-1);
                 convertToAwt(element, x, y);
                 break;
             case "komp":
