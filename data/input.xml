@@ -39,16 +39,16 @@
     <sirk id="nagle" r="1.5"/>
     <komp id="akselhorn">
         <rekt h="55" b="35" r="1"/>
+        <skrue x="-25" y="36"/>
         <skrue x="-25" y="24"/>
         <skrue x="-25" y="12"/>
         <skrue x="-25" y="0"/>
         <skrue x="-25" y="-12"/>
-        <skrue x="-25" y="-24"/>
+        <skrue x="25" y="36"/>
         <skrue x="25" y="24"/>
         <skrue x="25" y="12"/>
         <skrue x="25" y="0"/>
         <skrue x="25" y="-12"/>
-        <skrue x="25" y="-24"/>
     </komp>
     <komp id="sylinder">
         <rekt h="34" b="80" r="10"/>
