@@ -6,14 +6,16 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.awt.geom.*;
+import java.util.List;
 
 public class ToAwt {
 
+    private ConcretePartList partList;
     private ConcretePart concretePart;
     private Document doc;
 
-    public ToAwt(Document sourceDocument, Area mainArea, MajorPoints pointList) throws Throwable {
-        concretePart = new ConcretePart(mainArea, pointList);
+    public ToAwt(Document sourceDocument, ConcretePartList partList) {
+        this.partList = partList;
         this.doc = sourceDocument;
         convertToAwt("del", 0.0, 0.0);
     }
@@ -65,14 +67,16 @@ public class ToAwt {
         double yOffset = getAttribute(element, "y");
         switch (element.getTagName()) {
             case "del":
+                concretePart = new ConcretePart();
+                partList.addPart(concretePart);
                 concretePart.setOrigo(xOffset, yOffset);
                 convertToAwt("emne", x, y);
                 break;
             case "emne":
                 System.out.println("emne x=\"" + x + "\" y=" + y + "\" h=" + height + "\" b=" + width);
                 concretePart.addRect(x, y, width, height, radius, radius);
-                x = x  + width / 2;
-                y = y  + height / 2;
+                x = x + width / 2;
+                y = y + height / 2;
                 convertToAwt(element, x, y);
                 break;
             case "komp":

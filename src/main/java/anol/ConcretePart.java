@@ -1,17 +1,29 @@
 package anol;
 
 import java.awt.geom.*;
+import java.util.Iterator;
 
 public class ConcretePart {
+
+    static double mm2pt(double mm) {
+        double points = mm * 72.0 / 25.4;
+        return points;
+    }
+
+    static String mm2pti(double mm) {
+        Double mmpoints = mm2pt(mm);
+        Integer immipoints = mmpoints.intValue();
+        return immipoints.toString();
+    }
 
     // The AWT coordinate system has origo in the top-left corner
 
     private Area mainArea;
     private MajorPoints pointList;
 
-    public ConcretePart(Area mainArea, MajorPoints pointList) {
-        this.mainArea = mainArea;
-        this.pointList = pointList;
+    public ConcretePart() {
+        this.mainArea = new Area();
+        this.pointList = new MajorPoints();
     }
 
     public void addMjorPoint(double x, double y) {
@@ -36,4 +48,38 @@ public class ConcretePart {
     public void setOrigo(double xOffset, double yOffset) {
         pointList.setOrigo(new Point2D.Double(xOffset, yOffset));
     }
+
+    public double getOrigoX() {
+        return pointList.getOrigo().getX();
+    }
+
+    public double getOrigoY() {
+        return pointList.getOrigo().getY();
+    }
+
+    public Rectangle2D getBounds() {
+        return mainArea.getBounds2D();
+    }
+
+    public Point2D.Double getOrigo() {
+        return pointList.getOrigo();
+    }
+
+    public Iterator<Point2D.Double> getMajorPointIterator() {
+        return pointList.getIterator();
+    }
+
+    public PathIterator getPathIterator() {
+        return mainArea.getPathIterator(null);
+    }
+
+    public String getBoundingBox() {
+        Rectangle2D bounds = mainArea.getBounds();
+        String boundingBox = mm2pti(-bounds.getMinX()) + " " +
+                mm2pti(bounds.getMinY()) + " " +
+                mm2pti(-bounds.getMaxX()) + " " +
+                mm2pti(bounds.getMaxY());
+        return boundingBox;
+    }
+
 }

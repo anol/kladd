@@ -8,6 +8,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.ListIterator;
 
 import static java.awt.geom.PathIterator.*;
@@ -16,12 +17,10 @@ public class ToPs {
 
     // The PostScript coordinate system has origo in the bottom-left corner
 
-    public Area inputArea;
     private double oldX = 0.111111111;
     private double oldY = 0.111111111;
 
-    public ToPs(Area inputArea) {
-        this.inputArea = inputArea;
+    public ToPs() {
     }
 
     static double mm2pt(double mm) {
@@ -29,34 +28,19 @@ public class ToPs {
         return points;
     }
 
-    static String mm2pti(double mm) {
-        Double mmpoints = mm2pt(mm);
-        Integer immipoints = mmpoints.intValue();
-        return immipoints.toString();
-    }
-
-    String getBoundingBox() {
-        Rectangle2D bounds = inputArea.getBounds2D();
-        String boundingBox = mm2pti(-bounds.getMinX()) + " " +
-                mm2pti(bounds.getMinY()) + " " +
-                mm2pti(-bounds.getMaxX()) + " " +
-                mm2pti(bounds.getMaxY());
-        return boundingBox;
-    }
-
     String getCreationDate() {
         String today = (new Date()).toString();
         return today;
     }
 
-    public String getDocumentHeader(String title, String pageSize) {
+    public String getDocumentHeader(String title, String pageSize, String boundingBox) {
         String header = "%!PS-Adobe-2.0\n" +
                 "%%Creator: kladd\n" +
                 "%%CreationDate: " + getCreationDate() + "\n" +
                 "%%Title: " + title + "\n" +
                 "%%Pages: 1\n" +
                 "%%PageOrder: Ascend\n" +
-                "%%BoundingBox: " + getBoundingBox() + "\n" +
+                "%%BoundingBox: " + boundingBox + "\n" +
                 "%%DocumentPaperSizes: " + pageSize + "\n" +
                 "%%Orientation: Landscape\n" +
                 "%%EndComments\n";
@@ -90,11 +74,11 @@ public class ToPs {
         return trailer;
     }
 
-    public String convertArea(Point2D.Double globalOrigo) {
-        double origoX = globalOrigo.getX();
-        double origoY = globalOrigo.getY();
+    public String convertArea(ConcretePart part) {
+        double origoX = part.getOrigoX();
+        double origoY = part.getOrigoY();
         String outputString = "";
-        for (PathIterator pi = inputArea.getPathIterator(null); !pi.isDone(); pi.next()) {
+        for (PathIterator pi = part.getPathIterator(); !pi.isDone(); pi.next()) {
             double[] coords = new double[6];
             int type = pi.currentSegment(coords);
             switch (type) {
@@ -155,13 +139,13 @@ public class ToPs {
         return outputString;
     }
 
-    public String convertPoints(MajorPoints pointList) {
-        Rectangle2D bounds = inputArea.getBounds2D();
+    public String convertPoints(ConcretePart part) {
+        Rectangle2D bounds = part.getBounds();
         Point2D.Double localOrigo = new Point2D.Double(bounds.getCenterX(), bounds.getCenterY());
-        Point2D.Double globalOrigo = pointList.getOrigo();
+        Point2D.Double globalOrigo = part.getOrigo();
         String outputString = "0.25 setlinewidth 1 setlinecap 1 0.2 0.2 setrgbcolor\n";
         outputString += "/Times-Roman findfont 7 scalefont setfont\n";
-        Iterator<Point2D.Double> iterator = pointList.getIterator();
+        Iterator<Point2D.Double> iterator = part.getMajorPointIterator();
         while (iterator.hasNext()) {
             Point2D.Double point = iterator.next();
             outputString += drawMarker(point, localOrigo, globalOrigo);

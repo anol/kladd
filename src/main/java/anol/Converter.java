@@ -8,18 +8,20 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.awt.geom.Area;
+import java.awt.geom.Point2D;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class Converter {
 
-    private Area mainArea;
-    private MajorPoints pointList;
     private Document kladdDoc;
     private String pageSize = "a4";
+    private ConcretePartList partList;
 
     public Converter(Document kladdDoc) throws Throwable {
-        this.mainArea = new Area();
-        this.pointList = new MajorPoints();
+        partList = new ConcretePartList();
         this.kladdDoc = kladdDoc;
         traverseAllElements();
         NodeList nodeList = kladdDoc.getElementsByTagName("ark");
@@ -36,20 +38,23 @@ public class Converter {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document svgDoc = dBuilder.newDocument();
-        Area mainArea = new Area();
-        new ToAwt(kladdDoc, mainArea, pointList);
-        new ToSvg(mainArea, svgDoc);
+        new ToAwt(kladdDoc, partList);
+        new ToSvg( partList, svgDoc);
         return svgDoc;
     }
 
     public String convertToPs(String title) throws Throwable {
-        Area mainArea = new Area();
-        new ToAwt(kladdDoc, mainArea, pointList);
-        ToPs toPs = new ToPs(mainArea);
-        String postScript = toPs.getDocumentHeader(title, pageSize);
+        new ToAwt(kladdDoc, partList);
+        String boundingBox = partList.getBoundingBox();
+        ToPs toPs = new ToPs();
+        String postScript = toPs.getDocumentHeader(title, pageSize, boundingBox);
         postScript += toPs.getPageHeader(title, pageSize);
-        postScript += toPs.convertArea(pointList.getOrigo());
-        postScript += toPs.convertPoints(pointList);
+        Iterator<ConcretePart> iterator = partList.getIterator();
+        while (iterator.hasNext()) {
+            ConcretePart part = iterator.next();
+            postScript += toPs.convertArea(part);
+            postScript += toPs.convertPoints(part);
+        }
         postScript += toPs.getPageTrailer();
         postScript += toPs.getDocumentTrailer();
         return postScript;
