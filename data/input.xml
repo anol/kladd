@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ark type="a0">
-    <del name="Vange" x="1050" y="-250">
+    <del name="Tverrplate A" x="200" y="-400">
+        <emne h="150" b="152">
+            <skruekol_6a x="-65"/>
+            <skruekol_6a x="65"/>
+            <skruekol_5 x="-65" y="-65"/>
+            <skruekol_5 x="65" y="-65"/>
+        </emne>
+    </del>
+    <del name="Tverrplate B" x="400" y="-400">
+        <emne h="150" b="152">
+            <rekt h="50" b="100" r="12.5" x="0" y="0"/>
+            <skruekol_6a x="-65"/>
+            <skruekol_6a x="65"/>
+            <skruekol_5 x="-65" y="-65"/>
+            <skruekol_5 x="65" y="-65"/>
+        </emne>
+    </del>
+    <del name="Tverrplate C" x="600" y="-335">
+        <emne h="85" b="152">
+            <rekt h="50" b="100" r="12.5" x="0" y="-30"/>
+            <skruekol_6a x="-65" y="-30"/>
+            <skruekol_6a x="65" y="-30"/>
+        </emne>
+    </del>
+    <del name="Tverrplate D" x="800" y="-400">
+        <emne h="150" b="152">
+            <skruekol_6a x="-65"/>
+            <skruekol_6a x="65"/>
+            <skruekol_5 x="-65" y="-65"/>
+            <skruekol_5 x="65" y="-65"/>
+        </emne>
+    </del>
+    <del name="Tverrplate E" x="1000" y="-400">
+        <emne h="150" b="152">
+            <rekt h="50" b="100" r="12.5" x="0" y="0"/>
+        </emne>
+    </del>
+    <del name="Dekksplate" x="1050" y="-800">
+        <emne h="350" b="1000">
+            <rekt h="160" b="700" r="1" x="-80" y="0"/>
+        </emne>
+    </del>
+    <del name="Vangeplate" x="1050" y="-200">
         <emne h="150" b="1000">
             <rekt h="40" b="136" r="12.5" x="-500" y="75"/>
             <rekt h="40" b="600" r="12.5" x="374" y="75"/>

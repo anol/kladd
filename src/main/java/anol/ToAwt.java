@@ -31,6 +31,17 @@ public class ToAwt {
         }
     }
 
+    private void convertToAwt(Element element, String tagName, double x, double y) {
+        NodeList nodeList = element.getElementsByTagName(tagName);
+        for (int k = 0; k < nodeList.getLength(); k++) {
+            Node node = nodeList.item(k);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element childElement = (Element) node;
+                toAwt(childElement, x, y);
+            }
+        }
+    }
+
     private void convertById(String id, double x, double y) {
         Element element = doc.getElementById(id);
         if (null == element) {
@@ -67,10 +78,11 @@ public class ToAwt {
         double yOffset = getAttribute(element, "y");
         switch (element.getTagName()) {
             case "del":
+                System.out.println("del name=\"" + element.getAttribute("name"));
                 concretePart = new ConcretePart(element.getAttribute("name"));
                 partList.addPart(concretePart);
                 concretePart.setOrigo(xOffset, yOffset);
-                convertToAwt("emne", x, y);
+                convertToAwt(element, "emne", x, y);
                 break;
             case "emne":
                 System.out.println("emne x=\"" + x + "\" y=" + y + "\" h=" + height + "\" b=" + width);

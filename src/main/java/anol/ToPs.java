@@ -1,17 +1,17 @@
 package anol;
 
-import org.w3c.dom.Element;
+        import org.w3c.dom.Element;
 
-import java.awt.geom.Area;
-import java.awt.geom.PathIterator;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+        import java.awt.geom.Area;
+        import java.awt.geom.PathIterator;
+        import java.awt.geom.Point2D;
+        import java.awt.geom.Rectangle2D;
+        import java.util.Date;
+        import java.util.Iterator;
+        import java.util.List;
+        import java.util.ListIterator;
 
-import static java.awt.geom.PathIterator.*;
+        import static java.awt.geom.PathIterator.*;
 
 public class ToPs {
 
@@ -77,7 +77,7 @@ public class ToPs {
     public String convertArea(ConcretePart part) {
         double origoX = part.getOrigoX();
         double origoY = part.getOrigoY();
-        String outputString = "";
+        String outputString = "0.5 setlinewidth 1 setlinecap 0 0 0 setrgbcolor\n";
         for (PathIterator pi = part.getPathIterator(); !pi.isDone(); pi.next()) {
             double[] coords = new double[6];
             int type = pi.currentSegment(coords);
@@ -146,7 +146,7 @@ public class ToPs {
         String outputString = "";
         outputString += "/Times-Roman findfont 24 scalefont setfont\n";
         outputString += "newpath\n";
-        outputString += (x + 20 ) + " " + (y + 20 ) + " moveto\n";
+        outputString += (x - 20) + " " + (y + 20) + " moveto\n";
         outputString += "(" + name + ") show\n";
         outputString += "stroke\n";
         return outputString;
