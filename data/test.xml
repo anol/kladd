@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ark>
-    <del name="sideplate">
-        <emne h="100" b="1000">
-            <rekt h="40" b="180" x="-400" r="10"/>
-        </emne>
-    </del>
-</ark>

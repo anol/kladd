@@ -1,57 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ark type="a0">
-    <del name="Tverrplate A" x="200" y="-400">
-        <emne h="150" b="152">
-            <skruekol_6a x="-65"/>
-            <skruekol_6a x="65"/>
-            <skruekol_5 x="-65" y="-65"/>
-            <skruekol_5 x="65" y="-65"/>
+    <del name="Tverrplate A" x="214" y="-380">
+        <emne h="150" b="156">
+            <skruekol_6a x="-68"/>
+            <skruekol_6a x="68"/>
+            <skruekol_5 x="-68" y="-65"/>
+            <skruekol_5 x="68" y="-65"/>
+            <naglerad_5 x="-56" y="70"/>
+            <naglerad_5 x="-16" y="70"/>
+            <naglerad_5 x="24" y="70"/>
         </emne>
     </del>
-    <del name="Tverrplate B" x="400" y="-400">
-        <emne h="150" b="152">
+    <del name="Tverrplate B" x="390" y="-380">
+        <emne h="150" b="156">
             <rekt h="50" b="100" r="12.5" x="0" y="0"/>
-            <skruekol_6a x="-65"/>
-            <skruekol_6a x="65"/>
-            <skruekol_5 x="-65" y="-65"/>
-            <skruekol_5 x="65" y="-65"/>
+            <skruekol_6a x="-68"/>
+            <skruekol_6a x="68"/>
+            <skruekol_5 x="-68" y="-65"/>
+            <skruekol_5 x="68" y="-65"/>
         </emne>
     </del>
-    <del name="Tverrplate C" x="600" y="-335">
-        <emne h="85" b="152">
+    <del name="Tverrplate C" x="570" y="-300">
+        <emne h="85" b="156">
             <rekt h="50" b="100" r="12.5" x="0" y="-30"/>
-            <skruekol_6a x="-65" y="-30"/>
-            <skruekol_6a x="65" y="-30"/>
+            <skruekol_6a x="-68" y="-30"/>
+            <skruekol_6a x="68" y="-30"/>
         </emne>
     </del>
-    <del name="Tverrplate D" x="800" y="-400">
-        <emne h="150" b="152">
-            <skruekol_6a x="-65"/>
-            <skruekol_6a x="65"/>
-            <skruekol_5 x="-65" y="-65"/>
-            <skruekol_5 x="65" y="-65"/>
+    <del name="Tverrplate E" x="570" y="-382">
+        <emne h="56" b="156">
+            <skruekol_4 x="-68" y="-18"/>
+            <skruekol_4 x="68" y="-18"/>
         </emne>
     </del>
-    <del name="Tverrplate E" x="1000" y="-400">
-        <emne h="150" b="152">
-            <rekt h="50" b="100" r="12.5" x="0" y="0"/>
+    <del name="Tverrplate D" x="750" y="-380">
+        <emne h="150" b="156">
+            <skruekol_6a x="-68"/>
+            <skruekol_6a x="68"/>
+            <skruekol_5 x="-68" y="-65"/>
+            <skruekol_5 x="68" y="-65"/>
+        </emne>
+    </del>
+    <del name="Bufferplanke Bak" x="1090" y="-280">
+        <emne h="58" b="312">
+            <sirk r="5" x="110" y="-11"/>
+            <rekt h="12" b="30" r="1" y="-11"/>
+            <sirk r="5" x="-110" y="-11"/>
+        </emne>
+    </del>
+    <del name="Bufferplanke Front" x="1070" y="-380">
+        <emne h="58" b="284">
+            <sirk r="5" x="110" y="-11"/>
+            <rekt h="12" b="30" r="1" y="-11"/>
+            <sirk r="5" x="-110" y="-11"/>
         </emne>
     </del>
     <del name="Dekksplate" x="1050" y="-800">
-        <emne h="350" b="1000">
-            <rekt h="160" b="700" r="1" x="-80" y="0"/>
+        <emne h="390" b="992">
+            <rekt h="164" b="712" r="1" x="-80" y="0"/>
         </emne>
     </del>
-    <del name="Vangeplate" x="1050" y="-200">
-        <emne h="150" b="1000">
-            <rekt h="40" b="136" r="12.5" x="-500" y="75"/>
+    <del name="Vangeplate" x="1050" y="-190">
+        <emne h="150" b="992">
+            <rekt h="40" b="136" r="12.5" x="-496" y="75"/>
             <rekt h="40" b="600" r="12.5" x="374" y="75"/>
-            <rekt h="172" b="104" r="25" x="-500" y="-75"/>
-            <rekt h="172" b="200" r="25" x="473" y="-75"/>
+            <rekt h="146" b="104" r="25" x="-496" y="-75"/>
+            <rekt h="146" b="200" r="25" x="473" y="-75"/>
             <rekt h="88" b="75" r="25" x="291" y="-75"/>
-            <skruekol_3 x="-495" y="23"/>
-            <skruekol_3 x="495" y="23"/>
-            <skruekol_3 x="405" y="23"/>
+            <skruekol_4 x="-491" y="11"/>
+            <skruekol_4 x="491" y="11"/>
+            <skruekol_4 x="400" y="11"/>
             <skruekol_6a x="-423"/>
             <skruekol_5 x="-423" y="-65"/>
             <sylinder x="-375" y="-35"/>
@@ -115,10 +133,11 @@
         <nagle x="32"/>
         <nagle x="40"/>
     </komp>
-    <komp id="skruekol_3">
+    <komp id="skruekol_4">
         <skrue y="0"/>
         <skrue y="12"/>
         <skrue y="24"/>
+        <skrue y="36"/>
     </komp>
     <komp id="skruekol_5">
         <skrue y="0"/>

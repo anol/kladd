@@ -5,9 +5,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import java.awt.geom.*;
-import java.util.List;
-
 public class ToAwt {
 
     private ConcretePartList partList;
@@ -85,10 +82,15 @@ public class ToAwt {
                 convertToAwt(element, "emne", x, y);
                 break;
             case "emne":
+                concretePart.addMajorPoint(x + width, y + height);
+                concretePart.addMajorPoint(x, y + height);
+                concretePart.addMajorPoint(x + width, y);
+                concretePart.addMajorPoint(x, y);
                 System.out.println("emne x=\"" + x + "\" y=" + y + "\" h=" + height + "\" b=" + width);
-                concretePart.addRect(x, y, width, height, radius, radius);
+                concretePart.addRect(x, y, width, height, radius );
                 x = x + width / 2;
                 y = y + height / 2;
+                concretePart.addMajorPoint(x, y);
                 convertToAwt(element, x, y);
                 break;
             case "komp":
@@ -98,19 +100,14 @@ public class ToAwt {
                 convertToAwt(element, x, y);
                 break;
             case "rekt":
-                concretePart.addMjorPoint(x, y);
-                x = x - xOffset - width / 2;
-                y = y + yOffset - height / 2;
-                System.out.println("rekt x=\"" + x + "\" y=" + y + "\" h=" + height + "\" b=" + width + "\" r=" + radius);
-                concretePart.subtractRect(x, y, width, height, radius, radius);
+                x = x - xOffset;
+                y = y + yOffset;
+                concretePart.subtractRect(x, y, width, height, radius);
                 break;
             case "sirk":
-                concretePart.addMjorPoint(x, y);
-                x = x - radius;
-                y = y - radius;
-                width = height = radius * 2;
-                System.out.println("sirk x=\"" + x + "\" y=" + y + "\" r=" + radius);
-                concretePart.subtractCircle(x, y, width, height);
+                x = x - xOffset;
+                y = y + yOffset;
+                concretePart.subtractCircle(x, y, radius);
                 break;
             default:
                 x = x - xOffset;

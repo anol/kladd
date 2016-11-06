@@ -32,22 +32,30 @@ public class ConcretePart {
         return name;
     }
 
-    public void addMjorPoint(double x, double y) {
+    public void addMajorPoint(double x, double y) {
         Point2D.Double point = new Point2D.Double(x, y);
         pointList.add(point);
     }
 
-    public void subtractRect(double x, double y, double width, double height, double radius, double radius1) {
+    public void subtractRect(double x, double y, double width, double height, double radius) {
+        addMajorPoint(x, y);
+        System.out.println("rekt x=\"" + x + "\" y=" + y + "\" h=" + height + "\" b=" + width + "\" r=" + radius);
+        x -= width / 2;
+        y -= height / 2;
         Area rekt = new Area(new RoundRectangle2D.Double(x, y, width, height, radius, radius));
         mainArea.subtract(rekt);
     }
 
-    public void subtractCircle(double x, double y, double width, double height) {
-        Area sirk = new Area(new Ellipse2D.Double(x, y, width, height));
+    public void subtractCircle(double x, double y, double radius) {
+        addMajorPoint(x, y);
+        System.out.println("sirk x=\"" + x + "\" y=" + y + "\" r=" + radius);
+        x -= radius;
+        y -= radius;
+        Area sirk = new Area(new Ellipse2D.Double(x, y, radius * 2, radius * 2));
         mainArea.subtract(sirk);
     }
 
-    public void addRect(double x, double y, double width, double height, double radius, double radius1) {
+    public void addRect(double x, double y, double width, double height, double radius ) {
         mainArea.add(new Area(new Rectangle2D.Double(x, y, width, height)));
     }
 

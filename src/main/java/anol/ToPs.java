@@ -1,17 +1,17 @@
 package anol;
 
-        import org.w3c.dom.Element;
+import org.w3c.dom.Element;
 
-        import java.awt.geom.Area;
-        import java.awt.geom.PathIterator;
-        import java.awt.geom.Point2D;
-        import java.awt.geom.Rectangle2D;
-        import java.util.Date;
-        import java.util.Iterator;
-        import java.util.List;
-        import java.util.ListIterator;
+import java.awt.geom.Area;
+import java.awt.geom.PathIterator;
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.*;
 
-        import static java.awt.geom.PathIterator.*;
+import static java.awt.geom.PathIterator.*;
 
 public class ToPs {
 
@@ -108,6 +108,13 @@ public class ToPs {
         return outputString;
     }
 
+    private static String toPsString(double d) {
+        //DecimalFormat formatter = new DecimalFormat("#.##");
+        //String s = "(" + formatter.format(d) + ")";
+        String s = "(" + d + ")";
+        return s;
+    }
+
     private String drawMarker(Point2D.Double point, Point2D.Double localOrigo, Point2D.Double globalOrigo) {
         double x = mm2pt(-point.getX() + globalOrigo.getX());
         double y = mm2pt(point.getY() + globalOrigo.getY());
@@ -124,15 +131,15 @@ public class ToPs {
         outputString += "closepath stroke\n";
         if (oldY != newY) {
             outputString += "newpath\n";
-            outputString += (x + 9) + " " + (y - 2) + " moveto\n";
-            outputString += "(" + newY + ") show\n";
+            outputString += (x + 9) + " " + (y - 8) + " moveto\n";
+            outputString += toPsString(newY) + " show\n";
             outputString += "stroke\n";
             oldY = newY;
         }
         if (oldX != newX) {
             outputString += "newpath\n";
             outputString += (x - 8) + " " + (y + 8) + " moveto\n";
-            outputString += "(" + newX + ") show\n";
+            outputString += toPsString(newX) + " show\n";
             outputString += "stroke\n";
             oldX = newX;
         }
@@ -156,6 +163,8 @@ public class ToPs {
         Rectangle2D bounds = part.getBounds();
         Point2D.Double localOrigo = new Point2D.Double(bounds.getCenterX(), bounds.getCenterY());
         Point2D.Double globalOrigo = part.getOrigo();
+        oldX = 0.111111111;
+        oldY = 0.111111111;
         String outputString = "0.25 setlinewidth 1 setlinecap 1 0.2 0.2 setrgbcolor\n";
         outputString += drawName(part.getName(), localOrigo, globalOrigo);
         outputString += "/Times-Roman findfont 7 scalefont setfont\n";
