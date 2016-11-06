@@ -18,12 +18,18 @@ public class ConcretePart {
 
     // The AWT coordinate system has origo in the top-left corner
 
+    private String name;
     private Area mainArea;
     private MajorPoints pointList;
 
-    public ConcretePart() {
+    public ConcretePart(String name) {
+        this.name = name;
         this.mainArea = new Area();
         this.pointList = new MajorPoints();
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void addMjorPoint(double x, double y) {

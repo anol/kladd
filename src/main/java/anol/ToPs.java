@@ -139,11 +139,25 @@ public class ToPs {
         return outputString;
     }
 
+
+    private String drawName(String name, Point2D.Double localOrigo, Point2D.Double globalOrigo) {
+        double x = mm2pt(-localOrigo.getX() + globalOrigo.getX());
+        double y = mm2pt(localOrigo.getY() + globalOrigo.getY());
+        String outputString = "";
+        outputString += "/Times-Roman findfont 24 scalefont setfont\n";
+        outputString += "newpath\n";
+        outputString += (x + 20 ) + " " + (y + 20 ) + " moveto\n";
+        outputString += "(" + name + ") show\n";
+        outputString += "stroke\n";
+        return outputString;
+    }
+
     public String convertPoints(ConcretePart part) {
         Rectangle2D bounds = part.getBounds();
         Point2D.Double localOrigo = new Point2D.Double(bounds.getCenterX(), bounds.getCenterY());
         Point2D.Double globalOrigo = part.getOrigo();
         String outputString = "0.25 setlinewidth 1 setlinecap 1 0.2 0.2 setrgbcolor\n";
+        outputString += drawName(part.getName(), localOrigo, globalOrigo);
         outputString += "/Times-Roman findfont 7 scalefont setfont\n";
         Iterator<Point2D.Double> iterator = part.getMajorPointIterator();
         while (iterator.hasNext()) {

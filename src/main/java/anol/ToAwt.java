@@ -67,7 +67,7 @@ public class ToAwt {
         double yOffset = getAttribute(element, "y");
         switch (element.getTagName()) {
             case "del":
-                concretePart = new ConcretePart();
+                concretePart = new ConcretePart(element.getAttribute("name"));
                 partList.addPart(concretePart);
                 concretePart.setOrigo(xOffset, yOffset);
                 convertToAwt("emne", x, y);
