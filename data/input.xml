@@ -58,6 +58,13 @@
     <del name="Dekksplate" x="1050" y="-800">
         <emne h="390" b="992">
             <rekt h="164" b="712" r="1" x="-80" y="0"/>
+            <cut_a y="+200"/>
+            <cut_b y="-200"/>
+        </emne>
+    </del>
+    <del name="Overplate" x="622" y="-682.5">
+        <emne h="156" b="500">
+            <rekt h="120" b="60" r="12.5" x="-205" y="0"/>
         </emne>
     </del>
     <del name="Vangeplate" x="1050" y="-190">
@@ -112,6 +119,12 @@
     </komp>
     <komp id="sylinder">
         <rekt h="34" b="80" r="10"/>
+    </komp>
+    <komp id="cut_a">
+        <rekt h="70" b="992" r="10"/>
+    </komp>
+    <komp id="cut_b">
+        <rekt h="70" b="992" r="10"/>
     </komp>
     <komp id="naglerad_3">
         <nagle x="0"/>
