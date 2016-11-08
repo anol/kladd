@@ -82,6 +82,8 @@ public class ToAwt {
                 convertToAwt(element, "emne", x, y);
                 break;
             case "emne":
+                x = x - xOffset;
+                y = y + yOffset;
                 concretePart.addMajorPoint(x + width, y + height);
                 concretePart.addMajorPoint(x, y + height);
                 concretePart.addMajorPoint(x + width, y);

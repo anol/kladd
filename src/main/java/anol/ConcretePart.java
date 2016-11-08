@@ -56,7 +56,7 @@ public class ConcretePart {
     }
 
     public void addRect(double x, double y, double width, double height, double radius ) {
-        mainArea.add(new Area(new Rectangle2D.Double(x, y, width, height)));
+        mainArea.add(new Area(new RoundRectangle2D.Double(x, y, width, height, radius, radius)));
     }
 
     public void setOrigo(double xOffset, double yOffset) {

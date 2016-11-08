@@ -1,15 +1,10 @@
 package anol;
 
-import org.w3c.dom.Element;
-
-import java.awt.geom.Area;
 import java.awt.geom.PathIterator;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.*;
+import java.util.Date;
+import java.util.Iterator;
 
 import static java.awt.geom.PathIterator.*;
 
@@ -165,7 +160,8 @@ public class ToPs {
         Point2D.Double globalOrigo = part.getOrigo();
         oldX = 0.111111111;
         oldY = 0.111111111;
-        String outputString = "0.25 setlinewidth 1 setlinecap 1 0.2 0.2 setrgbcolor\n";
+//        String outputString = "0.25 setlinewidth 1 setlinecap 1 0.2 0.2 setrgbcolor\n";
+        String outputString = "0.25 setlinewidth 1 setlinecap 0 0 0 setrgbcolor\n";
         outputString += drawName(part.getName(), localOrigo, globalOrigo);
         outputString += "/Times-Roman findfont 7 scalefont setfont\n";
         Iterator<Point2D.Double> iterator = part.getMajorPointIterator();

@@ -55,14 +55,18 @@
             <sirk r="5" x="-110" y="-11"/>
         </emne>
     </del>
-    <del name="Dekksplate" x="1050" y="-800">
-        <emne h="390" b="992">
+    <del name="Dekksplate" x="1050" y="-750">
+        <emne h="288" b="992">
             <rekt h="164" b="712" r="1" x="-80" y="0"/>
-            <cut_a y="+200"/>
-            <cut_b y="-200"/>
+            <rekt h="60" b="100" r="25" x="-120" y="-150"/>
+            <rekt h="60" b="100" r="25" x="-120" y="150"/>
         </emne>
+        <emne h="84" b="616" r="40" x="0" y="235" />
+        <emne h="84" b="616" r="40" x="0" y="-19" />
+        <emne h="52" b="270" r="25" x="-70" y="294" />
+        <emne h="52" b="270" r="25" x="-70" y="-46" />
     </del>
-    <del name="Overplate" x="622" y="-682.5">
+    <del name="Overplate" x="622" y="-684">
         <emne h="156" b="500">
             <rekt h="120" b="60" r="12.5" x="-205" y="0"/>
         </emne>
@@ -119,12 +123,6 @@
     </komp>
     <komp id="sylinder">
         <rekt h="34" b="80" r="10"/>
-    </komp>
-    <komp id="cut_a">
-        <rekt h="70" b="992" r="10"/>
-    </komp>
-    <komp id="cut_b">
-        <rekt h="70" b="992" r="10"/>
     </komp>
     <komp id="naglerad_3">
         <nagle x="0"/>
