@@ -7,11 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="438c4250-c21d-427e-8a63-5fa40ea2ce1c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/output.pdf" afterPath="$PROJECT_DIR$/data/output.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/input.xml" afterPath="$PROJECT_DIR$/data/input.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/anol/ConcretePart.java" afterPath="$PROJECT_DIR$/src/main/java/anol/ConcretePart.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/anol/ToAwt.java" afterPath="$PROJECT_DIR$/src/main/java/anol/ToAwt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/anol/ToPs.java" afterPath="$PROJECT_DIR$/src/main/java/anol/ToPs.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/temp.ps" afterPath="$PROJECT_DIR$/data/temp.ps" />
     </list>
     <ignored path="kladd.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,21 +31,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="input.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="input.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data/input.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="704">
-              <caret line="77" column="59" selection-start-line="77" selection-start-column="59" selection-end-line="77" selection-end-column="59" />
+            <state relative-caret-position="462">
+              <caret line="66" column="48" selection-start-line="66" selection-start-column="48" selection-end-line="66" selection-end-column="48" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ToAwt.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ToAwt.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/anol/ToAwt.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
-              <caret line="94" column="49" selection-start-line="94" selection-start-column="49" selection-end-line="94" selection-end-column="49" />
+            <state relative-caret-position="342">
+              <caret line="79" column="47" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -101,8 +99,8 @@
         <option value="$PROJECT_DIR$/src/main/java/anol/ConcretePartList.java" />
         <option value="$PROJECT_DIR$/src/main/java/anol/ToPs.java" />
         <option value="$PROJECT_DIR$/src/main/java/anol/ConcretePart.java" />
-        <option value="$PROJECT_DIR$/data/input.xml" />
         <option value="$PROJECT_DIR$/src/main/java/anol/ToAwt.java" />
+        <option value="$PROJECT_DIR$/data/input.xml" />
       </list>
     </option>
   </component>
@@ -759,7 +757,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="2418" height="1468" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1089,18 +1087,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/input.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/anol/ToAwt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="77" column="59" selection-start-line="77" selection-start-column="59" selection-end-line="77" selection-end-column="59" />
+        <state relative-caret-position="342">
+          <caret line="79" column="47" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/anol/ToAwt.java">
+    <entry file="file://$PROJECT_DIR$/data/input.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="94" column="49" selection-start-line="94" selection-start-column="49" selection-end-line="94" selection-end-column="49" />
+        <state relative-caret-position="462">
+          <caret line="66" column="48" selection-start-line="66" selection-start-column="48" selection-end-line="66" selection-end-column="48" />
           <folding />
         </state>
       </provider>
