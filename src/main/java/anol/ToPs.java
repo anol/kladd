@@ -14,8 +14,10 @@ public class ToPs {
 
     private double oldX = 0.111111111;
     private double oldY = 0.111111111;
+    private boolean colors;
 
-    public ToPs() {
+    public ToPs(boolean colors) {
+        this.colors = colors;
     }
 
     static double mm2pt(double mm) {
@@ -160,8 +162,12 @@ public class ToPs {
         Point2D.Double globalOrigo = part.getOrigo();
         oldX = 0.111111111;
         oldY = 0.111111111;
-//        String outputString = "0.25 setlinewidth 1 setlinecap 1 0.2 0.2 setrgbcolor\n";
-        String outputString = "0.25 setlinewidth 1 setlinecap 0 0 0 setrgbcolor\n";
+        String outputString = "0.25 setlinewidth 1 setlinecap\n";
+        if(colors){
+            outputString += "1 0.2 0.2 setrgbcolor\n";
+        }else {
+            outputString += "0 0 0 setrgbcolor\n";
+        }
         outputString += drawName(part.getName(), localOrigo, globalOrigo);
         outputString += "/Times-Roman findfont 7 scalefont setfont\n";
         Iterator<Point2D.Double> iterator = part.getMajorPointIterator();

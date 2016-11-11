@@ -5,6 +5,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class ToAwt {
 
     private ConcretePartList partList;
@@ -67,54 +71,77 @@ public class ToAwt {
         }
     }
 
+    private List<Double> getListAttribute(Element element, String attribute) {
+        List<Double> list = new ArrayList<Double>();
+        if (element.hasAttribute(attribute)) {
+            list.add(Double.parseDouble(element.getAttribute(attribute)));
+        } else {
+            list.add(0.0);
+        }
+        return list;
+    }
+
     private void toAwt(Element element, double x, double y) {
+        List<Double> xList = getListAttribute(element, "x");
+        List<Double> yList = getListAttribute(element, "y");
+        Iterator<Double> xIt = xList.listIterator();
+        Iterator<Double> yIt = yList.listIterator();
+        while (xIt.hasNext()) {
+            Double dx = xIt.next();
+            while (yIt.hasNext()) {
+                Double dy = yIt.next();
+                toAwt(element, x, y, dx, dy);
+            }
+        }
+    }
+
+    private void toAwt(Element element, double x, double y, double dx, double dy) {
         double height = getAttribute(element, "h");
         double width = getAttribute(element, "b");
         double radius = getAttribute(element, "r");
-        double xOffset = getAttribute(element, "x");
-        double yOffset = getAttribute(element, "y");
         switch (element.getTagName()) {
             case "del":
                 System.out.println("del name=\"" + element.getAttribute("name"));
                 concretePart = new ConcretePart(element.getAttribute("name"));
                 partList.addPart(concretePart);
-                concretePart.setOrigo(xOffset, yOffset);
+                concretePart.setOrigo(dx, dy);
                 convertToAwt(element, "emne", x, y);
                 break;
             case "emne":
-                x = x - xOffset;
-                y = y + yOffset;
+                x = x - dx;
+                y = y + dy;
                 concretePart.addMajorPoint(x + width, y + height);
                 concretePart.addMajorPoint(x, y + height);
                 concretePart.addMajorPoint(x + width, y);
                 concretePart.addMajorPoint(x, y);
                 System.out.println("emne x=\"" + x + "\" y=" + y + "\" h=" + height + "\" b=" + width);
-                concretePart.addRect(x, y, width, height, radius );
+                concretePart.addRect(x, y, width, height, radius);
                 x = x + width / 2;
                 y = y + height / 2;
                 concretePart.addMajorPoint(x, y);
                 convertToAwt(element, x, y);
                 break;
             case "komp":
-                x = x - xOffset;
-                y = y + yOffset;
+                x = x - dx;
+                y = y + dy;
                 System.out.println("komp x=\"" + x + "\" y=" + y);
                 convertToAwt(element, x, y);
                 break;
             case "rekt":
-                x = x - xOffset;
-                y = y + yOffset;
+                x = x - dx;
+                y = y + dy;
                 concretePart.subtractRect(x, y, width, height, radius);
                 break;
             case "sirk":
-                x = x - xOffset;
-                y = y + yOffset;
+                x = x - dx;
+                y = y + dy;
                 concretePart.subtractCircle(x, y, radius);
                 break;
             default:
-                x = x - xOffset;
-                y = y + yOffset;
+                x = x - dx;
+                y = y + dy;
                 convertById(element.getTagName(), x, y);
         }
     }
+
 }

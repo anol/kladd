@@ -7,22 +7,22 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.awt.geom.Area;
-import java.awt.geom.Point2D;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class Converter {
 
     private Document kladdDoc;
     private String pageSize = "a4";
     private ConcretePartList partList;
+    private boolean colors;
+    private boolean annotations;
 
-    public Converter(Document kladdDoc) throws Throwable {
+    public Converter(Document kladdDoc, boolean annotations, boolean colors) throws Throwable {
         partList = new ConcretePartList();
         this.kladdDoc = kladdDoc;
+        this.annotations = annotations;
+        this.colors = colors;
         traverseAllElements();
         NodeList nodeList = kladdDoc.getElementsByTagName("ark");
         if (0 < nodeList.getLength()) {
@@ -46,14 +46,16 @@ public class Converter {
     public String convertToPs(String title) throws Throwable {
         new ToAwt(kladdDoc, partList);
         String boundingBox = partList.getBoundingBox();
-        ToPs toPs = new ToPs();
+        ToPs toPs = new ToPs(colors);
         String postScript = toPs.getDocumentHeader(title, pageSize, boundingBox);
         postScript += toPs.getPageHeader(title, pageSize);
         Iterator<ConcretePart> iterator = partList.getIterator();
         while (iterator.hasNext()) {
             ConcretePart part = iterator.next();
             postScript += toPs.convertArea(part);
-            postScript += toPs.convertPoints(part);
+            if(annotations) {
+                postScript += toPs.convertPoints(part);
+            }
         }
         postScript += toPs.getPageTrailer();
         postScript += toPs.getDocumentTrailer();
