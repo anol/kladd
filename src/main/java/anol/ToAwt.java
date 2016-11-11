@@ -74,7 +74,10 @@ public class ToAwt {
     private List<Double> getListAttribute(Element element, String attribute) {
         List<Double> list = new ArrayList<Double>();
         if (element.hasAttribute(attribute)) {
-            list.add(Double.parseDouble(element.getAttribute(attribute)));
+            String value = element.getAttribute(attribute);
+            for (String subValue: value.split(" ")) {
+                list.add(Double.parseDouble(subValue));
+            }
         } else {
             list.add(0.0);
         }
@@ -85,9 +88,9 @@ public class ToAwt {
         List<Double> xList = getListAttribute(element, "x");
         List<Double> yList = getListAttribute(element, "y");
         Iterator<Double> xIt = xList.listIterator();
-        Iterator<Double> yIt = yList.listIterator();
         while (xIt.hasNext()) {
             Double dx = xIt.next();
+            Iterator<Double> yIt = yList.listIterator();
             while (yIt.hasNext()) {
                 Double dy = yIt.next();
                 toAwt(element, x, y, dx, dy);
