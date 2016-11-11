@@ -80,9 +80,9 @@
             <rekt h="146" b="104" r="25" x="-496" y="-75"/>
             <rekt h="146" b="200" r="25" x="473" y="-75"/>
             <rekt h="88" b="75" r="25" x="291" y="-75"/>
-            <skruekol_4 x="-491" y="11"/>
-            <skruekol_4 x="491" y="11"/>
-            <skruekol_4 x="400" y="11"/>
+            <skrue x="-491" y="11 23 35 47"/>
+            <skrue x="491" y="11 23 35 47"/>
+            <skrue x="400" y="11 23 35 47"/>
             <skruekol_6a x="-423"/>
             <skruekol_5 x="-423" y="-65"/>
             <sylinder x="-375" y="-35"/>
@@ -96,10 +96,7 @@
             <naglerad_5 x="-247" y="70"/>
             <naglerad_5 x="-207" y="70"/>
             <naglerad_5 x="-167" y="70"/>
-            <naglerad_5 x="-103" y="70"/>
-            <naglerad_5 x="-63" y="70"/>
-            <naglerad_5 x="-23" y="70"/>
-            <naglerad_3 x="41" y="70"/>
+            <nagle x="-103 -95 -87 -79 -71 -63 -55 -47 -39 -31 -23 -15 -7 1 9 41 49 57" y="70"/>
             <akselhorn x="-220" y="-55"/>
             <akselhorn x="-20" y="-55"/>
             <akselhorn x="180" y="-55"/>
@@ -112,65 +109,25 @@
     <sirk id="nagle" r="1.5"/>
     <komp id="akselhorn">
         <rekt h="55" b="35" r="1"/>
-        <skrue x="-25" y="36"/>
-        <skrue x="-25" y="24"/>
-        <skrue x="-25" y="12"/>
-        <skrue x="-25" y="0"/>
-        <skrue x="-25" y="-12"/>
-        <skrue x="25" y="36"/>
-        <skrue x="25" y="24"/>
-        <skrue x="25" y="12"/>
-        <skrue x="25" y="0"/>
-        <skrue x="25" y="-12"/>
+        <skrue x="-25" y="36 24 12 0 -12"/>
+        <skrue x="25" y="36 24 12 0 -12"/>
+    </komp>
+    <komp id="feste">
+        <skrue y="47 65" x="-6 6"/>
     </komp>
     <komp id="sylinder">
         <rekt h="34" b="80" r="10"/>
     </komp>
-    <komp id="naglerad_3">
-        <nagle x="0"/>
-        <nagle x="8"/>
-        <nagle x="16"/>
-    </komp>
     <komp id="naglerad_5">
-        <nagle x="32"/>
-        <nagle x="24"/>
-        <nagle x="16"/>
-        <nagle x="8"/>
-        <nagle x="0"/>
+        <nagle x="0 8 16 24 32"/>
     </komp>
     <komp id="naglerad_6">
-        <nagle x="0"/>
-        <nagle x="8"/>
-        <nagle x="16"/>
-        <nagle x="24"/>
-        <nagle x="32"/>
-        <nagle x="40"/>
-    </komp>
-    <komp id="skruekol_4">
-        <skrue y="0"/>
-        <skrue y="12"/>
-        <skrue y="24"/>
-        <skrue y="36"/>
+        <nagle x="0 8 16 24 32 40"/>
     </komp>
     <komp id="skruekol_5">
-        <skrue y="0"/>
-        <skrue y="12"/>
-        <skrue y="24"/>
-        <skrue y="36"/>
-        <skrue y="48"/>
+        <skrue y="0 12 24 36 48"/>
     </komp>
     <komp id="skruekol_6a">
-        <skrue y="-1"/>
-        <skrue y="11"/>
-        <skrue y="23"/>
-        <skrue y="35"/>
-        <skrue y="47"/>
-        <skrue y="65"/>
-    </komp>
-    <komp id="feste">
-        <skrue y="47" x="-6"/>
-        <skrue y="65" x="-6"/>
-        <skrue y="47" x="6"/>
-        <skrue y="65" x="6"/>
+        <skrue y="-1 11 23 35 47 65"/>
     </komp>
 </ark>
