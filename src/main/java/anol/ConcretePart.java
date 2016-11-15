@@ -39,7 +39,6 @@ public class ConcretePart {
 
     public void subtractRect(double x, double y, double width, double height, double radius) {
         addMajorPoint(x, y);
-        System.out.println("rekt x=\"" + x + "\" y=" + y + "\" h=" + height + "\" b=" + width + "\" r=" + radius);
         x -= width / 2;
         y -= height / 2;
         Area rekt = new Area(new RoundRectangle2D.Double(x, y, width, height, radius, radius));
@@ -48,7 +47,6 @@ public class ConcretePart {
 
     public void subtractCircle(double x, double y, double radius) {
         addMajorPoint(x, y);
-        System.out.println("sirk x=\"" + x + "\" y=" + y + "\" r=" + radius);
         x -= radius;
         y -= radius;
         Area sirk = new Area(new Ellipse2D.Double(x, y, radius * 2, radius * 2));
@@ -56,6 +54,13 @@ public class ConcretePart {
     }
 
     public void addRect(double x, double y, double width, double height, double radius ) {
+        addMajorPoint(x + width, y + height);
+        addMajorPoint(x, y + height);
+        addMajorPoint(x + width, y);
+        addMajorPoint(x, y);
+        x -= width / 2;
+        y -= height / 2;
+        addMajorPoint(x, y);
         mainArea.add(new Area(new RoundRectangle2D.Double(x, y, width, height, radius, radius)));
     }
 

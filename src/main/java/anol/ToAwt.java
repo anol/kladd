@@ -75,7 +75,7 @@ public class ToAwt {
         List<Double> list = new ArrayList<Double>();
         if (element.hasAttribute(attribute)) {
             String value = element.getAttribute(attribute);
-            for (String subValue: value.split(" ")) {
+            for (String subValue : value.split(" ")) {
                 list.add(Double.parseDouble(subValue));
             }
         } else {
@@ -99,6 +99,8 @@ public class ToAwt {
     }
 
     private void toAwt(Element element, double x, double y, double dx, double dy) {
+        double xdx = x - dx;
+        double ydy = y + dy;
         double height = getAttribute(element, "h");
         double width = getAttribute(element, "b");
         double radius = getAttribute(element, "r");
@@ -111,39 +113,20 @@ public class ToAwt {
                 convertToAwt(element, "emne", x, y);
                 break;
             case "emne":
-                x = x - dx;
-                y = y + dy;
-                concretePart.addMajorPoint(x + width, y + height);
-                concretePart.addMajorPoint(x, y + height);
-                concretePart.addMajorPoint(x + width, y);
-                concretePart.addMajorPoint(x, y);
-                System.out.println("emne x=\"" + x + "\" y=" + y + "\" h=" + height + "\" b=" + width);
-                concretePart.addRect(x, y, width, height, radius);
-                x = x + width / 2;
-                y = y + height / 2;
-                concretePart.addMajorPoint(x, y);
-                convertToAwt(element, x, y);
+                concretePart.addRect(xdx, ydy, width, height, radius);
+                convertToAwt(element, xdx, ydy);
                 break;
             case "komp":
-                x = x - dx;
-                y = y + dy;
-                System.out.println("komp x=\"" + x + "\" y=" + y);
-                convertToAwt(element, x, y);
+                convertToAwt(element, xdx, ydy);
                 break;
             case "rekt":
-                x = x - dx;
-                y = y + dy;
-                concretePart.subtractRect(x, y, width, height, radius);
+                concretePart.subtractRect(xdx, ydy, width, height, radius);
                 break;
             case "sirk":
-                x = x - dx;
-                y = y + dy;
-                concretePart.subtractCircle(x, y, radius);
+                concretePart.subtractCircle(xdx, ydy, radius);
                 break;
             default:
-                x = x - dx;
-                y = y + dy;
-                convertById(element.getTagName(), x, y);
+                convertById(element.getTagName(), xdx, ydy);
         }
     }
 
