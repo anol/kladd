@@ -1,7 +1,9 @@
 package anol;
 
 import java.awt.geom.*;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class ConcretePart {
 
@@ -16,16 +18,44 @@ public class ConcretePart {
         return immipoints.toString();
     }
 
+    static List<String> getListAttribute(String attribute) {
+        List<String> list = new ArrayList<String>();
+        for (String subValue : attribute.split(" ")) {
+            list.add(subValue);
+        }
+        return list;
+    }
+
     // The AWT coordinate system has origo in the top-left corner
 
     private String name;
     private Area mainArea;
     private MajorPoints pointList;
+    private boolean flip_y = false;
+    private boolean flip_x = false;
 
-    public ConcretePart(String name) {
+    public ConcretePart(String name, String funks) {
         this.name = name;
         this.mainArea = new Area();
         this.pointList = new MajorPoints();
+        List<String> list = getListAttribute(funks);
+        Iterator<String> it = list.listIterator();
+        while (it.hasNext()) {
+            String funk = it.next();
+            switch (funk) {
+                case "":
+                    break;
+                case "flip_y":
+                    flip_y = true;
+                    break;
+                case "flip_x":
+                    flip_x = true;
+                    break;
+                default:
+                    System.out.println("Ukjent funksjon: \"" + funk + "\"");
+                    break;
+            }
+        }
     }
 
     public String getName() {
@@ -33,11 +63,15 @@ public class ConcretePart {
     }
 
     public void addMajorPoint(double x, double y) {
+        if (flip_y) y = -y;
+        if (flip_x) x = -x;
         Point2D.Double point = new Point2D.Double(x, y);
         pointList.add(point);
     }
 
     public void subtractRect(double x, double y, double width, double height, double radius) {
+        if (flip_y) y = -y;
+        if (flip_x) x = -x;
         addMajorPoint(x, y);
         x -= width / 2;
         y -= height / 2;
@@ -46,6 +80,8 @@ public class ConcretePart {
     }
 
     public void subtractCircle(double x, double y, double radius) {
+        if (flip_y) y = -y;
+        if (flip_x) x = -x;
         addMajorPoint(x, y);
         x -= radius;
         y -= radius;
@@ -53,7 +89,9 @@ public class ConcretePart {
         mainArea.subtract(sirk);
     }
 
-    public void addRect(double x, double y, double width, double height, double radius ) {
+    public void addRect(double x, double y, double width, double height, double radius) {
+        if (flip_y) y = -y;
+        if (flip_x) x = -x;
         addMajorPoint(x + width, y + height);
         addMajorPoint(x, y + height);
         addMajorPoint(x + width, y);

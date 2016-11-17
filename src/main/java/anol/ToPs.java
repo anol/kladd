@@ -143,7 +143,6 @@ public class ToPs {
         return outputString;
     }
 
-
     private String drawName(String name, Point2D.Double localOrigo, Point2D.Double globalOrigo) {
         double x = mm2pt(-localOrigo.getX() + globalOrigo.getX());
         double y = mm2pt(localOrigo.getY() + globalOrigo.getY());

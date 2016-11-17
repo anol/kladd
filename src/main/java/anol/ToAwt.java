@@ -98,6 +98,16 @@ public class ToAwt {
         }
     }
 
+    private void addPart(Element element, double x, double y, double dx, double dy) {
+        String name = element.getAttribute("name");
+        String funk = element.getAttribute("funk");
+        System.out.println("del name=\"" + name);
+        concretePart = new ConcretePart(name, funk);
+        partList.addPart(concretePart);
+        concretePart.setOrigo(dx, dy);
+        convertToAwt(element, "emne", x, y);
+    }
+
     private void toAwt(Element element, double x, double y, double dx, double dy) {
         double xdx = x - dx;
         double ydy = y + dy;
@@ -106,11 +116,7 @@ public class ToAwt {
         double radius = getAttribute(element, "r");
         switch (element.getTagName()) {
             case "del":
-                System.out.println("del name=\"" + element.getAttribute("name"));
-                concretePart = new ConcretePart(element.getAttribute("name"));
-                partList.addPart(concretePart);
-                concretePart.setOrigo(dx, dy);
-                convertToAwt(element, "emne", x, y);
+                addPart(element, x, y, dx, dy);
                 break;
             case "emne":
                 concretePart.addRect(xdx, ydy, width, height, radius);

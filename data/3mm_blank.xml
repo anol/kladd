@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ark type="a0">
+    <!-- Vangeplate -->
+    <del name="Rette side" x="550" y="-100" funk="flip_y">
+        <emne>
+            <vangeprofil/>
+        </emne>
+    </del>
+    <del name="Venstre side" x="550" y="-700">
+        <emne>
+            <vangeprofil/>
+        </emne>
+    </del>
+    <!-- Dekksplater -->
+    <del name="Plattform" x="550" y="-400">
+        <emne h="288" b="992">
+            <rekt h="164" b="713" r="1" x="-72" y="0"/>
+            <rekt h="100" b="100" r="40" x="-120" y="-170"/>
+            <rekt h="100" b="100" r="40" x="-120" y="170"/>
+            <rekt h="25" b="21" r="3" x="-375" y="-105"/>
+            <rekt h="25" b="21" r="3" x="-375" y="105"/>
+            <rekt h="3.5" b="15" x="-435" y="-80.25"/>
+            <rekt h="3.5" b="15" x="-435" y="80.25"/>
+            <rekt h="3.5" b="15" x="290" y="-80.25"/>
+            <rekt h="3.5" b="15" x="290" y="80.25"/>
+        </emne>
+        <emne h="200" b="340" r="100" x="60" y="70">
+            <rekt h="120" b="350" y="-48"/>
+        </emne>
+        <emne h="200" b="340" r="100" x="60" y="-70">
+            <rekt h="120" b="350" y="48"/>
+        </emne>
+        <emne h="60" b="270" r="25" x="300" y="171"/>
+        <emne h="60" b="270" r="25" x="300" y="-171"/>
+        <emne h="84" b="200" r="25" x="396" y="128"/>
+        <emne h="84" b="200" r="25" x="396" y="-128"/>
+    </del>
+    <del name="Tanktak" x="376" y="-400">
+        <emne h="156" b="500">
+            <rekt h="120" b="60" r="12.5" x="-200"/>
+        </emne>
+    </del>
+    <!-- Komponenter -->
+    <emne id="vangeprofil" h="150" b="992">
+        <!-- Komponentplassering -->
+        <sylinder x="-375" y="-45"/>
+        <akselhorn x="-220" y="-40"/>
+        <akselhorn x="-20" y="-40"/>
+        <akselhorn x="180" y="-40"/>
+        <!-- Profilutsparinger -->
+        <rekt h="40" b="136" r="25" x="-496" y="75"/>
+        <rekt h="146" b="104" r="50" x="-496" y="-75"/>
+        <rekt h="40" b="600" r="12.5" x="374" y="75"/>
+        <rekt h="146" b="200" r="25" x="473" y="-75"/>
+        <!-- Hull -->
+        <rekt h="88" b="75" r="25" x="291" y="-75"/>
+        <!-- Plattformutsparinger -->
+        <rekt h="6" b="58" x="-470" y="55"/>
+        <rekt h="6" b="230" x="412" y="55"/>
+    </emne>
+    <komp id="akselhorn">
+        <rekt h="66" b="40" r="2" Y="-4"/>
+        <rekt h="10" b="80" r="4" y="-35"/>
+    </komp>
+    <komp id="sylinder">
+        <rekt h="34" b="80" r="10" y="6"/>
+    </komp>
+</ark>
