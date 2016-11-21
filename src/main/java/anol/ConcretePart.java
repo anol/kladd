@@ -33,6 +33,7 @@ public class ConcretePart {
     private MajorPoints pointList;
     private boolean flip_y = false;
     private boolean flip_x = false;
+    private boolean swap_xy = false;
 
     public ConcretePart(String name, String funks) {
         this.name = name;
@@ -44,6 +45,9 @@ public class ConcretePart {
             String funk = it.next();
             switch (funk) {
                 case "":
+                    break;
+                case "swap_xy":
+                    swap_xy = true;
                     break;
                 case "flip_y":
                     flip_y = true;
@@ -63,23 +67,23 @@ public class ConcretePart {
     }
 
     public void addMajorPoint(double x, double y) {
+        if (swap_xy) {
+            double temp = x;
+            x = y;
+            y = temp;
+        }
         if (flip_y) y = -y;
         if (flip_x) x = -x;
         Point2D.Double point = new Point2D.Double(x, y);
         pointList.add(point);
     }
 
-    public void subtractRect(double x, double y, double width, double height, double radius) {
-        if (flip_y) y = -y;
-        if (flip_x) x = -x;
-        addMajorPoint(x, y);
-        x -= width / 2;
-        y -= height / 2;
-        Area rekt = new Area(new RoundRectangle2D.Double(x, y, width, height, radius, radius));
-        mainArea.subtract(rekt);
-    }
-
     public void subtractCircle(double x, double y, double radius) {
+        if (swap_xy) {
+            double temp = x;
+            x = y;
+            y = temp;
+        }
         if (flip_y) y = -y;
         if (flip_x) x = -x;
         addMajorPoint(x, y);
@@ -89,7 +93,33 @@ public class ConcretePart {
         mainArea.subtract(sirk);
     }
 
+    public void subtractRect(double x, double y, double width, double height, double radius) {
+        if (swap_xy) {
+            double temp = x;
+            x = y;
+            y = temp;
+            temp = width;
+            width = height;
+            height = temp;
+        }
+        if (flip_y) y = -y;
+        if (flip_x) x = -x;
+        addMajorPoint(x, y);
+        x -= width / 2;
+        y -= height / 2;
+        Area rekt = new Area(new RoundRectangle2D.Double(x, y, width, height, radius, radius));
+        mainArea.subtract(rekt);
+    }
+
     public void addRect(double x, double y, double width, double height, double radius) {
+        if (swap_xy) {
+            double temp = x;
+            x = y;
+            y = temp;
+            temp = width;
+            width = height;
+            height = temp;
+        }
         if (flip_y) y = -y;
         if (flip_x) x = -x;
         addMajorPoint(x + width, y + height);
