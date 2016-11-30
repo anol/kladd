@@ -25,6 +25,9 @@ public class Processor {
             Document outputDoc = converter.convertToSvg();
             String outputString = serialize(outputDoc);
             new FileOutputStream(outputFile).write(outputString.getBytes());
+        } else if (outputFile.getName().endsWith(".stp")) {
+            String outputString = converter.convertToStep(inputFile.getName(), outputFile.getName());
+            new FileOutputStream(outputFile).write(outputString.getBytes());
         } else if (outputFile.getName().endsWith(".ps")) {
             String outputString = converter.convertToPs(outputFile.getName());
             new FileOutputStream(outputFile).write(outputString.getBytes());

@@ -17,6 +17,7 @@ public class Converter {
     private ConcretePartList partList;
     private boolean colors;
     private boolean annotations;
+    private String docTitle = "kladd";
 
     public Converter(Document kladdDoc, boolean annotations, boolean colors) throws Throwable {
         partList = new ConcretePartList();
@@ -30,6 +31,7 @@ public class Converter {
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element element = (Element) node;
                 pageSize = element.getAttribute("type");
+                docTitle = element.getAttribute("navn");
             }
         }
     }
@@ -39,8 +41,29 @@ public class Converter {
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document svgDoc = dBuilder.newDocument();
         new ToAwt(kladdDoc, partList);
-        new ToSvg( partList, svgDoc);
+        new ToSvg(partList, svgDoc);
         return svgDoc;
+    }
+
+    /*
+     * Convert the document to a STEP "file"
+     * @param inputFile The input file name
+     * @param outputFile The output file name
+     * @return The STEP "file" as a string
+     */
+    public String convertToStep(String inputFile, String outputFile) throws Throwable {
+        new ToAwt(kladdDoc, partList);
+        ToStep toStep = new ToStep();
+        String step = toStep.getProlog();
+        step += toStep.getHeaderSection(docTitle, inputFile, outputFile);
+        Iterator<ConcretePart> iterator = partList.getIterator();
+        int counter = 0;
+        while (iterator.hasNext()) {
+            ConcretePart part = iterator.next();
+            step += toStep.getDataSection(part, ++counter);
+        }
+        step += toStep.getEpilog();
+        return step;
     }
 
     public String convertToPs(String title) throws Throwable {
@@ -53,7 +76,7 @@ public class Converter {
         while (iterator.hasNext()) {
             ConcretePart part = iterator.next();
             postScript += toPs.convertArea(part);
-            if(annotations) {
+            if (annotations) {
                 postScript += toPs.convertPoints(part);
             }
         }

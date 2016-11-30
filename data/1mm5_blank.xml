@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ark type="a0">
+<ark navn="Type 23 i 1,5mm papp" type="a0">
     <!-- Vangeplate -->
     <del name="Vangeplate H" x="505" y="-85" funk="flip_y">
         <emne>
