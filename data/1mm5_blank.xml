@@ -16,35 +16,35 @@
         <emne h="20" b="6" r="2" x="496 -496" y="25"/>
     </del>
     <!-- Avstivningsplater -->
-    <del name="Tverrplate A" x="1094" y="-100">
+    <del name="Tverrplate A" x="170" y="-380" funk="swap_xy">
         <emne h="161" b="150"/>
         <emne>
             <tunger/>
         </emne>
     </del>
-    <del name="Tverrplate B" x="1094" y="-300">
-        <emne h="161" b="147" x="1.5">
+    <del name="Tverrplate B" x="345" y="-380" funk="swap_xy">
+        <emne h="161" b="148.5" x="1.5">
             <rekt h="100" b="80" r="10"/>
         </emne>
         <emne>
             <tunger/>
         </emne>
     </del>
-    <del name="Tverrplate C" x="1094" y="-500">
-        <emne h="161" b="147" x="1.5">
+    <del name="Tverrplate C" x="520" y="-380" funk="swap_xy">
+        <emne h="161" b="148.5" x="1.5">
             <rekt h="100" b="80" r="10"/>
         </emne>
         <emne>
             <tunger/>
         </emne>
     </del>
-    <del name="Tverrplate D" x="1094" y="-700">
+    <del name="Tverrplate D" x="695" y="-380" funk="swap_xy">
         <emne h="161" b="150"/>
         <emne>
             <tunger/>
         </emne>
     </del>
-    <del name="Tverrplate E" x="680" y="-370" funk="swap_xy">
+    <del name="Tverrplate E" x="1094" y="-90">
         <emne h="161" b="127" x="11.5">
             <rekt h="80" b="60" r="10"/>
         </emne>
@@ -72,7 +72,8 @@
         <!-- Ekstra utspring -->
         <emne h="50" b="213" r="10" x="325.5" y="168 -168"/>
     </del>
-    <del name="Tanktak" x="331" y="-380">
+    <!-- Tanktaket -->
+    <del name="Tanktak" x="1094" y="-440" funk="swap_xy">
         <emne h="161" b="505">
             <rekt h="120" b="60" r="12.5" x="-200"/>
         </emne>
@@ -107,7 +108,7 @@
         <rekt h="3.25" b="58" x="-470" y="55"/>
         <rekt h="3.25" b="230" x="412" y="55"/>
         <!-- Utsparinger for fester -->
-        <slisser x="-426.5 -324 -120 72.5 350" />
+        <slisser x="-426.5 -324 -120 72.5 350"/>
     </emne>
     <komp id="tunger">
         <emne h="6" b="20" r="2" x="50 -25" y="79 -79"/>
