@@ -1,0 +1,126 @@
+ISO-10303-21;
+
+HEADER;
+FILE_DESCRIPTION(('Dette er et eksempel'), '2;1');
+FILE_NAME(
+/* name */ 'step_template.stp',
+/* time_stamp */ '2016-11-29T15:18:00+02:00',
+/* author */ ('Anders Emil Olsen'),
+/* organization */ ('NMDF'),
+/* preprocessor_version */ 'KLADD-V1',
+/* originating_system */ 'KLADD-V1',
+/* authorisation */ 'aeolsen@gmail.com');
+FILE_SCHEMA (('CONFIG_CONTROL_DESIGN'));
+ENDSEC;
+
+DATA;
+
+/* Fra angle1.stop */
+
+#87=SHAPE_DEFINITION_REPRESENTATION(#86,#550);
+    #86=PRODUCT_DEFINITION_SHAPE('A','First version',#11);
+        #11=PRODUCT_DEFINITION('A','First version',#53,#10);
+            #53=PRODUCT_DEFINITION_FORMATION_WITH_SPECIFIED_SOURCE('A','First version',#85,.MADE.);
+                #85=PRODUCT('1','widget','ACIS part converted to STEP',(#84));
+                    #84=MECHANICAL_CONTEXT('3D Mechanical Parts',#83,'mechanical');
+                        #83=APPLICATION_CONTEXT('configuration controlled 3d designs of mechanical parts and assemblies');
+        #10=DESIGN_CONTEXT('3D Mechanical Parts',#83,'design');
+                #83=APPLICATION_CONTEXT('configuration controlled 3d designs of mechanical parts and assemblies');
+    #550=ADVANCED_BREP_SHAPE_REPRESENTATION('',(#369,#520),#92);
+        #369=MANIFOLD_SOLID_BREP('',#368);
+            #368=CLOSED_SHELL('',(#346,#347,#348,#349,#350,#351,#352,#353,#354,#355,#356,#357,#358,#359,#360));
+                #346=ADVANCED_FACE('',(#323,#324),#361,.F.);
+                    #323=FACE_BOUND('',#300,.T.);
+                        #300=EDGE_LOOP('',(#222));
+                            #222=ORIENTED_EDGE('',*,*,#183,.F.);
+                                #183=EDGE_CURVE('',#143,#143,#169,.T.);
+                                    #143=VERTEX_POINT('',#446);
+                                    #169=CIRCLE('',#522,4.);
+                                        #522=AXIS2_PLACEMENT_3D('',#445,#374,#375);
+                                            #445=CARTESIAN_POINT('',(8.00000000000011,32.,12.));
+                                    #335=FACE_BOUND('',#312,.T.);
+                                    #312=EDGE_LOOP('',(#251,#252,#253,#254));
+                                    #336=FACE_BOUND('',#313,.T.);
+                                    #313=EDGE_LOOP('',(#255));
+                    #324=FACE_BOUND('',#301,.T.);
+                        #301=EDGE_LOOP('',(#223));
+                            #223=ORIENTED_EDGE('',*,*,#184,.F.);
+                                #184=EDGE_CURVE('',#144,#144,#170,.T.);
+                                    #144=VERTEX_POINT('',#448);
+                                    #170=CIRCLE('',#523,4.);
+                                        #523=AXIS2_PLACEMENT_3D('',#447,#376,#377);
+                                        ...
+                 #361=CYLINDRICAL_SURFACE('',#521,4.);
+                        #521=AXIS2_PLACEMENT_3D('',#444,#372,#373);
+                            #444=CARTESIAN_POINT('',(4.,32.,12.));
+                            #372=DIRECTION('',(1.,0.,-3.49148336110938E-15));
+                            #373=DIRECTION('',(-1.39659334444375E-14,0.,-4.));
+                #347=ADVANCED_FACE('',(#325),#135,.T.);
+                #348=ADVANCED_FACE('',(#326,#327,#328),#136,.T.);
+                #349=ADVANCED_FACE('',(#329,#330),#362,.F.);
+                #350=ADVANCED_FACE('',(#331,#332),#363,.F.);
+                #351=ADVANCED_FACE('',(#333),#137,.T.);
+                #352=ADVANCED_FACE('',(#334,#335,#336),#138,.T.);
+                #353=ADVANCED_FACE('',(#337,#338),#364,.F.);
+                #354=ADVANCED_FACE('',(#339),#139,.T.);
+                #355=ADVANCED_FACE('',(#340),#365,.T.);
+                #356=ADVANCED_FACE('',(#341),#366,.F.);
+                #357=ADVANCED_FACE('',(#342),#367,.T.);
+                #358=ADVANCED_FACE('',(#343),#140,.T.);
+                #359=ADVANCED_FACE('',(#344),#141,.T.);
+                #360=ADVANCED_FACE('',(#345),#142,.T.);
+        #520=AXIS2_PLACEMENT_3D('',#443,#371,#370);
+            #443=CARTESIAN_POINT('',(-60.,6.98296672221876E-14,20.));
+            #371=DIRECTION('',(0.,-1.,-3.49148336110938E-15));
+            #370=DIRECTION('',(1.,0.,0.));
+        #92=(GEOMETRIC_REPRESENTATION_CONTEXT(3)GLOBAL_UNCERTAINTY_ASSIGNED_CONTEXT((#91))GLOBAL_UNIT_ASSIGNED_CONTEXT((#90,#89,#88))REPRESENTATION_CONTEXT('ID1','3D'));
+            #91=UNCERTAINTY_MEASURE_WITH_UNIT(LENGTH_MEASURE(1.E-06),#88,'DISTANCE_ACCURACY_VALUE','Maximum model space distance between geometric entities at asserted connectivities');
+            #90=(NAMED_UNIT(*)SI_UNIT($,.STERADIAN.)SOLID_ANGLE_UNIT());
+            #89=(NAMED_UNIT(*)PLANE_ANGLE_UNIT()SI_UNIT($,.RADIAN.));
+            #88=(LENGTH_UNIT()NAMED_UNIT(*)SI_UNIT(.MILLI.,.METRE.));
+
+
+/* Fra geometry_out.stp */
+#10=MECHANICAL_DESIGN_GEOMETRIC_PRESENTATION_REPRESENTATION($,(#80),'asdf');
+    #80=STYLED_ITEM($,(#59),#182);
+        #59=PRESENTATION_STYLE_ASSIGNMENT((#38));
+            #38=FILL_AREA_STYLE($,(#17));
+                #17=FILL_AREA_STYLE_COLOUR($,#12);
+                    #12=DRAUGHTING_PRE_DEFINED_COLOUR('magenta');
+
+#182=ADVANCED_FACE($,(#110),#158,.T.);
+    #110=FACE_OUTER_BOUND($,#134,.F.);
+        #134=EDGE_LOOP($,(#212,#213,#214,#215));
+            #212=ORIENTED_EDGE($,*,*,#302,.T.);
+                #302=EDGE_CURVE($,#542,#543,#494,.T.);
+                    #542=VERTEX_POINT($,#600);
+                        #600=CARTESIAN_POINT($,(-5.,-2.5,0.));
+                    #543=VERTEX_POINT($,#601);
+                       #601=CARTESIAN_POINT($,(5.,-2.5,0.));
+                    #494=LINE($,#600,#446);
+                       #600=CARTESIAN_POINT($,(-5.,-2.5,0.));
+                    #446=VECTOR($,#350,10.);
+                       #350=DIRECTION($,(1.,0.,0.));
+            #213=ORIENTED_EDGE($,*,*,#308,.T.);
+                #308=EDGE_CURVE($,#543,#547,#500,.T.);
+
+            #214=ORIENTED_EDGE($,*,*,#306,.F.);
+                #306=EDGE_CURVE($,#546,#547,#498,.T.);
+
+            #215=ORIENTED_EDGE($,*,*,#309,.T.);
+                #309=EDGE_CURVE($,#546,#542,#501,.T.);
+
+    #158=PLANE($,#575);
+        #575=AXIS2_PLACEMENT_3D($,#608,#362,#363);
+            #608=CARTESIAN_POINT($,(0.,-2.5,-1.5));
+            #362=DIRECTION($,(0.,-1.,0.));
+            #363=DIRECTION($,(1.,0.,0.));
+
+
+
+/* Fra plate_out.stp */
+#10=MANIFOLD_SOLID_BREP($,#196);
+    #196=CLOSED_SHELL('',(#41,#42,#43,#44,#45,#46,#47,#48,#49,#50,#51,#52,#53,
+
+ENDSEC;
+END-ISO-10303-21;
