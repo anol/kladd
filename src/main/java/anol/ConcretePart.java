@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import static java.lang.Math.floor;
+
 public class ConcretePart {
 
     static double mm2pt(double mm) {
@@ -169,4 +171,12 @@ public class ConcretePart {
         return boundingBox;
     }
 
+    public double getWeight(double thickness) {
+        final double weightOfSteel = 7.8;
+        double areal = floor(AwtHelper.approxArea(mainArea, 1.0, 1) / 100.0);
+        double volum = floor(areal * thickness / 10);
+        double masse = floor(volum * weightOfSteel) / 1000.0;
+        System.out.println("\"" + name + "\": T=" + thickness / 10 + "cm, A=" + areal + "cm2, V=" + volum + "cm3, M=" + masse + "kg");
+        return masse;
+    }
 }

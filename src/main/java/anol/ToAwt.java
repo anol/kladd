@@ -9,16 +9,23 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import static java.lang.Math.floor;
+
 public class ToAwt {
 
     private ConcretePartList partList;
     private ConcretePart concretePart;
     private Document doc;
+    private double weight;
+    private double thickness;
 
     public ToAwt(Document sourceDocument, ConcretePartList partList) {
         this.partList = partList;
         this.doc = sourceDocument;
+        this.weight = 0;
+        this.thickness = 3.0;
         convertToAwt("del", 0.0, 0.0);
+        System.out.println("Total vekt = " + floor(10 * this.weight) / 10 + "kg");
     }
 
     private void convertToAwt(String tagName, double x, double y) {
@@ -101,11 +108,11 @@ public class ToAwt {
     private void addPart(Element element, double x, double y, double dx, double dy) {
         String name = element.getAttribute("name");
         String funk = element.getAttribute("funk");
-        System.out.println("del name=\"" + name);
         concretePart = new ConcretePart(name, funk);
         partList.addPart(concretePart);
         concretePart.setOrigo(dx, dy);
         convertToAwt(element, "emne", x, y);
+        this.weight += concretePart.getWeight(this.thickness);
     }
 
     private void toAwt(Element element, double x, double y, double dx, double dy) {
