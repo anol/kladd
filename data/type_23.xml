@@ -16,14 +16,12 @@
             <solid h="58" w="312">
                 <circle r="5" x="110 -110" y="-11"/>
                 <rectangle h="12" w="30" r="1" y="-11"/>
-                <rectangle h="20.5" w="1.7" r="1" x="81.25 -81.25"/>
             </solid>
         </part>
         <part name="Bufferplanke Front" x="170" y="-564">
             <solid h="58" w="284">
                 <circle r="5" x="110 -110" y="-11"/>
                 <rectangle h="12" w="30" r="1" y="-11"/>
-                <rectangle h="20.5" w="1.7" r="1" x="81.25 -81.25"/>
             </solid>
         </part>
         <!-- Komponenter -->
