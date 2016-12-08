@@ -6,10 +6,14 @@ public class Main {
         if (1 < args.length) {
             String inputFileName = args[0];
             String outputFileName = args[1];
+            String language = "en";
             boolean colors = true;
             boolean annotations = true;
-            if (2 < args.length) {
-                switch (args[2]) {
+            for(int nArg = 2; nArg < args.length; nArg++) {
+                switch (args[nArg]) {
+                    case "norsk":
+                        language = "no";
+                        break;
                     case "nocolor":
                         colors = false;
                         break;
@@ -23,9 +27,9 @@ public class Main {
                 }
             }
             System.out.println("kladd input=\"" + inputFileName + " output=\"" + outputFileName + "\"");
-            new Processor(inputFileName, outputFileName, annotations, colors);
+            new Processor(inputFileName, outputFileName, annotations, colors, language);
         } else {
-            System.out.println("Usage: kladd <input file name> <output file name> [nocolor|noanno]");
+            System.out.println("Usage: kladd <input file name> <output file name> [nocolor|noanno|norsk]");
         }
     }
 

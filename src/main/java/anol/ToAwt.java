@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import static anol.TagNames.Tags.*;
 import static java.lang.Math.floor;
 
 public class ToAwt {
@@ -18,17 +19,19 @@ public class ToAwt {
     private Document doc;
     private double weight;
     private double thickness;
+    private TagNames tag;
 
-    public ToAwt(Document sourceDocument, ConcretePartList partList) {
+    public ToAwt(Document sourceDocument, ConcretePartList partList, String language) throws Exception {
+        this.tag = new TagNames(language);
         this.partList = partList;
         this.doc = sourceDocument;
         this.weight = 0;
         this.thickness = 3.0;
-        convertToAwt("del", 0.0, 0.0);
+        convertToAwt(this.tag.get(PART), 0.0, 0.0);
         System.out.println("Total vekt = " + floor(10 * this.weight) / 10 + "kg");
     }
 
-    private void convertToAwt(String tagName, double x, double y) {
+    private void convertToAwt(String tagName, double x, double y) throws Exception {
         NodeList nodeList = doc.getElementsByTagName(tagName);
         for (int k = 0; k < nodeList.getLength(); k++) {
             Node node = nodeList.item(k);
@@ -39,7 +42,7 @@ public class ToAwt {
         }
     }
 
-    private void convertToAwt(Element element, String tagName, double x, double y) {
+    private void convertToAwt(Element element, String tagName, double x, double y) throws Exception {
         NodeList nodeList = element.getElementsByTagName(tagName);
         for (int k = 0; k < nodeList.getLength(); k++) {
             Node node = nodeList.item(k);
@@ -50,7 +53,7 @@ public class ToAwt {
         }
     }
 
-    private void convertById(String id, double x, double y) {
+    private void convertById(String id, double x, double y) throws Exception {
         Element element = doc.getElementById(id);
         if (null == element) {
             System.out.println("Fant ikke \"" + id + "\" elementet");
@@ -59,7 +62,7 @@ public class ToAwt {
         }
     }
 
-    private void convertToAwt(Element element, double x, double y) {
+    private void convertToAwt(Element element, double x, double y) throws Exception {
         NodeList nodeList = element.getChildNodes();
         for (int k = 0; k < nodeList.getLength(); k++) {
             Node node = nodeList.item(k);
@@ -91,7 +94,7 @@ public class ToAwt {
         return list;
     }
 
-    private void toAwt(Element element, double x, double y) {
+    private void toAwt(Element element, double x, double y) throws Exception {
         List<Double> xList = getListAttribute(element, "x");
         List<Double> yList = getListAttribute(element, "y");
         Iterator<Double> xIt = xList.listIterator();
@@ -105,37 +108,37 @@ public class ToAwt {
         }
     }
 
-    private void addPart(Element element, double x, double y, double dx, double dy) {
-        String name = element.getAttribute("name");
-        String funk = element.getAttribute("funk");
+    private void addPart(Element element, double x, double y, double dx, double dy) throws Exception {
+        String name = element.getAttribute(tag.get(NAME));
+        String funk = element.getAttribute(tag.get(FUNCTION));
         concretePart = new ConcretePart(name, funk);
         partList.addPart(concretePart);
         concretePart.setOrigo(dx, dy);
-        convertToAwt(element, "emne", x, y);
+        convertToAwt(element, tag.get(SOLID), x, y);
         this.weight += concretePart.getWeight(this.thickness);
     }
 
-    private void toAwt(Element element, double x, double y, double dx, double dy) {
+    private void toAwt(Element element, double x, double y, double dx, double dy) throws Exception {
         double xdx = x - dx;
         double ydy = y + dy;
-        double height = getAttribute(element, "h");
-        double width = getAttribute(element, "b");
-        double radius = getAttribute(element, "r");
-        switch (element.getTagName()) {
-            case "del":
+        double height = getAttribute(element, tag.get(HEIGHT));
+        double width = getAttribute(element, tag.get(WIDTH));
+        double radius = getAttribute(element, tag.get(RADIUS));
+        switch (tag.get(element.getTagName())) {
+            case PART:
                 addPart(element, x, y, dx, dy);
                 break;
-            case "emne":
+            case SOLID:
                 concretePart.addRect(xdx, ydy, width, height, radius);
                 convertToAwt(element, xdx, ydy);
                 break;
-            case "komp":
+            case SHAPE:
                 convertToAwt(element, xdx, ydy);
                 break;
-            case "rekt":
+            case RECTANGLE:
                 concretePart.subtractRect(xdx, ydy, width, height, radius);
                 break;
-            case "sirk":
+            case CIRCLE:
                 concretePart.subtractCircle(xdx, ydy, radius);
                 break;
             default:

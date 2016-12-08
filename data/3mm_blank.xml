@@ -1,134 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ark type="a0">
-    <!-- Vangeplate -->
-    <del name="Vangeplate H" x="505" y="-85" funk="flip_y">
-        <emne>
-            <vangeprofil/>
+<design navn="Modell Type 23">
+    <ark type="a0">
+        <!-- Vangeplate -->
+        <del navn="Vangeplate H" x="505" y="-85" funk="flip_y">
+            <emne>
+                <vangeprofil/>
+            </emne>
+        </del>
+        <del navn="Vangeplate V" x="505" y="-678">
+            <emne>
+                <vangeprofil/>
+            </emne>
+        </del>
+        <!-- Avstivningsplater -->
+        <del navn="Tverrplate A" x="1094" y="-100">
+            <emne h="158" b="150"/>
+            <emne>
+                <tunge/>
+            </emne>
+        </del>
+        <del navn="Tverrplate B" x="1094" y="-300">
+            <emne h="158" b="147" x="1.5">
+                <rekt h="100" b="80" r="10"/>
+            </emne>
+            <emne>
+                <tunge/>
+            </emne>
+        </del>
+        <del navn="Tverrplate C" x="1094" y="-500">
+            <emne h="158" b="147" x="1.5">
+                <rekt h="100" b="80" r="10"/>
+            </emne>
+            <emne>
+                <tunge/>
+            </emne>
+        </del>
+        <del navn="Tverrplate D" x="1094" y="-700">
+            <emne h="158" b="150"/>
+            <emne>
+                <tunge/>
+            </emne>
+        </del>
+        <del navn="Tverrplate E" x="680" y="-370" funk="swap_xy">
+            <emne h="158" b="127" x="11.5">
+                <rekt h="80" b="60" r="10"/>
+            </emne>
+            <emne>
+                <tunge/>
+            </emne>
+        </del>
+        <!-- Dekksplater -->
+        <del navn="Plattform" x="505" y="-380">
+            <emne h="288" b="992">
+                <rekt h="164" b="713" r="1" x="-72" y="0"/>
+                <rekt h="100" b="100" r="40" x="-120" y="-170"/>
+                <rekt h="100" b="100" r="40" x="-120" y="170"/>
+                <rekt h="25" b="21" r="3" x="-375" y="-105"/>
+                <rekt h="25" b="21" r="3" x="-375" y="105"/>
+                <rekt h="3.5" b="15" x="-435" y="-80.25"/>
+                <rekt h="3.5" b="15" x="-435" y="80.25"/>
+                <rekt h="3.5" b="15" x="290" y="-80.25"/>
+                <rekt h="3.5" b="15" x="290" y="80.25"/>
+            </emne>
+            <!-- Fremre utspring -->
+            <emne h="200" b="340" r="100" x="60" y="68">
+                <rekt h="120" b="350" y="-46"/>
+            </emne>
+            <emne h="200" b="340" r="100" x="60" y="-68">
+                <rekt h="120" b="350" y="46"/>
+            </emne>
+            <!-- Bakre utspring -->
+            <emne h="48" b="341" r="10" x="325.5" y="144"/>
+            <emne h="48" b="341" r="10" x="325.5" y="-144"/>
+            <!-- Ekstra utspring -->
+            <emne h="50" b="213" r="10" x="325.5" y="168"/>
+            <emne h="50" b="213" r="10" x="325.5" y="-168"/>
+        </del>
+        <del navn="Tanktak" x="331" y="-380">
+            <emne h="158" b="502">
+                <rekt h="120" b="60" r="12.5" x="-200"/>
+            </emne>
+        </del>
+        <del navn="Bufferplanke Bak" x="170" y="-198">
+            <emne h="58" b="312">
+                <sirk r="5" x="110" y="-11"/>
+                <rekt h="12" b="30" r="1" y="-11"/>
+                <sirk r="5" x="-110" y="-11"/>
+            </emne>
+        </del>
+        <del navn="Bufferplanke Front" x="170" y="-564">
+            <emne h="58" b="284">
+                <sirk r="5" x="110" y="-11"/>
+                <rekt h="12" b="30" r="1" y="-11"/>
+                <sirk r="5" x="-110" y="-11"/>
+            </emne>
+        </del>
+        <!-- Komponenter -->
+        <emne id="vangeprofil" h="150" b="992">
+            <!-- Komponentplassering -->
+            <sylinder x="-375" y="-45"/>
+            <akselhorn x="-220" y="-40"/>
+            <akselhorn x="-20" y="-40"/>
+            <akselhorn x="180" y="-40"/>
+            <!-- Profilutsparinger -->
+            <rekt h="40" b="136" r="25" x="-496" y="75"/>
+            <rekt h="146" b="104" r="50" x="-496" y="-75"/>
+            <rekt h="40" b="600" r="12.5" x="374" y="75"/>
+            <rekt h="146" b="200" r="25" x="473" y="-75"/>
+            <!-- Hull -->
+            <rekt h="88" b="75" r="25" x="291" y="-75"/>
+            <!-- Plattformutsparinger -->
+            <rekt h="6" b="58" x="-470" y="55"/>
+            <rekt h="6" b="230" x="412" y="55"/>
+            <!-- Utsparinger for fester -->
+            <slisser x="-426.5 -324 -120 72.5 350"/>
         </emne>
-    </del>
-    <del name="Vangeplate V" x="505" y="-678">
-        <emne>
-            <vangeprofil/>
-        </emne>
-    </del>
-    <!-- Avstivningsplater -->
-    <del name="Tverrplate A" x="1094" y="-100">
-        <emne h="158" b="150"/>
-        <emne>
-            <tunge/>
-        </emne>
-    </del>
-    <del name="Tverrplate B" x="1094" y="-300">
-        <emne h="158" b="147" x="1.5">
-            <rekt h="100" b="80" r="10"/>
-        </emne>
-        <emne>
-            <tunge/>
-        </emne>
-    </del>
-    <del name="Tverrplate C" x="1094" y="-500">
-        <emne h="158" b="147" x="1.5">
-            <rekt h="100" b="80" r="10"/>
-        </emne>
-        <emne>
-            <tunge/>
-        </emne>
-    </del>
-    <del name="Tverrplate D" x="1094" y="-700">
-        <emne h="158" b="150"/>
-        <emne>
-            <tunge/>
-        </emne>
-    </del>
-    <del name="Tverrplate E" x="680" y="-370" funk="swap_xy">
-        <emne h="158" b="127" x="11.5">
-            <rekt h="80" b="60" r="10"/>
-        </emne>
-        <emne>
-            <tunge/>
-        </emne>
-    </del>
-    <!-- Dekksplater -->
-    <del name="Plattform" x="505" y="-380">
-        <emne h="288" b="992">
-            <rekt h="164" b="713" r="1" x="-72" y="0"/>
-            <rekt h="100" b="100" r="40" x="-120" y="-170"/>
-            <rekt h="100" b="100" r="40" x="-120" y="170"/>
-            <rekt h="25" b="21" r="3" x="-375" y="-105"/>
-            <rekt h="25" b="21" r="3" x="-375" y="105"/>
-            <rekt h="3.5" b="15" x="-435" y="-80.25"/>
-            <rekt h="3.5" b="15" x="-435" y="80.25"/>
-            <rekt h="3.5" b="15" x="290" y="-80.25"/>
-            <rekt h="3.5" b="15" x="290" y="80.25"/>
-        </emne>
-        <!-- Fremre utspring -->
-        <emne h="200" b="340" r="100" x="60" y="68">
-            <rekt h="120" b="350" y="-46"/>
-        </emne>
-        <emne h="200" b="340" r="100" x="60" y="-68">
-            <rekt h="120" b="350" y="46"/>
-        </emne>
-        <!-- Bakre utspring -->
-        <emne h="48" b="341" r="10" x="325.5" y="144"/>
-        <emne h="48" b="341" r="10" x="325.5" y="-144"/>
-        <!-- Ekstra utspring -->
-        <emne h="50" b="213" r="10" x="325.5" y="168"/>
-        <emne h="50" b="213" r="10" x="325.5" y="-168"/>
-    </del>
-    <del name="Tanktak" x="331" y="-380">
-        <emne h="158" b="502">
-            <rekt h="120" b="60" r="12.5" x="-200"/>
-        </emne>
-    </del>
-    <del name="Bufferplanke Bak" x="170" y="-198">
-        <emne h="58" b="312">
-            <sirk r="5" x="110" y="-11"/>
-            <rekt h="12" b="30" r="1" y="-11"/>
-            <sirk r="5" x="-110" y="-11"/>
-        </emne>
-    </del>
-    <del name="Bufferplanke Front" x="170" y="-564">
-        <emne h="58" b="284">
-            <sirk r="5" x="110" y="-11"/>
-            <rekt h="12" b="30" r="1" y="-11"/>
-            <sirk r="5" x="-110" y="-11"/>
-        </emne>
-    </del>
-    <!-- Komponenter -->
-    <emne id="vangeprofil" h="150" b="992">
-        <!-- Komponentplassering -->
-        <sylinder x="-375" y="-45"/>
-        <akselhorn x="-220" y="-40"/>
-        <akselhorn x="-20" y="-40"/>
-        <akselhorn x="180" y="-40"/>
-        <!-- Profilutsparinger -->
-        <rekt h="40" b="136" r="25" x="-496" y="75"/>
-        <rekt h="146" b="104" r="50" x="-496" y="-75"/>
-        <rekt h="40" b="600" r="12.5" x="374" y="75"/>
-        <rekt h="146" b="200" r="25" x="473" y="-75"/>
-        <!-- Hull -->
-        <rekt h="88" b="75" r="25" x="291" y="-75"/>
-        <!-- Plattformutsparinger -->
-        <rekt h="6" b="58" x="-470" y="55"/>
-        <rekt h="6" b="230" x="412" y="55"/>
-        <!-- Utsparinger for fester -->
-        <slisser x="-426.5 -324 -120 72.5 350" />
-    </emne>
-    <komp id="tunge">
-        <emne h="6" b="20" r="2" x="-25" y="79"/>
-        <emne h="6" b="20" r="2" x="-25" y="-79"/>
-        <emne h="6" b="20" r="2" x="50" y="79"/>
-        <emne h="6" b="20" r="2" x="50" y="-79"/>
-    </komp>
-    <komp id="slisser">
-        <rekt h="20.5" b="3.2" r="1" y="25"/>
-        <rekt h="20.5" b="3.2" r="1" y="-50"/>
-    </komp>
-    <komp id="akselhorn">
-        <rekt h="66" b="40" r="2" Y="-4"/>
-        <rekt h="10" b="80" r="4" y="-35"/>
-    </komp>
-    <komp id="sylinder">
-        <rekt h="34" b="80" r="10" y="6"/>
-    </komp>
-</ark>
+        <komp id="tunge">
+            <emne h="6" b="20" r="2" x="-25" y="79"/>
+            <emne h="6" b="20" r="2" x="-25" y="-79"/>
+            <emne h="6" b="20" r="2" x="50" y="79"/>
+            <emne h="6" b="20" r="2" x="50" y="-79"/>
+        </komp>
+        <komp id="slisser">
+            <rekt h="20.5" b="3.2" r="1" y="25"/>
+            <rekt h="20.5" b="3.2" r="1" y="-50"/>
+        </komp>
+        <komp id="akselhorn">
+            <rekt h="66" b="40" r="2" Y="-4"/>
+            <rekt h="10" b="80" r="4" y="-35"/>
+        </komp>
+        <komp id="sylinder">
+            <rekt h="34" b="80" r="10" y="6"/>
+        </komp>
+    </ark>
+</design>

@@ -10,7 +10,7 @@ import java.io.*;
 
 public class Processor {
 
-    public Processor(String inputFileName, String outputFileName, boolean annotations, boolean colors) throws Throwable {
+    public Processor(String inputFileName, String outputFileName, boolean annotations, boolean colors, String language) throws Throwable {
         File inputFile = new File(inputFileName);
         File outputFile = new File(outputFileName);
         if (!outputFile.exists()) {
@@ -20,7 +20,7 @@ public class Processor {
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document inputDoc = dBuilder.parse(inputFile);
         inputDoc.getDocumentElement().normalize();
-        Converter converter = new Converter(inputDoc, annotations, colors);
+        Converter converter = new Converter(inputDoc, annotations, colors, language);
         if (outputFile.getName().endsWith(".svg")) {
             Document outputDoc = converter.convertToSvg();
             String outputString = serialize(outputDoc);

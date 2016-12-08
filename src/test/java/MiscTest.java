@@ -11,16 +11,16 @@ public class MiscTest {
 
     @Test
     public void mainTest() throws Throwable {
-        Processor processos = new Processor("data/input.xml", "data/output.svg", true, true );
+        Processor processos = new Processor("data/input.xml", "data/output.svg", true, true , "no");
     }
     @Test
     public void sizeTest() throws Throwable {
-        Processor processos = new Processor("data/test.xml", "data/output.pdf", true, true );
+        Processor processos = new Processor("data/test.xml", "data/output.pdf", true, true , "no");
     }
 
     @Test
     public void dump2SvgTest() throws Throwable {
-        Converter dump2Svg = new Converter(loadDummyData(), true, true);
+        Converter dump2Svg = new Converter(loadDummyData(), true, true, "no");
     }
 
     private Document loadDummyData() throws Throwable {

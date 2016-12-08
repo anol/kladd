@@ -10,28 +10,36 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.Iterator;
 
+import static anol.TagNames.Tags.NAME;
+import static anol.TagNames.Tags.PAGE_SIZE;
+import static anol.TagNames.Tags.SHEET;
+
 public class Converter {
 
     private Document kladdDoc;
-    private String pageSize = "a4";
     private ConcretePartList partList;
     private boolean colors;
     private boolean annotations;
+    private String language;
+    private TagNames tag;
     private String docTitle = "kladd";
+    private String pageSize = "a4";
 
-    public Converter(Document kladdDoc, boolean annotations, boolean colors) throws Throwable {
+    public Converter(Document kladdDoc, boolean annotations, boolean colors, String language) throws Throwable {
         partList = new ConcretePartList();
         this.kladdDoc = kladdDoc;
         this.annotations = annotations;
         this.colors = colors;
+        this.language = language;
+        this.tag = new TagNames(language);
         traverseAllElements();
-        NodeList nodeList = kladdDoc.getElementsByTagName("ark");
+        NodeList nodeList = kladdDoc.getElementsByTagName(this.tag.get(SHEET));
         if (0 < nodeList.getLength()) {
             Node node = nodeList.item(0);
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element element = (Element) node;
-                pageSize = element.getAttribute("type");
-                docTitle = element.getAttribute("navn");
+                pageSize = element.getAttribute(this.tag.get(PAGE_SIZE));
+                docTitle = element.getAttribute(this.tag.get(NAME));
             }
         }
     }
@@ -40,7 +48,7 @@ public class Converter {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document svgDoc = dBuilder.newDocument();
-        new ToAwt(kladdDoc, partList);
+        new ToAwt(kladdDoc, partList, language);
         new ToSvg(partList, svgDoc);
         return svgDoc;
     }
@@ -52,7 +60,7 @@ public class Converter {
      * @return The STEP "file" as a string
      */
     public String convertToStep(String inputFile, String outputFile) throws Throwable {
-        new ToAwt(kladdDoc, partList);
+        new ToAwt(kladdDoc, partList, language);
         ToStep toStep = new ToStep();
         String step = toStep.getProlog();
         step += toStep.getHeaderSection(docTitle, inputFile, outputFile);
@@ -67,7 +75,7 @@ public class Converter {
     }
 
     public String convertToPs(String title) throws Throwable {
-        new ToAwt(kladdDoc, partList);
+        new ToAwt(kladdDoc, partList, language);
         String boundingBox = partList.getBoundingBox();
         ToPs toPs = new ToPs(colors);
         String postScript = toPs.getDocumentHeader(title, pageSize, boundingBox);
