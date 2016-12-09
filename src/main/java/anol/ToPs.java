@@ -164,7 +164,7 @@ public class ToPs {
         Point2D.Double globalOrigo = part.getOrigo();
         oldX = 0.111111111;
         oldY = 0.111111111;
-        String outputString = "0.25 setlinewidth 1 setlinecap\n";
+        String outputString = "0.25 setlinewidth 1 setlinecap [] 0 setdash\n";
         if (colors) {
             outputString += "1 0.2 0.2 setrgbcolor\n";
         } else {
@@ -179,4 +179,37 @@ public class ToPs {
         }
         return outputString;
     }
+
+    public String printHelpLines(ConcretePart part) {
+        String outputString = "0.25 setlinewidth 1 setlinecap [3] 0 setdash\n";
+        if (colors) {
+            outputString += "0.3 1 0.3 setrgbcolor\n";
+        } else {
+            outputString += "0 0 0 setrgbcolor\n";
+        }
+
+        /*
+        outputString += "newpath\n";
+        outputString += (x - 8) + " " + (y) + " moveto\n";
+        outputString += (x + 8) + " " + (y) + " lineto\n";
+        outputString += "closepath stroke\n";
+        */
+
+        outputString += "0 0 0 setrgbcolor [] 0 setdash\n";
+        return outputString;
+    }
+
+     public String printSheetInfo(Element designElement, Element sheet, int pageNumber) {
+         String outputString = "0.25 setlinewidth 1 setlinecap [] 0 setdash\n";
+         if (colors) {
+             outputString += "1 0.2 0.2 setrgbcolor\n";
+         } else {
+             outputString += "0 0 0 setrgbcolor\n";
+         }
+
+
+
+         outputString += "0 0 0 setrgbcolor\n";
+         return outputString;
+     }
 }

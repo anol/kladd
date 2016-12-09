@@ -95,8 +95,12 @@ public class Converter {
                         postScript += toPs.convertArea(part);
                         if (annotations) {
                             postScript += toPs.convertPoints(part);
+                            postScript += toPs.printHelpLines(part);
                         }
                     }
+                }
+                if (annotations) {
+                    postScript += toPs.printSheetInfo(designElement, sheet, pageNumber);
                 }
                 postScript += toPs.getPageTrailer();
                 pageNumber++;

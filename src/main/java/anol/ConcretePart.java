@@ -33,6 +33,7 @@ public class ConcretePart {
     private String name;
     private Area mainArea;
     private MajorPoints pointList;
+    private MajorPoints helpLines;
     private boolean flip_y = false;
     private boolean flip_x = false;
     private boolean swap_xy = false;
@@ -43,6 +44,7 @@ public class ConcretePart {
         this.sheet = sheet;
         this.mainArea = new Area();
         this.pointList = new MajorPoints();
+        this.helpLines = new MajorPoints();
         List<String> list = getListAttribute(funks);
         Iterator<String> it = list.listIterator();
         while (it.hasNext()) {
@@ -68,6 +70,13 @@ public class ConcretePart {
 
     public String getName() {
         return name;
+    }
+
+    private void addHelpLine(double x1, double y1, double x2, double y2) {
+        Point2D.Double point1 = new Point2D.Double(x1, y1);
+        pointList.add(point1);
+        Point2D.Double point2 = new Point2D.Double(x2, y2);
+        pointList.add(point2);
     }
 
     private void addMajorPoint(double x, double y) {
