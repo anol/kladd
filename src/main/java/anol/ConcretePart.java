@@ -70,14 +70,7 @@ public class ConcretePart {
         return name;
     }
 
-    public void addMajorPoint(double x, double y) {
-        if (swap_xy) {
-            double temp = x;
-            x = y;
-            y = temp;
-        }
-        if (flip_y) y = -y;
-        if (flip_x) x = -x;
+    private void addMajorPoint(double x, double y) {
         Point2D.Double point = new Point2D.Double(x, y);
         pointList.add(point);
     }
@@ -126,13 +119,13 @@ public class ConcretePart {
         }
         if (flip_y) y = -y;
         if (flip_x) x = -x;
-        addMajorPoint(x + width, y + height);
-        addMajorPoint(x, y + height);
-        addMajorPoint(x + width, y);
         addMajorPoint(x, y);
         x -= width / 2;
         y -= height / 2;
         addMajorPoint(x, y);
+        addMajorPoint(x, y + height);
+        addMajorPoint(x + width, y + height);
+        addMajorPoint(x + width, y);
         mainArea.add(new Area(new RoundRectangle2D.Double(x, y, width, height, radius, radius)));
     }
 

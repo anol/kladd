@@ -51,8 +51,8 @@
         <shape id="akselhorn">
             <rectangle h="72" w="60" r="2" Y="-4"/>
             <rectangle h="10" w="80" r="4" x="-30" y="-35"/>
-            <skrue_m4 x="-35 35" y="33 11 -11 -33"/>
-            <skrue_m4 x="-40 40" y="22 0 -22"/>
+            <skrue_m4 x="-37 37" y="33 11 -11"/>
+            <skrue_m4 x="-45 45" y="22 0 -22"/>
             <bremsefeste x="-90" y="20"/>
         </shape>
         <shape id="bremsefeste">
