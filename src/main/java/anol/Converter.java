@@ -10,9 +10,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.Iterator;
 
-import static anol.TagNames.Tags.NAME;
-import static anol.TagNames.Tags.PAGE_SIZE;
-import static anol.TagNames.Tags.SHEET;
+import static anol.TagNames.Tags.*;
 
 public class Converter {
 
@@ -24,6 +22,7 @@ public class Converter {
     private TagNames tag;
     private String docTitle = "kladd";
     private String pageSize = "a4";
+    private Element designElement;
 
     public Converter(Document kladdDoc, boolean annotations, boolean colors, String language) throws Throwable {
         partList = new ConcretePartList();
@@ -33,13 +32,16 @@ public class Converter {
         this.language = language;
         this.tag = new TagNames(language);
         traverseAllElements();
-        NodeList nodeList = kladdDoc.getElementsByTagName(this.tag.get(SHEET));
+        NodeList nodeList = kladdDoc.getElementsByTagName(this.tag.get(DESIGN));
+        if (0 == nodeList.getLength()) {
+            nodeList = kladdDoc.getElementsByTagName(this.tag.get(SHEET));
+        }
         if (0 < nodeList.getLength()) {
             Node node = nodeList.item(0);
             if (node.getNodeType() == Node.ELEMENT_NODE) {
-                Element element = (Element) node;
-                pageSize = element.getAttribute(this.tag.get(PAGE_SIZE));
-                docTitle = element.getAttribute(this.tag.get(NAME));
+                designElement = (Element) node;
+                pageSize = designElement.getAttribute(this.tag.get(PAGE_SIZE));
+                docTitle = designElement.getAttribute(this.tag.get(NAME));
             }
         }
     }
@@ -78,17 +80,28 @@ public class Converter {
         new ToAwt(kladdDoc, partList, language);
         String boundingBox = partList.getBoundingBox();
         ToPs toPs = new ToPs(colors);
-        String postScript = toPs.getDocumentHeader(title, pageSize, boundingBox);
-        postScript += toPs.getPageHeader(title, pageSize);
-        Iterator<ConcretePart> iterator = partList.getIterator();
-        while (iterator.hasNext()) {
-            ConcretePart part = iterator.next();
-            postScript += toPs.convertArea(part);
-            if (annotations) {
-                postScript += toPs.convertPoints(part);
+        int pageNumber = 0;
+        NodeList nodeList = kladdDoc.getElementsByTagName("sheet");
+        String postScript = toPs.getDocumentHeader(title, pageSize, boundingBox, nodeList.getLength());
+        for (int k = 0; k < nodeList.getLength(); k++) {
+            Node node = nodeList.item(k);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element sheet = (Element) node;
+                postScript += toPs.getPageHeader(designElement, sheet, pageNumber);
+                Iterator<ConcretePart> iterator = partList.getIterator();
+                while (iterator.hasNext()) {
+                    ConcretePart part = iterator.next();
+                    if (part.isOnSheet(pageNumber)) {
+                        postScript += toPs.convertArea(part);
+                        if (annotations) {
+                            postScript += toPs.convertPoints(part);
+                        }
+                    }
+                }
+                postScript += toPs.getPageTrailer();
+                pageNumber++;
             }
         }
-        postScript += toPs.getPageTrailer();
         postScript += toPs.getDocumentTrailer();
         return postScript;
     }

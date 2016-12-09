@@ -1,5 +1,7 @@
 package anol;
 
+import org.w3c.dom.Element;
+
 import java.awt.geom.PathIterator;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
@@ -30,12 +32,12 @@ public class ToPs {
         return today;
     }
 
-    public String getDocumentHeader(String title, String pageSize, String boundingBox) {
+    public String getDocumentHeader(String title, String pageSize, String boundingBox, int numberOfPages) {
         String header = "%!PS-Adobe-2.0\n" +
                 "%%Creator: kladd\n" +
                 "%%CreationDate: " + getCreationDate() + "\n" +
                 "%%Title: " + title + "\n" +
-                "%%Pages: 1\n" +
+                "%%Pages: " + numberOfPages + "\n" +
                 "%%PageOrder: Ascend\n" +
                 "%%BoundingBox: " + boundingBox + "\n" +
                 "%%DocumentPaperSizes: " + pageSize + "\n" +
@@ -57,8 +59,9 @@ public class ToPs {
     A4 = 595 x 842
 */
 
-    public String getPageHeader(String title, String pageSize) {
-        String header = "%%Page: 1 1\n" +
+    public String getPageHeader(Element design, Element sheet, int pageNumber) {
+        pageNumber++;
+        String header = "%%Page: " + pageNumber + " " + pageNumber + "\n" +
                 "%%BeginPageSetup\n" +
                 "/pagelevel save def\n" +
                 "90 rotate\n";
@@ -162,9 +165,9 @@ public class ToPs {
         oldX = 0.111111111;
         oldY = 0.111111111;
         String outputString = "0.25 setlinewidth 1 setlinecap\n";
-        if(colors){
+        if (colors) {
             outputString += "1 0.2 0.2 setrgbcolor\n";
-        }else {
+        } else {
             outputString += "0 0 0 setrgbcolor\n";
         }
         outputString += drawName(part.getName(), localOrigo, globalOrigo);

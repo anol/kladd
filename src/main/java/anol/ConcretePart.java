@@ -36,9 +36,11 @@ public class ConcretePart {
     private boolean flip_y = false;
     private boolean flip_x = false;
     private boolean swap_xy = false;
+    private final int sheet;
 
-    public ConcretePart(String name, String funks) {
+    public ConcretePart(String name, int sheet, String funks) {
         this.name = name;
+        this.sheet = sheet;
         this.mainArea = new Area();
         this.pointList = new MajorPoints();
         List<String> list = getListAttribute(funks);
@@ -178,5 +180,9 @@ public class ConcretePart {
         double masse = floor(volum * weightOfSteel) / 1000.0;
         System.out.println("\"" + name + "\": T=" + thickness / 10 + "cm, A=" + areal + "cm2, V=" + volum + "cm3, M=" + masse + "kg");
         return masse;
+    }
+
+    public boolean isOnSheet(int sheet) {
+        return this.sheet == sheet;
     }
 }

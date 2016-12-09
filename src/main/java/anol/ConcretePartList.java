@@ -24,6 +24,7 @@ public class ConcretePartList {
     }
 
     public String getBoundingBox() {
+        // TODO: This one give bounding box of all parts on all sheets
         String boundingBox = "";
         Iterator<ConcretePart> iterator = partList.listIterator();
         while (iterator.hasNext()) {
