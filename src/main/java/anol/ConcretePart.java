@@ -99,7 +99,7 @@ public class ConcretePart {
         mainArea.subtract(sirk);
     }
 
-    public void subtractRect(double x, double y, double width, double height, double radius) {
+    public void subtractRect(double x, double y, double width, double height, double radius, double rotate) {
         if (swap_xy) {
             double temp = x;
             x = y;
@@ -108,16 +108,30 @@ public class ConcretePart {
             width = height;
             height = temp;
         }
-        if (flip_y) y = -y;
-        if (flip_x) x = -x;
+        if (flip_y) {
+            y = -y;
+            rotate = -rotate;
+        }
+        if (flip_x) {
+            x = -x;
+            rotate = -rotate;
+        }
+        double anchorx = x;
+        double anchory = y;
         addMajorPoint(x, y);
         x -= width / 2;
         y -= height / 2;
         Area rekt = new Area(new RoundRectangle2D.Double(x, y, width, height, radius, radius));
+        if ((-1.0 > rotate) || (1.0 < rotate)) {
+            double theta = Math.toRadians(rotate);
+            AffineTransform t = new AffineTransform();
+            t.rotate(theta, anchorx, anchory);
+            rekt.transform(t);
+        }
         mainArea.subtract(rekt);
     }
 
-    public void addRect(double x, double y, double width, double height, double radius) {
+    public void addRect(double x, double y, double width, double height, double radius, double rotate) {
         if (swap_xy) {
             double temp = x;
             x = y;

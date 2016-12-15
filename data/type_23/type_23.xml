@@ -31,13 +31,15 @@
             <!-- Komponentplasseringer -->
             <sylinder x="-375" y="-45"/>
             <akselhorn x="-220 -20 180" y="-40"/>
+            <bremsefeste x="342" y="-62"/>
             <!-- Diverse hull -->
             <rectangle h="88" w="75" r="25" x="291" y="-75"/>
             <!-- Profilutsparinger -->
             <rectangle h="40" w="136" r="25" x="-496" y="75"/>
             <rectangle h="146" w="104" r="50" x="-496" y="-75"/>
             <rectangle h="40" w="600" r="12.5" x="374" y="75"/>
-            <rectangle h="146" w="200" r="25" x="473" y="-75"/>
+            <rectangle h="146" w="200" r="50" x="480" y="-90" />
+            <rectangle h="146" w="200" r="50" x="490" y="-75" rotate="-10"/>
             <!-- Plattformutsparinger -->
             <rectangle h="3.25" w="58" x="-470" y="55"/>
             <rectangle h="3.25" w="230" x="412" y="55"/>

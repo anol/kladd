@@ -91,20 +91,21 @@ public class ToAwt {
         double height = getAttribute(element, tag.get(HEIGHT));
         double width = getAttribute(element, tag.get(WIDTH));
         double radius = getAttribute(element, tag.get(RADIUS));
+        double rotate = getAttribute(element, tag.get(ROTATE));
         String tagName = element.getTagName();
         switch (tag.get(tagName)) {
             case PART:
                 addPart(element, x, y, dx, dy);
                 break;
             case SOLID:
-                concretePart.addRect(xdx, ydy, width, height, radius);
+                concretePart.addRect(xdx, ydy, width, height, radius, rotate);
                 element2children(element, xdx, ydy);
                 break;
             case SHAPE:
                 element2children(element, xdx, ydy);
                 break;
             case RECTANGLE:
-                concretePart.subtractRect(xdx, ydy, width, height, radius);
+                concretePart.subtractRect(xdx, ydy, width, height, radius, rotate);
                 break;
             case CIRCLE:
                 concretePart.subtractCircle(xdx, ydy, radius);

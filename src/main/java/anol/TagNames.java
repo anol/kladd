@@ -8,7 +8,7 @@ import static anol.TagNames.Tags.*;
 public class TagNames {
 
     public enum Tags {
-        DESIGN, SHEET, PART, SOLID, SHAPE, CIRCLE, RECTANGLE,
+        DESIGN, SHEET, PART, SOLID, SHAPE, CIRCLE, RECTANGLE, ROTATE,
         HEIGHT, WIDTH, RADIUS, FUNCTION, NAME, PAGE_SIZE, USER_DEFINED}
 
     Map<String, Tags> dictionary = new HashMap<>();
@@ -23,6 +23,7 @@ public class TagNames {
                 dictionary.put("shape", SHAPE);
                 dictionary.put("circle", CIRCLE);
                 dictionary.put("rectangle", RECTANGLE);
+                dictionary.put("rotate", ROTATE);
                 dictionary.put("h", HEIGHT);
                 dictionary.put("w", WIDTH);
                 dictionary.put("r", RADIUS);
@@ -38,6 +39,7 @@ public class TagNames {
                 dictionary.put("komp", SHAPE);
                 dictionary.put("sirk", CIRCLE);
                 dictionary.put("rekt", RECTANGLE);
+                dictionary.put("v", ROTATE);
                 dictionary.put("h", HEIGHT);
                 dictionary.put("b", WIDTH);
                 dictionary.put("r", RADIUS);
