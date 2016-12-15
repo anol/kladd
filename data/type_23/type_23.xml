@@ -18,12 +18,14 @@
             <solid h="58" w="284">
                 <circle r="5" x="110 -110" y="-11"/>
                 <rectangle h="12" w="30" r="1" y="-11"/>
+                <skrue_m4 x="-70 70" y="-10" ny="3" dy="15"/>
             </solid>
         </part>
         <part name="Bufferplanke Bak" x="800" y="-500">
             <solid h="58" w="312">
                 <circle r="5" x="110 -110" y="-11"/>
                 <rectangle h="12" w="30" r="1" y="-11"/>
+                <skrue_m4 x="-70 70" y="-10" ny="3" dy="15"/>
             </solid>
         </part>
         <!-- Komponenter -->
@@ -33,7 +35,10 @@
             <akselhorn x="-215 -15 185" y="-40"/>
             <bremsefeste x="342" y="-62"/>
             <!-- Diverse hull -->
+            <rectangle h="25" w="25" r="10" x="-280" y="-25"/>
             <rectangle h="88" w="75" r="25" x="291" y="-75"/>
+            <rectangle h="40" w="56" r="15" x="102" y="20"/>
+            <rectangle h="30" w="30" r="15" x="250" y="25"/>
             <rectangle h="30" w="80" r="15" x="320" y="25"/>
             <!-- Profilutsparinger -->
             <rectangle h="40" w="136" r="25" x="-496" y="75"/>
@@ -46,8 +51,8 @@
             <rectangle h="3.25" w="230" x="412" y="55"/>
             <!-- Skrue- og naglehull -->
             <skrue_m4 x="-135 65" y="52" />
-            <skrue_m4 x="-135 65 375" y="-68" ny="10" dy="12"/>
-            <skrue_m4 x="-485 485" y="4" ny="4" dy="12"/>
+            <skrue_m4 x="-135 65 370" y="-65" ny="8" dy="15"/>
+            <skrue_m4 x="-485 485" y="8" ny="3" dy="15"/>
             <nagle_3mm x="-420" y="70" nx="50" dx="10"/>
         </solid>
         <shape id="akselhorn">
@@ -63,7 +68,7 @@
         </shape>
         <shape id="sylinder">
             <rectangle h="34" w="60" r="10" y="6"/>
-            <skrue_m4 x="-45 45" y="-24" ny="11" dy="12"/>
+            <skrue_m4 x="-45 45" y="-21" ny="9" dy="15"/>
         </shape>
     </sheet>
     <sheet name="Plattform og avstivningsplater" name2="2mm staalplater">
