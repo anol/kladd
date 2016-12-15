@@ -1,5 +1,6 @@
-package anol;
+package anol.ps;
 
+import anol.ConcretePart;
 import org.w3c.dom.Element;
 
 import java.awt.geom.PathIterator;
@@ -17,9 +18,11 @@ public class ToPs {
     private double oldX = 0.111111111;
     private double oldY = 0.111111111;
     private boolean colors;
+    private Annotations annotations;
 
     public ToPs(boolean colors) {
         this.colors = colors;
+        this.annotations = new Annotations(colors);
     }
 
     static double mm2pt(double mm) {
@@ -33,6 +36,8 @@ public class ToPs {
     }
 
     public String getDocumentHeader(String title, String pageSize, String boundingBox, int numberOfPages) {
+        annotations.setPageSize(pageSize);
+        annotations.setNumberOfPages(numberOfPages);
         String header = "%!PS-Adobe-2.0\n" +
                 "%%Creator: kladd\n" +
                 "%%CreationDate: " + getCreationDate() + "\n" +
@@ -199,17 +204,8 @@ public class ToPs {
         return outputString;
     }
 
-     public String printSheetInfo(Element designElement, Element sheet, int pageNumber) {
-         String outputString = "0.25 setlinewidth 1 setlinecap [] 0 setdash\n";
-         if (colors) {
-             outputString += "1 0.2 0.2 setrgbcolor\n";
-         } else {
-             outputString += "0 0 0 setrgbcolor\n";
-         }
-
-
-
-         outputString += "0 0 0 setrgbcolor\n";
-         return outputString;
-     }
+    public String printSheetAnnotations(String title, String sheet1st, String sheet2nd, int pageNumber) {
+        SheetAnnotations sheetAnnotations = new SheetAnnotations(this.annotations);
+        return sheetAnnotations.print(title, sheet1st, sheet2nd, pageNumber);
+    }
 }

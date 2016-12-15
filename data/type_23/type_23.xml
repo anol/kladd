@@ -2,7 +2,7 @@
 <design name="Modell Type 23" size="a0">
     <circle id="skrue_m4" r="2.0"/>
     <circle id="nagle_3mm" r="1.5"/>
-    <sheet name="Ark 1, 5mm stålplater">
+    <sheet name="Sidevanger og bufferplanker" name2="5mm staalplater">
         <!-- Vangeplate -->
         <part name="Vangeplate H" x="550" y="-150">
             <solid>
@@ -64,33 +64,33 @@
             <skrue_m4 x="-48 48" y="-24 -12 0 12 24"/>
         </shape>
     </sheet>
-    <sheet name="Ark 2, 2mm stålplater">
+    <sheet name="Plattform og avstivningsplater" name2="2mm staalplater">
         <!-- Avstivningsplater -->
-        <part name="Tverrplate A" x="200" y="-700">
+        <part name="Tverrplate A" x="200" y="-125">
             <solid w="154" h="150">
                 <nagle_3mm x="-70 -60 -50 -40 -30 -20 -10 0 10 20 30 40 50 60 70" y="70"/>
             </solid>
         </part>
-        <part name="Tverrplate B" x="400" y="-700">
+        <part name="Tverrplate B" x="400" y="-125">
             <solid w="154" h="148" y="-1">
                 <rectangle w="100" h="80" r="10"/>
             </solid>
         </part>
-        <part name="Tverrplate C" x="600" y="-700">
+        <part name="Tverrplate C" x="600" y="-125">
             <solid w="154" h="148" y="-1">
                 <rectangle w="100" h="80" r="10"/>
             </solid>
         </part>
-        <part name="Tverrplate D" x="800" y="-700">
+        <part name="Tverrplate D" x="800" y="-125">
             <solid w="154" h="150"/>
         </part>
-        <part name="Tverrplate E" x="1000" y="-700">
+        <part name="Tverrplate E" x="1000" y="-125">
             <solid w="154" h="128" y="-11">
                 <rectangle w="80" h="60" r="10"/>
             </solid>
         </part>
         <!-- Plattformen -->
-        <part name="Plattform" x="600" y="-400">
+        <part name="Plattform" x="600" y="-425">
             <solid h="288" w="992">
                 <rectangle h="164.25" w="713" r="1" x="-72" y="0"/>
                 <rectangle h="100" w="100" r="40" x="-120" y="170 -170"/>
@@ -110,7 +110,7 @@
             <solid h="50" w="213" r="10" x="325.5" y="168 -168"/>
         </part>
         <!-- Tanktaket -->
-        <part name="Tanktak" x="425" y="-125">
+        <part name="Tanktak" x="425" y="-700">
             <solid h="154" w="500">
                 <rectangle h="120" w="60" r="12.5" x="-200"/>
             </solid>

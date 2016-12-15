@@ -1,5 +1,6 @@
 package anol;
 
+import anol.ps.ToPs;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -100,7 +101,9 @@ public class Converter {
                     }
                 }
                 if (annotations) {
-                    postScript += toPs.printSheetInfo(designElement, sheet, pageNumber);
+                    String sheet1st = sheet.getAttribute(this.tag.get(NAME));
+                    String sheet2nd = sheet.getAttribute(this.tag.get(NAME) + 2);
+                    postScript += toPs.printSheetAnnotations(docTitle, sheet1st, sheet2nd, pageNumber);
                 }
                 postScript += toPs.getPageTrailer();
                 pageNumber++;
