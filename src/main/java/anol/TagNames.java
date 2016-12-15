@@ -9,7 +9,8 @@ public class TagNames {
 
     public enum Tags {
         DESIGN, SHEET, PART, SOLID, SHAPE, CIRCLE, RECTANGLE, ROTATE,
-        HEIGHT, WIDTH, RADIUS, FUNCTION, NAME, PAGE_SIZE, USER_DEFINED}
+        HEIGHT, WIDTH, RADIUS, FUNCTION, NAME, PAGE_SIZE,
+        REPEAT_X, REPEAT_Y, DELTA_X, DELTA_Y, USER_DEFINED}
 
     Map<String, Tags> dictionary = new HashMap<>();
 
@@ -30,6 +31,10 @@ public class TagNames {
                 dictionary.put("f", FUNCTION);
                 dictionary.put("name", NAME);
                 dictionary.put("size", PAGE_SIZE);
+                dictionary.put("nx", REPEAT_X);
+                dictionary.put("ny", REPEAT_Y);
+                dictionary.put("dx", DELTA_X);
+                dictionary.put("dy", DELTA_Y);
                 break;
             case "no":
                 dictionary.put("design", DESIGN);
@@ -46,6 +51,10 @@ public class TagNames {
                 dictionary.put("funk", FUNCTION);
                 dictionary.put("navn", NAME);
                 dictionary.put("type", PAGE_SIZE);
+                dictionary.put("nx", REPEAT_X);
+                dictionary.put("ny", REPEAT_Y);
+                dictionary.put("dx", DELTA_X);
+                dictionary.put("dy", DELTA_Y);
                 break;
             default:
                 throw new Exception("Language \"" + language + "\" is not supported.");

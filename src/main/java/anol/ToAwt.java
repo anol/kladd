@@ -72,15 +72,27 @@ public class ToAwt {
     }
 
     private void element2elements(Element element, double x, double y) throws Exception {
+        int nx0 = ((int) getAttribute(element, tag.get(REPEAT_X)));
+        if (0 == nx0) nx0 = 1;
+        double dx = getAttribute(element, tag.get(DELTA_X));
+        int ny0 = ((int) getAttribute(element, tag.get(REPEAT_Y)));
+        if (0 == ny0) ny0 = 1;
+        double dy = getAttribute(element, tag.get(DELTA_Y));
         List<Double> xList = getListAttribute(element, "x");
         List<Double> yList = getListAttribute(element, "y");
         Iterator<Double> xIt = xList.listIterator();
         while (xIt.hasNext()) {
-            Double dx = xIt.next();
+            Double x1 = xIt.next();
             Iterator<Double> yIt = yList.listIterator();
             while (yIt.hasNext()) {
-                Double dy = yIt.next();
-                element2awt(element, x, y, dx, dy);
+                Double y1 = yIt.next();
+                for (int nx = nx0; 0 < nx; nx--) {
+                    for (int ny = ny0; 0 < ny; ny--) {
+                        element2awt(element, x, y, x1, y1);
+                        y1 += dy;
+                    }
+                    x1 += dx;
+                }
             }
         }
     }

@@ -29,11 +29,12 @@
         <!-- Komponenter -->
         <solid id="vangeprofil" h="150" w="992">
             <!-- Komponentplasseringer -->
-            <sylinder x="-375" y="-45"/>
-            <akselhorn x="-220 -20 180" y="-40"/>
+            <sylinder x="-375" y="-44"/>
+            <akselhorn x="-215 -15 185" y="-40"/>
             <bremsefeste x="342" y="-62"/>
             <!-- Diverse hull -->
             <rectangle h="88" w="75" r="25" x="291" y="-75"/>
+            <rectangle h="30" w="80" r="15" x="320" y="25"/>
             <!-- Profilutsparinger -->
             <rectangle h="40" w="136" r="25" x="-496" y="75"/>
             <rectangle h="146" w="104" r="50" x="-496" y="-75"/>
@@ -44,15 +45,14 @@
             <rectangle h="3.25" w="58" x="-470" y="55"/>
             <rectangle h="3.25" w="230" x="412" y="55"/>
             <!-- Skrue- og naglehull -->
-            <nagle_3mm x="-420 -410 -400" y="70"/>
-            <nagle_3mm x="-390 -380 -370 -360 -350 -340 -330 -320 -310 -300" y="70"/>
-            <nagle_3mm x="-290 -280 -270 -260 -250 -240 -230 -220 -210 -200" y="70"/>
-            <nagle_3mm x="-190 -180 -170 -160 -150 -140 -130 -120 -110 -100" y="70"/>
-            <nagle_3mm x="-90 -80 -70 -60 -50 -40 -30 -20 -10 0 10 20 30 40 50 60 70" y="70"/>
+            <skrue_m4 x="-135 65" y="52" />
+            <skrue_m4 x="-135 65 375" y="-68" ny="10" dy="12"/>
+            <skrue_m4 x="-485 485" y="4" ny="4" dy="12"/>
+            <nagle_3mm x="-420" y="70" nx="50" dx="10"/>
         </solid>
         <shape id="akselhorn">
             <rectangle h="72" w="60" r="2" Y="-4"/>
-            <rectangle h="10" w="80" r="4" x="-30" y="-35"/>
+            <rectangle h="10" w="80" r="10" x="-30" y="-35"/>
             <skrue_m4 x="-37 37" y="33 11 -11"/>
             <skrue_m4 x="-45 45" y="22 0 -22"/>
             <bremsefeste x="-90" y="20"/>
@@ -62,15 +62,15 @@
             <skrue_m4 x="-6 6" y="-6 6"/>
         </shape>
         <shape id="sylinder">
-            <rectangle h="34" w="80" r="10" y="6"/>
-            <skrue_m4 x="-48 48" y="-24 -12 0 12 24"/>
+            <rectangle h="34" w="60" r="10" y="6"/>
+            <skrue_m4 x="-45 45" y="-24" ny="11" dy="12"/>
         </shape>
     </sheet>
     <sheet name="Plattform og avstivningsplater" name2="2mm staalplater">
         <!-- Avstivningsplater -->
         <part name="Tverrplate A" x="200" y="-125">
             <solid w="154" h="150">
-                <nagle_3mm x="-70 -60 -50 -40 -30 -20 -10 0 10 20 30 40 50 60 70" y="70"/>
+                <nagle_3mm x="-70" y="70" nx="15" dx="10"/>
             </solid>
         </part>
         <part name="Tverrplate B" x="400" y="-125">
