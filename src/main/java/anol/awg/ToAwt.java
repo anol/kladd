@@ -1,5 +1,8 @@
-package anol;
+package anol.awg;
 
+import anol.converter.TagNames;
+import anol.converter.ConcretePart;
+import anol.converter.ConcretePartList;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -9,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static anol.TagNames.Tags.*;
+import static anol.converter.TagNames.Tags.*;
 import static java.lang.Math.floor;
 
 public class ToAwt {

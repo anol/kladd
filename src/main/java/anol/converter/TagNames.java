@@ -1,9 +1,9 @@
-package anol;
+package anol.converter;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static anol.TagNames.Tags.*;
+import static anol.converter.TagNames.Tags.*;
 
 public class TagNames {
 

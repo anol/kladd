@@ -1,5 +1,8 @@
 package anol;
 
+import anol.pdf.PdfConverter;
+import anol.step.StepConverter;
+import anol.svg.SvgConverter;
 import com.sun.org.apache.xml.internal.serialize.OutputFormat;
 import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 import org.w3c.dom.Document;
@@ -20,20 +23,23 @@ public class Processor {
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document inputDoc = dBuilder.parse(inputFile);
         inputDoc.getDocumentElement().normalize();
-        Converter converter = new Converter(inputDoc, annotations, colors, language);
         if (outputFile.getName().endsWith(".svg")) {
+            SvgConverter converter = new SvgConverter(inputDoc, annotations, colors, language);
             Document outputDoc = converter.convertToSvg();
             String outputString = serialize(outputDoc);
             new FileOutputStream(outputFile).write(outputString.getBytes());
         } else if (outputFile.getName().endsWith(".stp")) {
+            StepConverter converter = new StepConverter(inputDoc, annotations, colors, language);
             String outputString = converter.convertToStep(inputFile.getName(), outputFile.getName());
             new FileOutputStream(outputFile).write(outputString.getBytes());
         } else if (outputFile.getName().endsWith(".ps")) {
+            PdfConverter converter = new PdfConverter(inputDoc, annotations, colors, language);
             String outputString = converter.convertToPs(outputFile.getName());
             new FileOutputStream(outputFile).write(outputString.getBytes());
         } else {
             String temp = "data/temp.ps";
             File tempFile = new File(temp);
+            PdfConverter converter = new PdfConverter(inputDoc, annotations, colors, language);
             String outputString = converter.convertToPs(outputFile.getName());
             new FileOutputStream(tempFile).write(outputString.getBytes());
             converter.convertToPdf(temp, outputFile);

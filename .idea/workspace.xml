@@ -7,8 +7,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="438c4250-c21d-427e-8a63-5fa40ea2ce1c" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/anol/pdf/PdfConverter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/anol/step/StepConverter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/anol/svg/SvgConverter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/anol/AwtHelper.java" afterPath="$PROJECT_DIR$/src/main/java/anol/awg/AwtHelper.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/anol/ConcretePart.java" afterPath="$PROJECT_DIR$/src/main/java/anol/converter/ConcretePart.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/anol/ConcretePartList.java" afterPath="$PROJECT_DIR$/src/main/java/anol/converter/ConcretePartList.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/anol/Converter.java" afterPath="$PROJECT_DIR$/src/main/java/anol/converter/Converter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/anol/MajorPoints.java" afterPath="$PROJECT_DIR$/src/main/java/anol/converter/MajorPoints.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/anol/TagNames.java" afterPath="$PROJECT_DIR$/src/main/java/anol/converter/TagNames.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/anol/ToAwt.java" afterPath="$PROJECT_DIR$/src/main/java/anol/awg/ToAwt.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/anol/ToPdf.java" afterPath="$PROJECT_DIR$/src/main/java/anol/pdf/ToPdf.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/anol/ToStep.java" afterPath="$PROJECT_DIR$/src/main/java/anol/step/ToStep.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/anol/ToSvg.java" afterPath="$PROJECT_DIR$/src/main/java/anol/svg/ToSvg.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/anol/ps/Annotations.java" afterPath="$PROJECT_DIR$/src/main/java/anol/pdf/Annotations.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/anol/ps/SheetAnnotations.java" afterPath="$PROJECT_DIR$/src/main/java/anol/pdf/SheetAnnotations.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/anol/ps/ToPs.java" afterPath="$PROJECT_DIR$/src/main/java/anol/pdf/ToPs.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/type_23/type_23.pdf" afterPath="$PROJECT_DIR$/data/type_23/type_23.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/type_23/type_23.xml" afterPath="$PROJECT_DIR$/data/type_23/type_23.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/anol/Processor.java" afterPath="$PROJECT_DIR$/src/main/java/anol/Processor.java" />
     </list>
     <ignored path="kladd.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,38 +51,7 @@
     <favorites_list name="kladd" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="type_23.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/data/type_23/type_23.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="54" column="39" lean-forward="false" selection-start-line="54" selection-start-column="39" selection-end-line="54" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ToAwt.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/anol/ToAwt.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1760">
-              <caret line="90" column="59" lean-forward="false" selection-start-line="90" selection-start-column="59" selection-end-line="90" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TagNames.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/anol/TagNames.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="19" column="48" lean-forward="false" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -113,32 +99,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/MiscTest.java" />
-        <option value="$PROJECT_DIR$/kladd.iml" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/data/kladd.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/anol/ToPdf.java" />
-        <option value="$PROJECT_DIR$/src/main/java/anol/MiscTest.java" />
-        <option value="$PROJECT_DIR$/data/temp.ps" />
-        <option value="$PROJECT_DIR$/data/test.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/anol/MajorPoints.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/anol/ToSvg.java" />
-        <option value="$PROJECT_DIR$/data/exampel.eda" />
-        <option value="$PROJECT_DIR$/data/exampel.dae" />
-        <option value="$PROJECT_DIR$/data/input2.xml" />
-        <option value="$PROJECT_DIR$/data/test_input.xml" />
-        <option value="$PROJECT_DIR$/data/example.json" />
-        <option value="$PROJECT_DIR$/data/input.xml" />
-        <option value="$PROJECT_DIR$/data/3mm uten skruer.xml" />
-        <option value="$PROJECT_DIR$/data/1mm5_blank.stp" />
-        <option value="$PROJECT_DIR$/src/main/java/anol/ToStep.java" />
         <option value="$PROJECT_DIR$/data/geometry_out.stp" />
         <option value="$PROJECT_DIR$/data/step_template.stp" />
         <option value="$PROJECT_DIR$/src/main/java/anol/AwtHelper.java" />
         <option value="$PROJECT_DIR$/../../CRISTIN/Configuration.xml" />
         <option value="$PROJECT_DIR$/data/modell_type_23.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/anol/Processor.java" />
         <option value="$PROJECT_DIR$/src/test/java/MiscTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/anol/Main.java" />
         <option value="$PROJECT_DIR$/data/3mm_blank.xml" />
@@ -152,12 +117,39 @@
         <option value="$PROJECT_DIR$/src/main/java/anol/ps/AnnotationFrame.java" />
         <option value="$PROJECT_DIR$/data/type_23.xml" />
         <option value="$PROJECT_DIR$/src/main/java/anol/ps/ToPs.java" />
-        <option value="$PROJECT_DIR$/src/main/java/anol/Converter.java" />
         <option value="$PROJECT_DIR$/src/main/java/anol/ps/SheetAnnotations.java" />
         <option value="$PROJECT_DIR$/src/main/java/anol/ConcretePart.java" />
         <option value="$PROJECT_DIR$/src/main/java/anol/TagNames.java" />
         <option value="$PROJECT_DIR$/src/main/java/anol/ToAwt.java" />
         <option value="$PROJECT_DIR$/data/type_23/type_23.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/svg/ToSvg.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/ps/Converter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/GeneralConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/ps/PsConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/ps/PdfConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/pdf/PdfConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/pdf/ToPdf.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/Converter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/AnyConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/step/ToStep.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/svg/AnyConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/step/AnyConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/step/SvgConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/svg/StepConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/step/StepConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/svg/SvgConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/awg/ToAwt.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/awg/MajorPoints.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/awg/AwtHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/awg/ConcretePart.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/awg/ConcretePartList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/converter/ConcretePart.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/converter/ConcretePartList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/converter/MajorPoints.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/converter/Converter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/converter/TagNames.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/converter/Processor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/anol/Processor.java" />
       </list>
     </option>
   </component>
@@ -172,9 +164,10 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="width" value="1932" />
-    <option name="height" value="1038" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="2418" />
+    <option name="height" value="1468" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -194,6 +187,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -298,7 +292,127 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ps" />
+              <option name="myItemId" value="svg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kladd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kladd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="anol" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="step" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kladd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kladd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="anol" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pdf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kladd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kladd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="anol" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="converter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kladd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kladd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="anol" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="awg" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -337,7 +451,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -351,17 +464,22 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../fsm_kladd" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Anders\Documents\GitHub\kladd\data\misc" />
-      <recent name="C:\Users\Anders\Documents\GitHub\kladd\data\type23" />
-      <recent name="C:\Users\Anders\Documents\GitHub\kladd" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Anders\Documents\GitHub\kladd\data" />
       <recent name="D:\aeols\Documents\GitHub\kladd\data" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="anol.step" />
+      <recent name="anol" />
+      <recent name="anol.ps" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Anders\Documents\GitHub\kladd\data\misc" />
+      <recent name="C:\Users\Anders\Documents\GitHub\kladd\data\type23" />
+      <recent name="C:\Users\Anders\Documents\GitHub\kladd" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Type 23">
@@ -747,6 +865,26 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="false" name="Type 23 SVG" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value=".*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="anol.Main" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="data/type_23/type_23.xml data/type_23/type_23.svg" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="kladd" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="false" name="1.5mm" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="anol.Main" />
@@ -777,13 +915,14 @@
       <envs />
       <method />
     </configuration>
-    <list size="6">
+    <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Application.3mm" />
       <item index="1" class="java.lang.String" itemvalue="Application.Type 23" />
-      <item index="2" class="java.lang.String" itemvalue="Application.1.5mm" />
-      <item index="3" class="java.lang.String" itemvalue="Application.STEP" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.All in kladd" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.MiscTest.sizeTest" />
+      <item index="2" class="java.lang.String" itemvalue="Application.Type 23 SVG" />
+      <item index="3" class="java.lang.String" itemvalue="Application.1.5mm" />
+      <item index="4" class="java.lang.String" itemvalue="Application.STEP" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.All in kladd" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.MiscTest.sizeTest" />
     </list>
     <recent_temporary>
       <list size="2">
@@ -870,7 +1009,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1932" height="1038" extended-state="0" />
+    <frame x="-9" y="-9" width="2418" height="1468" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -883,12 +1022,13 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27818757" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42952275" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42900077" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24190177" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19291666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3350864" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -902,7 +1042,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33518314" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -927,10 +1066,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data/misc/collada_schema_1_5.xsd" />
-    <entry file="file://$PROJECT_DIR$/../../3d/example-lighting-hemisphere-light.dae" />
-    <entry file="file://$PROJECT_DIR$/../../3d/joystick.dae" />
-    <entry file="file://$PROJECT_DIR$/data/misc/example.dae" />
     <entry file="file://$PROJECT_DIR$/data/Audit report.txt" />
     <entry file="file://$PROJECT_DIR$/../../3d/rektangel – Kopi.txt" />
     <entry file="file://$PROJECT_DIR$/data/misc/output.svg" />
@@ -1074,14 +1209,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/util/test_data.xml" />
     <entry file="file://$PROJECT_DIR$/src/main/java/util/TestData.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/util/anonymous_user.feature" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/anol/ConcretePartList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="770">
-          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/misc/input.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="804">
@@ -1089,61 +1216,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/anol/MajorPoints.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/anol/ps/Annotations.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/anol/pdf/Annotations.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding>
-            <element signature="e#300#301#0" expanded="false" />
-            <element signature="e#340#341#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/anol/ToPdf.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="46" column="22" lean-forward="false" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/anol/AwtHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-528">
-          <caret line="6" column="31" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/anol/Processor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/anol/ToSvg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-110">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/anol/ToStep.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="26" column="5" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="26" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1154,29 +1230,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/anol/ps/ToPs.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/anol/pdf/ToPs.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4334">
           <caret line="206" column="29" lean-forward="false" selection-start-line="206" selection-start-column="18" selection-end-line="206" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/anol/Converter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1892">
-          <caret line="97" column="67" lean-forward="false" selection-start-line="97" selection-start-column="67" selection-end-line="97" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/anol/ps/SheetAnnotations.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/anol/pdf/SheetAnnotations.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="76" column="71" lean-forward="false" selection-start-line="76" selection-start-column="71" selection-end-line="76" selection-end-column="71" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1187,35 +1251,135 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/anol/ConcretePart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="116" column="29" lean-forward="false" selection-start-line="116" selection-start-column="29" selection-end-line="116" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/anol/TagNames.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="19" column="48" lean-forward="false" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/anol/ToAwt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1760">
-          <caret line="90" column="59" lean-forward="false" selection-start-line="90" selection-start-column="59" selection-end-line="90" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/type_23/type_23.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
+        <state relative-caret-position="22">
           <caret line="54" column="39" lean-forward="false" selection-start-line="54" selection-start-column="39" selection-end-line="54" selection-end-column="39" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/type_23/type_23.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/anol/svg/ToSvg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/anol/pdf/ToPdf.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="946">
+          <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/anol/step/ToStep.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/anol/pdf/PdfConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="15" column="16" lean-forward="false" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/anol/step/StepConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/anol/svg/SvgConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/anol/awg/ToAwt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/anol/awg/AwtHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/anol/converter/ConcretePart.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/anol/converter/ConcretePartList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/anol/converter/MajorPoints.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/anol/converter/Converter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/anol/converter/TagNames.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/anol/Processor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="21" column="80" lean-forward="true" selection-start-line="21" selection-start-column="80" selection-end-line="21" selection-end-column="80" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

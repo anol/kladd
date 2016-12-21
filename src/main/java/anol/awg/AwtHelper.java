@@ -1,4 +1,4 @@
-package anol;
+package anol.awg;
 
 import java.awt.geom.*;
 

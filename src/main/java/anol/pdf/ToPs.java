@@ -1,6 +1,6 @@
-package anol.ps;
+package anol.pdf;
 
-import anol.ConcretePart;
+import anol.converter.ConcretePart;
 import org.w3c.dom.Element;
 
 import java.awt.geom.PathIterator;

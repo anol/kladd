@@ -1,4 +1,4 @@
-package anol.ps;
+package anol.pdf;
 
 public class Annotations {
 

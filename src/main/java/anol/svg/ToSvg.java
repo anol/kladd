@@ -1,16 +1,15 @@
-package anol;
+package anol.svg;
 
+import anol.converter.ConcretePart;
+import anol.converter.ConcretePartList;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import java.awt.geom.Area;
 import java.awt.geom.PathIterator;
 import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
-import java.util.List;
 
 import static java.awt.geom.PathIterator.*;
-import static java.awt.geom.PathIterator.SEG_CLOSE;
 
 public class ToSvg {
 

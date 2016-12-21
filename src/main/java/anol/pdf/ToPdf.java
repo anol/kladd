@@ -1,4 +1,4 @@
-package anol;
+package anol.pdf;
 
 import org.ghost4j.converter.PDFConverter;
 import org.ghost4j.document.PSDocument;
