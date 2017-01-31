@@ -16,7 +16,7 @@ public class ConcretePart {
         return points;
     }
 
-    static String mm2pti(double mm) {
+    public static String mm2pti(double mm) {
         Double mmpoints = mm2pt(mm);
         Integer immipoints = mmpoints.intValue();
         return immipoints.toString();
@@ -48,9 +48,7 @@ public class ConcretePart {
         this.pointList = new MajorPoints();
         this.helpLines = new MajorPoints();
         List<String> list = getListAttribute(funks);
-        Iterator<String> it = list.listIterator();
-        while (it.hasNext()) {
-            String funk = it.next();
+        for (String funk : list) {
             switch (funk) {
                 case "":
                     break;
@@ -180,15 +178,6 @@ public class ConcretePart {
 
     public PathIterator getPathIterator() {
         return mainArea.getPathIterator(null);
-    }
-
-    public String getBoundingBox() {
-        Rectangle2D bounds = mainArea.getBounds();
-        String boundingBox = mm2pti(-bounds.getMinX()) + " " +
-                mm2pti(bounds.getMinY()) + " " +
-                mm2pti(-bounds.getMaxX()) + " " +
-                mm2pti(bounds.getMaxY());
-        return boundingBox;
     }
 
     public double getWeight(double thickness) {

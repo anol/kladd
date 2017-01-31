@@ -1,11 +1,9 @@
 package anol.step;
 
+import anol.awg.ToAwt;
 import anol.converter.ConcretePart;
 import anol.converter.Converter;
-import anol.awg.ToAwt;
 import org.w3c.dom.Document;
-
-import java.util.Iterator;
 
 public class StepConverter extends Converter {
 
@@ -21,14 +19,12 @@ public class StepConverter extends Converter {
      * @return The STEP "file" as a string
      */
     public String convertToStep(String inputFile, String outputFile) throws Throwable {
-        new ToAwt(kladdDoc, partList, language);
+        new ToAwt(kladdDoc, parts, language);
         ToStep toStep = new ToStep();
         String step = toStep.getProlog();
         step += toStep.getHeaderSection(docTitle, inputFile, outputFile);
-        Iterator<ConcretePart> iterator = partList.getIterator();
         int counter = 0;
-        while (iterator.hasNext()) {
-            ConcretePart part = iterator.next();
+        for (ConcretePart part : parts) {
             step += toStep.getDataSection(part, ++counter);
         }
         step += toStep.getEpilog();

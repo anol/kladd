@@ -8,9 +8,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import java.awt.geom.Rectangle2D;
 import java.io.File;
-import java.util.Iterator;
 
+import static anol.converter.ConcretePart.mm2pti;
 import static anol.converter.TagNames.Tags.NAME;
 
 public class PdfConverter extends Converter {
@@ -19,9 +20,18 @@ public class PdfConverter extends Converter {
         super(kladdDoc, annotations, colors, language);
     }
 
+    private String getBoundingBox() {
+        Rectangle2D bounds = parts.getBounds();
+        String boundingBox = mm2pti(-bounds.getMinX()) + " " +
+                mm2pti(bounds.getMinY()) + " " +
+                mm2pti(-bounds.getMaxX()) + " " +
+                mm2pti(bounds.getMaxY());
+        return boundingBox;
+    }
+
     public String convertToPs(String title) throws Throwable {
-        new ToAwt(kladdDoc, partList, language);
-        String boundingBox = partList.getBoundingBox();
+        new ToAwt(kladdDoc, parts, language);
+        String boundingBox = getBoundingBox();
         ToPs toPs = new ToPs(colors);
         int pageNumber = 0;
         NodeList nodeList = kladdDoc.getElementsByTagName("sheet");
@@ -31,9 +41,7 @@ public class PdfConverter extends Converter {
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element sheet = (Element) node;
                 postScript += toPs.getPageHeader(designElement, sheet, pageNumber);
-                Iterator<ConcretePart> iterator = partList.getIterator();
-                while (iterator.hasNext()) {
-                    ConcretePart part = iterator.next();
+                for (ConcretePart part : parts) {
                     if (part.isOnSheet(pageNumber)) {
                         postScript += toPs.convertArea(part);
                         if (annotations) {

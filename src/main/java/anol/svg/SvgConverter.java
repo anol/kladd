@@ -15,10 +15,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.awt.geom.PathIterator;
 import java.awt.geom.Rectangle2D;
 import java.io.*;
-import java.util.Iterator;
 
 import static java.awt.geom.PathIterator.*;
-import static java.awt.geom.PathIterator.SEG_CLOSE;
 
 public class SvgConverter extends Converter {
 
@@ -35,14 +33,12 @@ public class SvgConverter extends Converter {
     }
 
     public void convert() throws Throwable {
-        new ToAwt(kladdDoc, partList, language);
-        convertToSvg(partList);
+        new ToAwt(kladdDoc, parts, language);
+        convertToSvg(parts);
     }
 
     private void convertToSvg(ConcretePartList parts) throws ParserConfigurationException, IOException {
-        Iterator<ConcretePart> iterator = parts.getIterator();
-        while (iterator.hasNext()) {
-            ConcretePart part = iterator.next();
+        for (ConcretePart part : parts) {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.newDocument();

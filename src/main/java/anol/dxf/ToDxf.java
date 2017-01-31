@@ -1,18 +1,14 @@
+package anol.dxf;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 
-import static java.lang.Math.atan;
-import static java.lang.Math.cos;
-import static java.lang.Math.tan;
+import static java.lang.Math.*;
 import static java.lang.StrictMath.sin;
 
-public class Main {
+public class ToDxf {
 
     private static void print(BufferedWriter writer, int code, String data) throws IOException {
         writer.write(code + "\n" + data + "\n");
@@ -40,7 +36,7 @@ public class Main {
     not include the Z coordinates (codes 30 and 31). The lines are
     placed on the layer "Polygon."
     */
-    private static void WriteDXFPolygon(BufferedWriter writer, Integer iSides, Double dblX, Double dblY, Double dblLen) throws IOException {
+    public static void WriteDXFPolygon(BufferedWriter writer, Integer iSides, Double dblX, Double dblY, Double dblLen) throws IOException {
         Double dblZ = 0.0;
         Double dblPI = atan(1) * 4;
         Double dblA1 = (2 * dblPI) / iSides;
@@ -74,7 +70,7 @@ public class Main {
         // Vertex Sub-entities
         for (int i = 0; i < iSides; i++) {
             print(writer, 0, "VERTEX");
-     //       print(writer, 5, name + i);
+            //       print(writer, 5, name + i);
             print(writer, 42, bulge);
             print(writer, 8, layer);
             print(writer, 10, dblX);
@@ -84,7 +80,7 @@ public class Main {
             dblY = radius * sin(dblA) + dblY;
             dblA = dblA + dblA1;
             print(writer, 0, "VERTEX");
-     //       print(writer, 5, name + i);
+            //       print(writer, 5, name + i);
             print(writer, 8, layer);
             print(writer, 10, dblX);
             print(writer, 20, dblY);
@@ -101,20 +97,5 @@ public class Main {
         print(writer, 0, "ENDSEC");
         // End of File
         print(writer, 0, "EOF");
-    }
-
-    public static void main(String[] args) {
-        // Using nio.file
-        Path path = Paths.get("output.dxf");
-        Charset charset = Charset.forName("US-ASCII");
-        try (BufferedWriter writer = Files.newBufferedWriter(path, charset)) {
-            Integer iSides = 4;
-            Double dblX = 0.0;
-            Double dblY = 0.0;
-            Double dblLen = 100.0;
-            WriteDXFPolygon(writer, iSides, dblX, dblY, dblLen);
-        } catch (IOException x) {
-            System.err.format("IOException: %s%n", x);
-        }
     }
 }

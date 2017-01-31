@@ -1,15 +1,14 @@
 package anol.awg;
 
-import anol.converter.TagNames;
 import anol.converter.ConcretePart;
 import anol.converter.ConcretePartList;
+import anol.converter.TagNames;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import static anol.converter.TagNames.Tags.*;
@@ -83,12 +82,8 @@ public class ToAwt {
         double dy = getAttribute(element, tag.get(DELTA_Y));
         List<Double> xList = getListAttribute(element, "x");
         List<Double> yList = getListAttribute(element, "y");
-        Iterator<Double> xIt = xList.listIterator();
-        while (xIt.hasNext()) {
-            Double x1 = xIt.next();
-            Iterator<Double> yIt = yList.listIterator();
-            while (yIt.hasNext()) {
-                Double y1 = yIt.next();
+        for (Double x1 : xList) {
+            for (Double y1 : yList) {
                 for (int nx = nx0; 0 < nx; nx--) {
                     for (int ny = ny0; 0 < ny; ny--) {
                         element2awt(element, x, y, x1, y1);
@@ -138,7 +133,7 @@ public class ToAwt {
         String name = element.getAttribute(tag.get(NAME));
         String funk = element.getAttribute(tag.get(FUNCTION));
         concretePart = new ConcretePart(name, sheet, funk);
-        partList.addPart(concretePart);
+        partList.add(concretePart);
         concretePart.setOrigo(dx, dy);
         solid2awt(element, x, y);
         this.weight += concretePart.getWeight(this.thickness);

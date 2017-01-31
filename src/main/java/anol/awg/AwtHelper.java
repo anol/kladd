@@ -5,6 +5,7 @@ import java.awt.geom.*;
 import static java.lang.Double.NaN;
 
 public abstract class AwtHelper {
+
     public static double approxArea(Area area, double flatness, int limit) {
         PathIterator i =
                 new FlatteningPathIterator(area.getPathIterator(identity),

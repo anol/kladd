@@ -10,7 +10,7 @@ import static anol.converter.TagNames.Tags.*;
 public class Converter {
 
     protected Document kladdDoc;
-    protected ConcretePartList partList;
+    protected ConcretePartList parts;
     protected boolean colors;
     protected boolean annotations;
     protected String language;
@@ -20,7 +20,7 @@ public class Converter {
     protected Element designElement;
 
     public Converter(Document kladdDoc, boolean annotations, boolean colors, String language) throws Throwable {
-        partList = new ConcretePartList();
+        parts = new ConcretePartList();
         this.kladdDoc = kladdDoc;
         this.annotations = annotations;
         this.colors = colors;
