@@ -2,7 +2,7 @@
 <design name="Modell Type 23" size="a0">
     <circle id="skrue_m4" r="2.0"/>
     <circle id="nagle_3mm" r="1.5"/>
-    <sheet name="Sidevanger og bufferplanker" name2="5mm staalplater">
+    <sheet name="Sidevanger og bufferplanker" name2="5mm staalplater" t="5">
         <!-- Vangeplate -->
         <part name="Vangeplate H" x="550" y="-150">
             <solid>
@@ -71,7 +71,7 @@
             <skrue_m4 x="-45 45" y="-21" ny="9" dy="15"/>
         </shape>
     </sheet>
-    <sheet name="Plattform og avstivningsplater" name2="2mm staalplater">
+    <sheet name="Plattform og avstivningsplater" name2="2mm staalplater" t="2">
         <!-- Avstivningsplater -->
         <part name="Tverrplate A" x="200" y="-125">
             <solid w="154" h="150">

@@ -14,12 +14,12 @@ public abstract class AwtHelper {
         return approxArea(i);
     }
 
-    public static double approxArea(Area area, double flatness) {
+    private static double approxArea(Area area, double flatness) {
         PathIterator i = area.getPathIterator(identity, flatness);
         return approxArea(i);
     }
 
-    public static double approxArea(PathIterator i) {
+    private static double approxArea(PathIterator i) {
         double a = 0.0;
         double[] coords = new double[6];
         double startX = NaN, startY = NaN;

@@ -27,16 +27,16 @@ public class Converter {
         this.language = language;
         this.tag = new TagNames(language);
         traverseAllElements();
-        NodeList nodeList = kladdDoc.getElementsByTagName(this.tag.get(DESIGN));
+        NodeList nodeList = kladdDoc.getElementsByTagName(this.tag.getTagName(DESIGN));
         if (0 == nodeList.getLength()) {
-            nodeList = kladdDoc.getElementsByTagName(this.tag.get(SHEET));
+            nodeList = kladdDoc.getElementsByTagName(this.tag.getTagName(SHEET));
         }
         if (0 < nodeList.getLength()) {
             Node node = nodeList.item(0);
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 designElement = (Element) node;
-                pageSize = designElement.getAttribute(this.tag.get(PAGE_SIZE));
-                docTitle = designElement.getAttribute(this.tag.get(NAME));
+                pageSize = designElement.getAttribute(this.tag.getTagName(PAGE_SIZE));
+                docTitle = designElement.getAttribute(this.tag.getTagName(NAME));
             }
         }
     }

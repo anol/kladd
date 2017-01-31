@@ -22,11 +22,10 @@ public class PdfConverter extends Converter {
 
     private String getBoundingBox() {
         Rectangle2D bounds = parts.getBounds();
-        String boundingBox = mm2pti(-bounds.getMinX()) + " " +
+        return mm2pti(-bounds.getMinX()) + " " +
                 mm2pti(bounds.getMinY()) + " " +
                 mm2pti(-bounds.getMaxX()) + " " +
                 mm2pti(bounds.getMaxY());
-        return boundingBox;
     }
 
     public String convertToPs(String title) throws Throwable {
@@ -51,8 +50,8 @@ public class PdfConverter extends Converter {
                     }
                 }
                 if (annotations) {
-                    String sheet1st = sheet.getAttribute(this.tag.get(NAME));
-                    String sheet2nd = sheet.getAttribute(this.tag.get(NAME) + 2);
+                    String sheet1st = sheet.getAttribute(this.tag.getTagName(NAME));
+                    String sheet2nd = sheet.getAttribute(this.tag.getTagName(NAME) + 2);
                     postScript += toPs.printSheetAnnotations(docTitle, sheet1st, sheet2nd, pageNumber);
                 }
                 postScript += toPs.getPageTrailer();

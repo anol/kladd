@@ -9,7 +9,7 @@ public class ConcretePartList extends ArrayList<ConcretePart> {
         boolean first = true;
         Rectangle2D bounds = null;
         for (ConcretePart part : this) {
-            if(first){
+            if (first) {
                 first = false;
                 bounds = part.getBounds();
             } else {

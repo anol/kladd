@@ -6,8 +6,10 @@ import org.w3c.dom.Element;
 import java.awt.geom.PathIterator;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 
 import static java.awt.geom.PathIterator.*;
 
@@ -26,19 +28,17 @@ public class ToPs {
     }
 
     static double mm2pt(double mm) {
-        double points = mm * 72.0 / 25.4;
-        return points;
+        return mm * 72.0 / 25.4;
     }
 
     String getCreationDate() {
-        String today = (new Date()).toString();
-        return today;
+        return (new Date()).toString();
     }
 
     public String getDocumentHeader(String title, String pageSize, String boundingBox, int numberOfPages) {
         annotations.setPageSize(pageSize);
         annotations.setNumberOfPages(numberOfPages);
-        String header = "%!PS-Adobe-2.0\n" +
+        return "%!PS-Adobe-2.0\n" +
                 "%%Creator: kladd\n" +
                 "%%CreationDate: " + getCreationDate() + "\n" +
                 "%%Title: " + title + "\n" +
@@ -48,12 +48,10 @@ public class ToPs {
                 "%%DocumentPaperSizes: " + pageSize + "\n" +
                 "%%Orientation: Landscape\n" +
                 "%%EndComments\n";
-        return header;
     }
 
     public String getDocumentTrailer() {
-        String trailer = "%%EOF\n";
-        return trailer;
+        return "%%EOF\n";
     }
 
 /*
@@ -75,8 +73,7 @@ public class ToPs {
     }
 
     public String getPageTrailer() {
-        String trailer = "pagelevel restore\n" + "showpage\n";
-        return trailer;
+        return "pagelevel restore\n" + "showpage\n";
     }
 
     public String convertArea(ConcretePart part) {
@@ -116,8 +113,7 @@ public class ToPs {
     private static String toPsString(double d) {
         //DecimalFormat formatter = new DecimalFormat("#.##");
         //String s = "(" + formatter.format(d) + ")";
-        String s = "(" + d + ")";
-        return s;
+        return "(" + d + ")";
     }
 
     private String drawMarker(Point2D.Double point, Point2D.Double localOrigo, Point2D.Double globalOrigo) {
@@ -206,6 +202,11 @@ public class ToPs {
 
     public String printSheetAnnotations(String title, String sheet1st, String sheet2nd, int pageNumber) {
         SheetAnnotations sheetAnnotations = new SheetAnnotations(this.annotations);
-        return sheetAnnotations.print(title, sheet1st, sheet2nd, pageNumber);
+        List<String> lines = new ArrayList<String>();
+        lines.add(title);
+        lines.add(sheet1st);
+        lines.add(sheet2nd);
+        lines.add(SheetAnnotations.getTimeAndPage(pageNumber, annotations.getNumberOfPages()));
+        return sheetAnnotations.print(lines);
     }
 }

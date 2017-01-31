@@ -23,7 +23,7 @@ public class ToPdf {
         PDFConverter converter = new PDFConverter();
         //set options
         converter.setPDFSettings(PDFConverter.OPTION_PDFSETTINGS_DEFAULT);
-        switch(pageSize){
+        switch (pageSize) {
             case "a4":
                 converter.setPaperSize(PaperSize.A4);
                 break;

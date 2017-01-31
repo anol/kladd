@@ -9,7 +9,7 @@ public class Main {
             String language = "en";
             boolean colors = true;
             boolean annotations = true;
-            for(int nArg = 2; nArg < args.length; nArg++) {
+            for (int nArg = 2; nArg < args.length; nArg++) {
                 switch (args[nArg]) {
                     case "norsk":
                         language = "no";
