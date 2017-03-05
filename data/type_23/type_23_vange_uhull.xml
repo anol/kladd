@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<design name="Modell Type 23" size="a0">
+    <sheet name="Vangeplate uten hull" name2="5mm staalplater" t="5">
+        <!-- Vangeplate -->
+        <part name="Vangeplate" x="550" y="-150">
+            <solid>
+                <vangeprofil/>
+            </solid>
+        </part>
+        <!-- Komponenter -->
+        <solid id="vangeprofil" h="150" w="992">
+            <!-- Komponentplasseringer -->
+            <sylinder x="-375" y="-44"/>
+            <akselhorn x="-215 -15 185" y="-40"/>
+            <bremsefeste x="342" y="-62"/>
+            <!-- Diverse hull -->
+            <rectangle h="25" w="25" r="10" x="-280" y="-25"/>
+            <rectangle h="88" w="75" r="25" x="291" y="-75"/>
+            <rectangle h="40" w="56" r="15" x="102" y="20"/>
+            <rectangle h="30" w="30" r="15" x="250" y="25"/>
+            <rectangle h="30" w="80" r="15" x="320" y="25"/>
+            <!-- Profilutsparinger -->
+            <rectangle h="40" w="136" r="25" x="-496" y="75"/>
+            <rectangle h="146" w="104" r="50" x="-496" y="-75"/>
+            <rectangle h="40" w="600" r="12.5" x="374" y="75"/>
+            <rectangle h="146" w="200" r="50" x="480" y="-90" />
+            <rectangle h="146" w="200" r="50" x="490" y="-75" rotate="-10"/>
+            <!-- Plattformutsparinger -->
+            <rectangle h="3.25" w="58" x="-470" y="55"/>
+            <rectangle h="3.25" w="230" x="412" y="55"/>
+        </solid>
+        <shape id="akselhorn">
+            <rectangle h="72" w="60" r="2" Y="-4"/>
+        </shape>
+       <shape id="sylinder">
+            <rectangle h="34" w="60" r="10" y="6"/>
+        </shape>
+    </sheet>
+</design>
