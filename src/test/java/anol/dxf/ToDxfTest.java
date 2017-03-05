@@ -1,5 +1,7 @@
 package anol.dxf;
 
+import org.junit.Test;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -8,7 +10,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 class ToDxfTest {
-    @org.junit.jupiter.api.Test
+
+    @Test
     void writeDXFPolygon() {
         // Using nio.file
         Path path = Paths.get("output.dxf");
