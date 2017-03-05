@@ -103,12 +103,14 @@ public class ToAwt {
         double width = getAttribute(element, tag.getTagName(WIDTH));
         double radius = getAttribute(element, tag.getTagName(RADIUS));
         double rotate = getAttribute(element, tag.getTagName(ROTATE));
+        String funk = element.getAttribute(tag.getTagName(FUNCTION));
         String tagName = element.getTagName();
         switch (tag.getTagValue(tagName)) {
             case PART:
                 addPart(element, x, y, dx, dy);
                 break;
             case SOLID:
+                concretePart.specialFunction(funk);
                 concretePart.addRect(xdx, ydy, width, height, radius, rotate);
                 element2children(element, xdx, ydy);
                 break;
@@ -116,9 +118,11 @@ public class ToAwt {
                 element2children(element, xdx, ydy);
                 break;
             case RECTANGLE:
+                concretePart.specialFunction(funk);
                 concretePart.subtractRect(xdx, ydy, width, height, radius, rotate);
                 break;
             case CIRCLE:
+                concretePart.specialFunction(funk);
                 concretePart.subtractCircle(xdx, ydy, radius);
                 break;
             case USER_DEFINED:
@@ -133,7 +137,8 @@ public class ToAwt {
     private void addPart(Element element, double x, double y, double dx, double dy) throws Exception {
         String name = element.getAttribute(tag.getTagName(NAME));
         String funk = element.getAttribute(tag.getTagName(FUNCTION));
-        concretePart = new ConcretePart(name, sheet, funk);
+        concretePart = new ConcretePart(name, sheet );
+        concretePart.specialFunction(funk);
         partList.add(concretePart);
         concretePart.setOrigo(dx, dy);
         solid2awt(element, x, y);

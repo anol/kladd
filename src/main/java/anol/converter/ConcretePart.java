@@ -41,15 +41,18 @@ public class ConcretePart {
     private boolean swap_xy = false;
     private final int sheet;
 
-    public ConcretePart(String name, int sheet, String funks) {
+    public ConcretePart(String name, int sheet) {
         this.name = name;
         this.sheet = sheet;
         this.mainArea = new Area();
         this.pointList = new MajorPoints();
         this.helpLines = new MajorPoints();
-        List<String> list = getListAttribute(funks);
-        for (String funk : list) {
-            switch (funk) {
+    }
+
+    public void specialFunction(String special){
+        List<String> list = getListAttribute(special);
+        for (String func : list) {
+            switch (func) {
                 case "":
                     break;
                 case "swap_xy":
@@ -62,7 +65,7 @@ public class ConcretePart {
                     flip_x = true;
                     break;
                 default:
-                    System.out.println("Ukjent funksjon: \"" + funk + "\"");
+                    System.out.println("Ukjent funksjon: \"" + func + "\"");
                     break;
             }
         }
@@ -140,8 +143,16 @@ public class ConcretePart {
             width = height;
             height = temp;
         }
-        if (flip_y) y = -y;
-        if (flip_x) x = -x;
+        if (flip_y) {
+            y = -y;
+            rotate = -rotate;
+        }
+        if (flip_x) {
+            x = -x;
+            rotate = -rotate;
+        }
+        double anchorx = x;
+        double anchory = y;
         addMajorPoint(x, y);
         x -= width / 2;
         y -= height / 2;
@@ -149,7 +160,14 @@ public class ConcretePart {
         addMajorPoint(x, y + height);
         addMajorPoint(x + width, y + height);
         addMajorPoint(x + width, y);
-        mainArea.add(new Area(new RoundRectangle2D.Double(x, y, width, height, radius, radius)));
+        Area rekt = new Area(new RoundRectangle2D.Double(x, y, width, height, radius, radius));
+        if ((-1.0 > rotate) || (1.0 < rotate)) {
+            double theta = Math.toRadians(rotate);
+            AffineTransform t = new AffineTransform();
+            t.rotate(theta, anchorx, anchory);
+            rekt.transform(t);
+        }
+        mainArea.add(rekt);
     }
 
     public void setOrigo(double xOffset, double yOffset) {
