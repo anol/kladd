@@ -21,9 +21,9 @@
                 <tapp/>
             </solid>
         </part>
-        <part name="Tverrplate B" x="450" y="-350">
+        <part name="Tverrplate B" x="450" y="-300">
             <solid w="158" h="148" y="-1">
-                <rectangle w="100" h="80" r="10"/>
+                <rectangle w="120" h="100" r="10"/>
             </solid>
             <solid>
                 <tapp/>
@@ -31,21 +31,21 @@
         </part>
         <part name="Tverrplate C" x="725" y="-350">
             <solid w="158" h="148" y="-1">
-                <rectangle w="100" h="80" r="10"/>
+                <rectangle w="120" h="100" r="10"/>
             </solid>
             <solid>
                 <tapp/>
             </solid>
         </part>
-        <part name="Tverrplate D" x="1000" y="-350">
+        <part name="Tverrplate D" x="1000" y="-300">
             <solid w="158" h="150"/>
             <solid>
                 <tapp/>
             </solid>
         </part>
-        <part name="Tverrplate E" x="1000" y="-500">
+        <part name="Tverrplate E" x="1000" y="-475">
             <solid w="158" h="128" y="-11">
-                <rectangle w="80" h="60" r="10"/>
+                <rectangle w="100" h="80" y="-35" r="10"/>
             </solid>
             <solid>
                 <tapp/>
@@ -102,13 +102,19 @@
         <shape id="tapp">
             <solid h="20" w="7" r="2" x="79 -79" y="-10 -50"/>
             <solid>
-                <knekt x="100"/>
-                <knekt x="-100" f="flip_x"/>
+                <knekt_h x="100"/>
+                <knekt_v x="-100"/>
+            </solid>
+            <solid h="7" w="20" r="2" x="120 -120" y="36"/>
+        </shape>
+        <shape id="knekt_h">
+            <solid h="34" w="70" r="5" y="38" rotate="-20">
+                <rectangle h="40" w="78" x="18" y="18"/>
             </solid>
         </shape>
-        <shape id="knekt">
-            <solid h="34" w="60" r="5" y="35" rotate="-30">
-                <rectangle h="40" w="80" y="20"/>
+        <shape id="knekt_v">
+            <solid h="34" w="70" r="5" y="38" rotate="20">
+                <rectangle h="40" w="78" x="-18" y="18"/>
             </solid>
         </shape>
         <shape id="tapphull">
