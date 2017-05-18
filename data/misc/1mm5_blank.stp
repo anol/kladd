@@ -1,7 +1,7 @@
 ISO-10303-21;
 HEADER;
-FILE_DESCRIPTION(('kladd'), '2;1');
-FILE_NAME('data/misc/1mm5_blank.stp', '2017-01-31T12:33:02.324Z', ('Anders Emil Olsen'), ('NMDF'), 'KLADD-V1', 'data/misc/1mm5_blank.xml', 'aeolsen@gmail.com');
+FILE_DESCRIPTION((''), '2;1');
+FILE_NAME('data/misc/1mm5_blank.stp', '2017-05-18T18:51:37.603Z', ('Anders Emil Olsen'), ('NMDF'), 'KLADD-V1', 'data/misc/1mm5_blank.xml', 'aeolsen@gmail.com');
 FILE_SCHEMA(('EXPLICIT_DRAUGHTING'));
 ENDSEC;
 END-ISO-10303-21;
