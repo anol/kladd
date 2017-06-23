@@ -50,23 +50,29 @@ public class ToDxf {
         printint(39, 3);
         // 70 = Polyline flag (bit-coded); default is 0:
         // 1 = This is a closed polyline (or a polygon mesh closed in the M direction).
+        // 2 = Curve-fit vertices have been added
+        // 4 = Spline-fit vertices have been added
         printint(70, 1);
+        print(10, 0.0);
+        print(20, 0.0);
+        print(30, 0.0);
     }
 
     public void moveTo(double dblX, double dblY) throws IOException {
+        System.out.println("moveTo: " + dblX + ", " + dblY);
         double dblZ = 0.0;
+        print(0, "VERTEX");
+        printint(8, layer);
         print(10, dblX);
         print(20, dblY);
         print(30, dblZ);
     }
 
     public void lineTo(double dblX, double dblY) throws IOException {
+        System.out.println("lineTo: " + dblX + ", " + dblY);
         double dblZ = 0.0;
         print(0, "VERTEX");
         printint(8, layer);
-        // 75 = Curves and smooth surface type (optional; default = 0); integer codes, not bit-coded:
-        // 0 = No smooth surface fitted
-        printint(75, 0);
         print(10, dblX);
         print(20, dblY);
         print(30, dblZ);
@@ -76,9 +82,6 @@ public class ToDxf {
         double dblZ = 0.0;
         print(0, "VERTEX");
         printint(8, layer);
-        // 75 = Curves and smooth surface type (optional; default = 0); integer codes, not bit-coded:
-        // 0 = No smooth surface fitted
-        printint(75, 0);
         // 42 = Bulge (optional; default is 0).
         // The bulge is the tangent of one fourth the included angle for an arc segment,
         // made negative if the arc goes clockwise from the start point to the endpoint.
@@ -90,12 +93,11 @@ public class ToDxf {
     }
 
     public void quadTo(double dblX, double dblY, double dblX2, double dblY2) throws IOException {
+        System.out.println("quadTo: " + dblX + ", " + dblY + ", " + dblX2 + ", " + dblY2);
         double dblZ = 0.0;
         print(0, "VERTEX");
         printint(8, layer);
-        // 75 = Curves and smooth surface type (optional; default = 0); integer codes, not bit-coded:
-        // 5 = Quadratic B-spline surface
-        printint(75, 5);
+        printint(70, 1);
         print(10, dblX);
         print(20, dblY);
         print(30, dblZ);
@@ -107,17 +109,27 @@ public class ToDxf {
     }
 
     public void cubicTo(double dblX, double dblY, double dblX2, double dblY2, double dblX3, double dblY3) throws IOException {
+        // 70 = Vertex flags(optional; default = 0)
+        //   1 = Extra vertex created by curve-fitting
+        //   2 = Curve-fit tangent defined for this vertex.
+        //   A curve-fit tangent direction of 0 may be omitted from the DXF output, but is significant if this bit is set
+        //   4 = Unused (never set in DXF files)
+        //   8 = Spline vertex created by spline-fitting
+        //  16 = Spline frame control point
+        //  32 = 3D Polyline vertex
+        //  64 = 3D polygon mesh vertex
+        // 128 = Polyface mesh vertex
+        System.out.println("cubicTo: " + dblX + ", " + dblY + ", " + dblX2 + ", " + dblY2 + ", " + dblX3 + ", " + dblY3);
         double dblZ = 0.0;
         print(0, "VERTEX");
         printint(8, layer);
-        // 75 = Curves and smooth surface type (optional; default = 0); integer codes, not bit-coded:
-        // 6 = Cubic B-spline surface
-        printint(75, 6);
+        printint(70, 0);
         print(10, dblX);
         print(20, dblY);
         print(30, dblZ);
         print(0, "VERTEX");
         printint(8, layer);
+        printint(70, 0);
         print(10, dblX2);
         print(20, dblY2);
         print(30, dblZ);

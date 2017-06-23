@@ -43,6 +43,7 @@ public class DxfConverter extends Converter {
 
     private void convertToDxf(ConcretePartList parts) throws ParserConfigurationException, IOException {
         for (ConcretePart part : parts) {
+            System.out.println("\n\nPart: " + part.getName());
             String filename = this.outputDirectoryName + "/" + part.getName() + ".dxf";
             File outputFile = new File(filename);
             if (!outputFile.exists()) {
