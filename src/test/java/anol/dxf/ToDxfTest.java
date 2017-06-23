@@ -14,12 +14,13 @@ import java.nio.file.Paths;
 class ToDxfTest {
 
     @Test
-    public void writeDXFPolygonTest() {
+    public void writeDXFPolygonTest() throws Exception {
         // Using nio.file
+        String version = "AC1009";
         Path path = Paths.get("target/output.dxf");
         Charset charset = Charset.forName("US-ASCII");
         try (BufferedWriter writer = Files.newBufferedWriter(path, charset)) {
-            ToDxf toDxf = new ToDxf(writer);
+            ToDxf toDxf = new ToDxf(writer, version);
             toDxf.prolog();
             //
             Integer iSides = 4;

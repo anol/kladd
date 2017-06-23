@@ -2,6 +2,7 @@ package anol.dxf;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.rmi.server.ExportException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 
@@ -12,23 +13,30 @@ public class ToDxf {
 
     private int layer = 0;
     private String name = "P";
-
+    private String version;
     private BufferedWriter writer;
 
-    public ToDxf(BufferedWriter writer) {
+    public ToDxf(BufferedWriter writer, String version) {
         this.writer = writer;
+        this.version = version;
     }
 
-    public void prolog() throws IOException {
-        // Header Section
-        print(0, "SECTION");
-        print(2, "HEADER");
-        print(9, "$ACADVER");
-        print(1, "AC1009");
-        print(0, "ENDSEC");
-        // Entities Section
-        print(0, "SECTION");
-        print(2, "ENTITIES");
+    public void prolog() throws Exception {
+        switch (version) {
+            default:
+                throw new Exception("Unsupported version: '" + version + "'");
+            case "AC1009":
+                // Header Section
+                print(0, "SECTION");
+                print(2, "HEADER");
+                print(9, "$ACADVER");
+                print(1, "AC1009");
+                print(0, "ENDSEC");
+                // Entities Section
+                print(0, "SECTION");
+                print(2, "ENTITIES");
+                break;
+        }
     }
 
     public void epilog() throws IOException {
@@ -140,11 +148,60 @@ public class ToDxf {
         print(30, dblZ);
     }
 
+    public void splineTo(double dblX, double dblY, double dblX2, double dblY2, double dblX3, double dblY3, double dblX4, double dblY4) throws IOException {
+        System.out.println("splineTo: " + dblX + ", " + dblY + ", " + dblX2 + ", " + dblY2 + ", " + dblX3 + ", " + dblY3 + ", " + dblX4 + ", " + dblY4);
+        double dblZ = 0.0;
+        print(0, "SPLINE");
+        print(5, "38");
+        printint(8, layer);
+//        print(210, 0.0);
+//        print(220, 0.0);
+//        print(230, 1.0);
+        // 70 = Spline flag (bit coded):
+        // 1 = Closed spline
+        // 2 = Periodic spline
+        // 4 = Rational spline
+        // 8 = Planar
+        // 16 = Linear (planar bit is also set)
+        printint(70, 8);
+        printint(71, 3); // 71 = Degree of the spline curve
+        printint(72, 8); // 72 = Number of knots
+        printint(73, 4); // 73 = Number of control points
+        printint(74, 0); // 74 = Number of fit points
+        print(42, 0.000000001); // 42 = Knot tolerance (default = 0.0000001)
+        print(43, 0.001); // 43 = Control-point tolerance (default = 0.0000001)
+        print(40, 0.0); // 40 = Knot value (one entry per knot)
+        print(40, 0.0);
+        print(40, 0.0);
+        print(40, 0.0);
+        print(40, 1.0); // 40 = Knot value (one entry per knot)
+        print(40, 1.0);
+        print(40, 1.0);
+        print(40, 1.0);
+        print(10, dblX);
+        print(20, dblY);
+        print(30, dblZ);
+        print(10, dblX2);
+        print(20, dblY2);
+        print(30, dblZ);
+        print(10, dblX3);
+        print(20, dblY3);
+        print(30, dblZ);
+        print(10, dblX4);
+        print(20, dblY4);
+        print(30, dblZ);
+    }
+
     public void close() throws IOException {
         // End of Sequence
-        print(0, "SEQEND");
-        print(5, "End_" + name);
-        printint(8, layer);
+        switch (version) {
+            default:
+                print(0, "SEQEND");
+                break;
+            case "AC1009":
+                print(0, "SEQEND");
+                break;
+        }
     }
 
     private void print(int code, String data) throws IOException {

@@ -41,7 +41,7 @@ public class DxfConverter extends Converter {
         convertToDxf(parts);
     }
 
-    private void convertToDxf(ConcretePartList parts) throws ParserConfigurationException, IOException {
+    private void convertToDxf(ConcretePartList parts) throws Exception {
         for (ConcretePart part : parts) {
             System.out.println("\n\nPart: " + part.getName());
             String filename = this.outputDirectoryName + "/" + part.getName() + ".dxf";
@@ -53,12 +53,13 @@ public class DxfConverter extends Converter {
         }
     }
 
-    public void writeDxf(ConcretePart part, String filename) {
+    public void writeDxf(ConcretePart part, String filename) throws Exception {
         // Using nio.file
+        String version = "AC1009";
         Path path = Paths.get(filename);
         Charset charset = Charset.forName("US-ASCII");
         try (BufferedWriter writer = Files.newBufferedWriter(path, charset)) {
-            ToDxf toDxf = new ToDxf(writer);
+            ToDxf toDxf = new ToDxf(writer, version);
             toDxf.prolog();
             writeShape(toDxf, part);
             toDxf.epilog();
@@ -69,25 +70,38 @@ public class DxfConverter extends Converter {
 
     private void writeShape(ToDxf toDxf, ConcretePart part) throws IOException {
         Element polygon = null;
+        double oldX = 0.0;
+        double oldY = 0.0;
         for (PathIterator pi = part.getPathIterator(); !pi.isDone(); pi.next()) {
             double[] coords = new double[6];
             int type = pi.currentSegment(coords);
             switch (type) {
                 case SEG_MOVETO: // 1 point
-                    toDxf.open("P",0);
+                    toDxf.open("P", 0);
                     toDxf.moveTo(coords[0], coords[1]);
+                    oldX = coords[0];
+                    oldY = coords[1];
                     break;
                 case SEG_LINETO: // 1 point
                     toDxf.lineTo(coords[0], coords[1]);
+                    oldX = coords[0];
+                    oldY = coords[1];
                     break;
                 case SEG_QUADTO: // 2 point
                     toDxf.quadTo(coords[0], coords[1], coords[2], coords[3]);
+                    oldX = coords[2];
+                    oldY = coords[3];
                     break;
                 case SEG_CUBICTO: // 3 points
-                    toDxf.cubicTo(coords[0], coords[1], coords[2], coords[3], coords[4], coords[5]);
+                    //toDxf.cubicTo(coords[0], coords[1], coords[2], coords[3], coords[4], coords[5]);
+                    toDxf.splineTo(oldX, oldY, coords[0], coords[1], coords[2], coords[3], coords[4], coords[5]);
+                    oldX = coords[4];
+                    oldY = coords[5];
                     break;
                 case SEG_CLOSE: // 0 points
                     toDxf.close();
+                    oldX = 0.0;
+                    oldY = 0.0;
                     break;
                 default:
                     System.out.print("?");
