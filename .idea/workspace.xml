@@ -11,10 +11,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="438c4250-c21d-427e-8a63-5fa40ea2ce1c" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/type_23/type_23.svg/Bufferplanke Bak.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/type_23/type_23.svg/Bufferplanke Front.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/type_23/type_23.svg/Plattform.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/type_23/type_23.svg/Tanktak.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/type_23/type_23.svg/Tverrplate A.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/type_23/type_23.svg/Tverrplate B.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/type_23/type_23.svg/Tverrplate C.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/type_23/type_23.svg/Tverrplate D.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/type_23/type_23.svg/Tverrplate E.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/type_23/type_23.svg/Vangeplate H.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/type_23/type_23.svg/Vangeplate V.svg" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/misc/3mm_blank.pdf" afterPath="$PROJECT_DIR$/data/misc/3mm_blank.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/type_23/type_23_sveis_3mm.pdf" afterPath="$PROJECT_DIR$/data/type_23/type_23_sveis_3mm.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/type_23/type_23_vange_uhull.pdf" afterPath="$PROJECT_DIR$/data/type_23/type_23_vange_uhull.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/anol/Processor.java" afterPath="$PROJECT_DIR$/src/main/java/anol/Processor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/anol/dxf/ToDxf.java" afterPath="$PROJECT_DIR$/src/main/java/anol/dxf/ToDxf.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/anol/dxf/ToDxfTest.java" afterPath="$PROJECT_DIR$/src/test/java/anol/dxf/ToDxfTest.java" />
     </list>
     <ignored path="kladd.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,8 +77,8 @@
       <file leaf-file-name="Processor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/anol/Processor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="597">
-              <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+            <state relative-caret-position="427">
+              <caret line="85" column="0" lean-forward="true" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -377,28 +388,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="type_23" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kladd" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kladd" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="type_23" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="type_23_sveis_3mm.dxf" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -743,46 +732,6 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="false" name="3mm" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value=".*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="anol.Main" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="data/misc/3mm_blank.xml data/misc/3mm_blank.pdf noanno norsk" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="kladd" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="Type 23" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value=".*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="anol.Main" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="data/type_23/type_23.xml data/type_23/type_23.pdf" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="kladd" />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="false" name="Type 23 Vange uHull" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -823,56 +772,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="Type 23 SVG" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value=".*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="anol.Main" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="data/type_23/type_23.xml data/type_23/type_23.svg" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="kladd" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="1.5mm" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="anol.Main" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="data/misc/1mm5_blank.xml data/misc/1mm5_blank.pdf noanno norsk" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="kladd" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="STEP" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="anol.Main" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="data/misc/1mm5_blank.xml data/misc/1mm5_blank.stp" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="kladd" />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="false" name="Type 23 (sveiset) (DXF)" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -893,17 +792,12 @@
       <envs />
       <method />
     </configuration>
-    <list size="10">
-      <item index="0" class="java.lang.String" itemvalue="Application.3mm" />
-      <item index="1" class="java.lang.String" itemvalue="Application.Type 23" />
-      <item index="2" class="java.lang.String" itemvalue="Application.Type 23 Vange uHull" />
-      <item index="3" class="java.lang.String" itemvalue="Application.Type 23 (sveiset)" />
-      <item index="4" class="java.lang.String" itemvalue="Application.Type 23 SVG" />
-      <item index="5" class="java.lang.String" itemvalue="Application.1.5mm" />
-      <item index="6" class="java.lang.String" itemvalue="Application.STEP" />
-      <item index="7" class="java.lang.String" itemvalue="Application.Type 23 (sveiset) (DXF)" />
-      <item index="8" class="java.lang.String" itemvalue="JUnit.All in kladd" />
-      <item index="9" class="java.lang.String" itemvalue="JUnit.ToDxfTest.writeDXFPolygonTest" />
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Application.Type 23 Vange uHull" />
+      <item index="1" class="java.lang.String" itemvalue="Application.Type 23 (sveiset)" />
+      <item index="2" class="java.lang.String" itemvalue="Application.Type 23 (sveiset) (DXF)" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.All in kladd" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ToDxfTest.writeDXFPolygonTest" />
     </list>
     <recent_temporary>
       <list size="2">
@@ -990,7 +884,14 @@
       <option name="project" value="LOCAL" />
       <updated>1498215671490</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="type_23... uten kurver">
+      <created>1498217272563</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1498217272563</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1027,7 +928,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1039,12 +939,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27818757" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26760563" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26760563" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2217484" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2217484" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3347779" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1079,7 +979,8 @@
     <MESSAGE value="Tapper på knektene." />
     <MESSAGE value="Holdt på med DXF-genereringstesten." />
     <MESSAGE value="Bygger om toDxf etc." />
-    <option name="LAST_COMMIT_MESSAGE" value="Bygger om toDxf etc." />
+    <MESSAGE value="type_23... uten kurver" />
+    <option name="LAST_COMMIT_MESSAGE" value="type_23... uten kurver" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1347,8 +1248,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/anol/Processor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+        <state relative-caret-position="427">
+          <caret line="85" column="0" lean-forward="true" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
           <folding />
         </state>
       </provider>
