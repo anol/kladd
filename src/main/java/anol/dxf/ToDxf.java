@@ -99,6 +99,8 @@ public class ToDxf {
         print(10, dblX);
         print(20, dblY);
         print(30, dblZ);
+        print(0, "VERTEX");
+        printint(8, layer);
         print(10, dblX2);
         print(20, dblY2);
         print(30, dblZ);
@@ -114,9 +116,13 @@ public class ToDxf {
         print(10, dblX);
         print(20, dblY);
         print(30, dblZ);
+        print(0, "VERTEX");
+        printint(8, layer);
         print(10, dblX2);
         print(20, dblY2);
         print(30, dblZ);
+        print(0, "VERTEX");
+        printint(8, layer);
         print(10, dblX3);
         print(20, dblY3);
         print(30, dblZ);
