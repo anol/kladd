@@ -26,13 +26,17 @@ class ToDxfTest {
             Double dblX = 0.0;
             Double dblY = 0.0;
             Double dblLen = 100.0;
+            toDxf.open("A", 0);
             toDxf.polygon(iSides, dblX, dblY, dblLen);
+            toDxf.close();
             //
             iSides = 5;
             dblX = -40.0;
             dblY = 40.0;
             dblLen = 20.0;
+            toDxf.open("B", 0);
             toDxf.polygon(iSides, dblX, dblY, dblLen);
+            toDxf.close();
             //
             toDxf.epilog();
         } catch (IOException x) {

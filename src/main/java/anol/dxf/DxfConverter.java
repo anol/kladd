@@ -66,13 +66,14 @@ public class DxfConverter extends Converter {
         }
     }
 
-    private void writeShape(ToDxf toDxf, ConcretePart part) {
+    private void writeShape(ToDxf toDxf, ConcretePart part) throws IOException {
         Element polygon = null;
         for (PathIterator pi = part.getPathIterator(); !pi.isDone(); pi.next()) {
             double[] coords = new double[6];
             int type = pi.currentSegment(coords);
             switch (type) {
                 case SEG_MOVETO: // 1 point
+                    toDxf.open("P",0);
                     toDxf.moveTo(coords[0], coords[1]);
                     break;
                 case SEG_LINETO: // 1 point

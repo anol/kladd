@@ -10,6 +10,9 @@ import static java.lang.StrictMath.sin;
 
 public class ToDxf {
 
+    private int layer = 0;
+    private String name = "P";
+
     private BufferedWriter writer;
 
     public ToDxf(BufferedWriter writer) {
@@ -17,8 +20,6 @@ public class ToDxf {
     }
 
     public void prolog() throws IOException {
-        int layer = 0;
-        String name = "P";
         // Header Section
         print(0, "SECTION");
         print(2, "HEADER");
@@ -37,19 +38,59 @@ public class ToDxf {
         print(0, "EOF");
     }
 
-    public void moveTo(double coord, double coord1) {
+    public void open(String name, int layer) throws IOException {
+        this.name = name;
+        this.layer = layer;
+        // Polyline Entity
+        print(0, "POLYLINE");
+        print(5, name);
+        printint(8, layer);
+        printint(66, 1);
+        // 39 = Thickness (optional; default = 0)
+        printint(39, 3);
+        // 70 = Polyline flag (bit-coded); default is 0:
+        // 1 = This is a closed polyline (or a polygon mesh closed in the M direction).
+        printint(70, 1);
     }
 
-    public void lineTo(double coord, double coord1) {
+    public void moveTo(double dblX, double dblY) throws IOException {
+        double dblZ = 0.0;
+        print(10, dblX);
+        print(20, dblY);
+        print(30, dblZ);
     }
 
-    public void quadTo(double coord, double coord1, double coord2, double coord3) {
+    public void lineTo(double dblX, double dblY) throws IOException {
+        double dblZ = 0.0;
+        print(0, "VERTEX");
+        printint(8, layer);
+        // 75 = Curves and smooth surface type (optional; default = 0); integer codes, not bit-coded:
+        // 0 = No smooth surface fitted
+        printint(75, 0);
+        print(10, dblX);
+        print(20, dblY);
+        print(30, dblZ);
     }
 
-    public void cubicTo(double coord, double coord1, double coord2, double coord3, double coord4, double coord5) {
+    public void quadTo(double coord, double coord1, double coord2, double coord3) throws IOException {
+        double dblZ = 0.0;
+        // 75 = Curves and smooth surface type (optional; default = 0); integer codes, not bit-coded:
+        // 5 = Quadratic B-spline surface
+        printint(75, 5);
     }
 
-    public void close() {
+    public void cubicTo(double coord, double coord1, double coord2, double coord3, double coord4, double coord5) throws IOException {
+        double dblZ = 0.0;
+        // 75 = Curves and smooth surface type (optional; default = 0); integer codes, not bit-coded:
+        // 6 = Cubic B-spline surface
+        printint(75, 6);
+    }
+
+    public void close() throws IOException {
+        // End of Sequence
+        print(0, "SEQEND");
+        print(5, "End_" + name);
+        printint(8, layer);
     }
 
     private void print(int code, String data) throws IOException {
@@ -81,10 +122,6 @@ public class ToDxf {
     placed on the layer "Polygon."
     */
     public void polygon(Integer iSides, Double dblX, Double dblY, Double dblLen) throws IOException {
-        //
-        int layer = 0;
-        String name = "P";
-        //
         Double dblZ = 0.0;
         Double dblPI = atan(1) * 4;
         Double dblA1 = (2 * dblPI) / iSides;
@@ -94,21 +131,14 @@ public class ToDxf {
         Double radius = dblLen / 10;
         Double length = dblLen - 2 * radius;
         dblX -= radius;
-        // Polyline Entity
-        print(0, "POLYLINE");
-        print(5, name);
-        printint(8, layer);
-        printint(66, 1);
-        printint(39, 3); // Thickness (optional; default = 0)
-        printint(70, 1); // 70 = Polyline flag (bit-coded); default is 0:
-        // 1 = This is a closed polyline (or a polygon mesh closed in the M direction).
-        print(10, 0.0);
-        print(20, 0.0);
-        print(30, 0.0);
+        moveTo(0.0, 0.0);
         // Vertex Sub-entities
         for (int i = 0; i < iSides; i++) {
             print(0, "VERTEX");
-            //       print(5, name + i);
+            // 42 = Bulge (optional; default is 0).
+            // The bulge is the tangent of one fourth the included angle for an arc segment,
+            // made negative if the arc goes clockwise from the start point to the endpoint.
+            // A bulge of 0 indicates a straight segment, and a bulge of 1 is a semicircle.
             print(42, bulge);
             printint(8, layer);
             print(10, dblX);
@@ -117,20 +147,10 @@ public class ToDxf {
             dblX = radius * cos(dblA) + dblX;
             dblY = radius * sin(dblA) + dblY;
             dblA = dblA + dblA1;
-            print(0, "VERTEX");
-            //       print(5, name + i);
-            printint(8, layer);
-            print(10, dblX);
-            print(20, dblY);
-            print(30, dblZ);
+            lineTo(dblX,dblY);
             dblX = length * cos(dblA) + dblX;
             dblY = length * sin(dblA) + dblY;
             dblA = dblA + dblA1;
         }
-        // End of Sequence
-        print(0, "SEQEND");
-        print(5, "End_" + name);
-        printint(8, layer);
     }
-
 }
