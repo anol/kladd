@@ -16,7 +16,7 @@ class ToDxfTest {
     @Test
     public void writeDXFPolygonTest() {
         // Using nio.file
-        Path path = Paths.get("output.dxf");
+        Path path = Paths.get("target/output.dxf");
         Charset charset = Charset.forName("US-ASCII");
         try (BufferedWriter writer = Files.newBufferedWriter(path, charset)) {
             ToDxf toDxf = new ToDxf(writer);

@@ -1,5 +1,6 @@
 package anol;
 
+import anol.dxf.DxfConverter;
 import anol.pdf.PdfConverter;
 import anol.step.StepConverter;
 import anol.svg.SvgConverter;
@@ -53,7 +54,7 @@ public class Processor {
         if (!outputFile.exists()) {
             outputFile.createNewFile();
         }
-        String temp = "data/temp.ps";
+        String temp = "target/temp.ps";
         File tempFile = new File(temp);
         PdfConverter converter = new PdfConverter(inputDoc, annotations, colors, language);
         String outputString = converter.convertToPs(outputFile.getName());
@@ -90,7 +91,7 @@ public class Processor {
 
     // Export to DXF
     private void export2Dxf(Document inputDoc) throws Throwable {
-        new SvgConverter(inputDoc, outputFileName, annotations, colors, language).convert();
+        new DxfConverter(inputDoc, outputFileName, annotations, colors, language).convert();
     }
 
     private Document buildInputDocument() throws Throwable {

@@ -72,18 +72,54 @@ public class ToDxf {
         print(30, dblZ);
     }
 
-    public void quadTo(double coord, double coord1, double coord2, double coord3) throws IOException {
+    public void bulgeTo(double bulge, double dblX, double dblY) throws IOException {
         double dblZ = 0.0;
+        print(0, "VERTEX");
+        printint(8, layer);
+        // 75 = Curves and smooth surface type (optional; default = 0); integer codes, not bit-coded:
+        // 0 = No smooth surface fitted
+        printint(75, 0);
+        // 42 = Bulge (optional; default is 0).
+        // The bulge is the tangent of one fourth the included angle for an arc segment,
+        // made negative if the arc goes clockwise from the start point to the endpoint.
+        // A bulge of 0 indicates a straight segment, and a bulge of 1 is a semicircle.
+        print(42, bulge);
+        print(10, dblX);
+        print(20, dblY);
+        print(30, dblZ);
+    }
+
+    public void quadTo(double dblX, double dblY, double dblX2, double dblY2) throws IOException {
+        double dblZ = 0.0;
+        print(0, "VERTEX");
+        printint(8, layer);
         // 75 = Curves and smooth surface type (optional; default = 0); integer codes, not bit-coded:
         // 5 = Quadratic B-spline surface
         printint(75, 5);
+        print(10, dblX);
+        print(20, dblY);
+        print(30, dblZ);
+        print(10, dblX2);
+        print(20, dblY2);
+        print(30, dblZ);
     }
 
-    public void cubicTo(double coord, double coord1, double coord2, double coord3, double coord4, double coord5) throws IOException {
+    public void cubicTo(double dblX, double dblY, double dblX2, double dblY2, double dblX3, double dblY3) throws IOException {
         double dblZ = 0.0;
+        print(0, "VERTEX");
+        printint(8, layer);
         // 75 = Curves and smooth surface type (optional; default = 0); integer codes, not bit-coded:
         // 6 = Cubic B-spline surface
         printint(75, 6);
+        print(10, dblX);
+        print(20, dblY);
+        print(30, dblZ);
+        print(10, dblX2);
+        print(20, dblY2);
+        print(30, dblZ);
+        print(10, dblX3);
+        print(20, dblY3);
+        print(30, dblZ);
     }
 
     public void close() throws IOException {
@@ -134,20 +170,11 @@ public class ToDxf {
         moveTo(0.0, 0.0);
         // Vertex Sub-entities
         for (int i = 0; i < iSides; i++) {
-            print(0, "VERTEX");
-            // 42 = Bulge (optional; default is 0).
-            // The bulge is the tangent of one fourth the included angle for an arc segment,
-            // made negative if the arc goes clockwise from the start point to the endpoint.
-            // A bulge of 0 indicates a straight segment, and a bulge of 1 is a semicircle.
-            print(42, bulge);
-            printint(8, layer);
-            print(10, dblX);
-            print(20, dblY);
-            print(30, dblZ);
+            bulgeTo(bulge, dblX, dblY);
             dblX = radius * cos(dblA) + dblX;
             dblY = radius * sin(dblA) + dblY;
             dblA = dblA + dblA1;
-            lineTo(dblX,dblY);
+            lineTo(dblX, dblY);
             dblX = length * cos(dblA) + dblX;
             dblY = length * sin(dblA) + dblY;
             dblA = dblA + dblA1;
