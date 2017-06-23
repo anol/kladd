@@ -93,8 +93,8 @@ public class DxfConverter extends Converter {
                     oldY = coords[3];
                     break;
                 case SEG_CUBICTO: // 3 points
-                    //toDxf.cubicTo(coords[0], coords[1], coords[2], coords[3], coords[4], coords[5]);
-                    toDxf.splineTo(oldX, oldY, coords[0], coords[1], coords[2], coords[3], coords[4], coords[5]);
+                    toDxf.cubicTo(coords[0], coords[1], coords[2], coords[3], coords[4], coords[5]);
+                    //toDxf.splineTo(oldX, oldY, coords[0], coords[1], coords[2], coords[3], coords[4], coords[5]);
                     oldX = coords[4];
                     oldY = coords[5];
                     break;
