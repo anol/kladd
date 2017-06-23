@@ -10,42 +10,62 @@ import static java.lang.StrictMath.sin;
 
 public class ToDxf {
 
-    private static void print(BufferedWriter writer, int code, String data) throws IOException {
-        writer.write(code + "\n" + data + "\n");
+    private BufferedWriter writer;
+
+    public ToDxf(BufferedWriter writer) {
+        this.writer = writer;
     }
 
-    private static void print(BufferedWriter writer, int code, int number) throws IOException {
-        writer.write(code + "\n" + number + "\n");
+    public void prolog() throws IOException {
+        int layer = 0;
+        String name = "P";
+        // Header Section
+        print(0, "SECTION");
+        print(2, "HEADER");
+        print(9, "$ACADVER");
+        print(1, "AC1009");
+        print(0, "ENDSEC");
+        // Entities Section
+        print(0, "SECTION");
+        print(2, "ENTITIES");
     }
 
-    private static void print(BufferedWriter writer, int code, double number) throws IOException {
+    public void epilog() throws IOException {
+        // End of Section
+        print(0, "ENDSEC");
+        // End of File
+        print(0, "EOF");
+    }
+
+    public void moveTo(double coord, double coord1) {
+    }
+
+    public void lineTo(double coord, double coord1) {
+    }
+
+    public void quadTo(double coord, double coord1, double coord2, double coord3) {
+    }
+
+    public void cubicTo(double coord, double coord1, double coord2, double coord3, double coord4, double coord5) {
+    }
+
+    public void close() {
+    }
+
+    private void print(int code, String data) throws IOException {
+        this.writer.write(code + "\n" + data + "\n");
+    }
+
+    private void printint(int code, int number) throws IOException {
+        this.writer.write(code + "\n" + number + "\n");
+    }
+
+    private void print(int code, double number) throws IOException {
         DecimalFormatSymbols symbols = new DecimalFormatSymbols();
         symbols.setDecimalSeparator('.');
         DecimalFormat format = new DecimalFormat("0.0", symbols);
         format.setMaximumFractionDigits(6);
-        writer.write(code + "\n" + format.format(number) + "\n");
-    }
-
-    public static void writeDXFProlog(BufferedWriter writer) throws IOException {
-        //
-        int layer = 0;
-        String name = "P";
-        // Header Section
-        print(writer, 0, "SECTION");
-        print(writer, 2, "HEADER");
-        print(writer, 9, "$ACADVER");
-        print(writer, 1, "AC1009");
-        print(writer, 0, "ENDSEC");
-        // Entities Section
-        print(writer, 0, "SECTION");
-        print(writer, 2, "ENTITIES");
-    }
-
-    public static void writeDXFEpilog(BufferedWriter writer) throws IOException {
-        // End of Section
-        print(writer, 0, "ENDSEC");
-        // End of File
-        print(writer, 0, "EOF");
+        this.writer.write(code + "\n" + format.format(number) + "\n");
     }
 
     // See: https://www.autodesk.com/techpubs/autocad/acad2000/dxf/polyline_dxf_06.htm
@@ -60,7 +80,7 @@ public class ToDxf {
     not include the Z coordinates (codes 30 and 31). The lines are
     placed on the layer "Polygon."
     */
-    public static void writeDXFPolygon(BufferedWriter writer, Integer iSides, Double dblX, Double dblY, Double dblLen) throws IOException {
+    public void polygon(Integer iSides, Double dblX, Double dblY, Double dblLen) throws IOException {
         //
         int layer = 0;
         String name = "P";
@@ -75,41 +95,42 @@ public class ToDxf {
         Double length = dblLen - 2 * radius;
         dblX -= radius;
         // Polyline Entity
-        print(writer, 0, "POLYLINE");
-        print(writer, 5, name);
-        print(writer, 8, layer);
-        print(writer, 66, 1);
-        print(writer, 39, 10); // Thickness (optional; default = 0)
-        print(writer, 70, 1); // 70 = Polyline flag (bit-coded); default is 0:
+        print(0, "POLYLINE");
+        print(5, name);
+        printint(8, layer);
+        printint(66, 1);
+        printint(39, 3); // Thickness (optional; default = 0)
+        printint(70, 1); // 70 = Polyline flag (bit-coded); default is 0:
         // 1 = This is a closed polyline (or a polygon mesh closed in the M direction).
-        print(writer, 10, 0.0);
-        print(writer, 20, 0.0);
-        print(writer, 30, 0.0);
+        print(10, 0.0);
+        print(20, 0.0);
+        print(30, 0.0);
         // Vertex Sub-entities
         for (int i = 0; i < iSides; i++) {
-            print(writer, 0, "VERTEX");
-            //       print(writer, 5, name + i);
-            print(writer, 42, bulge);
-            print(writer, 8, layer);
-            print(writer, 10, dblX);
-            print(writer, 20, dblY);
-            print(writer, 30, dblZ);
+            print(0, "VERTEX");
+            //       print(5, name + i);
+            print(42, bulge);
+            printint(8, layer);
+            print(10, dblX);
+            print(20, dblY);
+            print(30, dblZ);
             dblX = radius * cos(dblA) + dblX;
             dblY = radius * sin(dblA) + dblY;
             dblA = dblA + dblA1;
-            print(writer, 0, "VERTEX");
-            //       print(writer, 5, name + i);
-            print(writer, 8, layer);
-            print(writer, 10, dblX);
-            print(writer, 20, dblY);
-            print(writer, 30, dblZ);
+            print(0, "VERTEX");
+            //       print(5, name + i);
+            printint(8, layer);
+            print(10, dblX);
+            print(20, dblY);
+            print(30, dblZ);
             dblX = length * cos(dblA) + dblX;
             dblY = length * sin(dblA) + dblY;
             dblA = dblA + dblA1;
         }
         // End of Sequence
-        print(writer, 0, "SEQEND");
-        print(writer, 5, "End_" + name);
-        print(writer, 8, layer);
+        print(0, "SEQEND");
+        print(5, "End_" + name);
+        printint(8, layer);
     }
+
 }
