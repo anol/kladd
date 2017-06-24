@@ -55,11 +55,10 @@ public class DxfConverter extends Converter {
 
     public void writeDxf(ConcretePart part, String filename) throws Exception {
         // Using nio.file
-        String version = "AC1009";
         Path path = Paths.get(filename);
         Charset charset = Charset.forName("US-ASCII");
         try (BufferedWriter writer = Files.newBufferedWriter(path, charset)) {
-            ToDxf toDxf = new ToDxf(writer, version);
+            ToDxf toDxf = new ToDxf(writer);
             toDxf.prolog();
             writeShape(toDxf, part);
             toDxf.epilog();
