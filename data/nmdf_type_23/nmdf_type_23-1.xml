@@ -126,9 +126,6 @@
         <part name="Plattform" x="600" y="-425">
             <solid h="288" w="992">
                 <kanten/>
-            </solid>
-            <!-- Hoved rektangel -->
-            <solid h="288" w="992">
                 <!-- Hull for tanken -->
                 <rectangle h="164.25" w="713" r="1" x="-72" y="0"/>
                 <!-- Åpning for omstyringsarmen -->
@@ -140,8 +137,6 @@
                 <!-- Tapphull -->
                 <rectangle h="20.5" w="3.2" r="1" x="-426 -325 -72 75 370" y="-120 120"/>
             </solid>
-            <!-- Tapphull -->
-            <rectangle h="20.5" w="3.2" r="1" x="-426 -325 -72 75 370" y="-120 120"/>
         </part>
         <!-- Plattformklanten -->
         <shape id="kanten">
