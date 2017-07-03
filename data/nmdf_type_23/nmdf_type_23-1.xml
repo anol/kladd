@@ -3,12 +3,12 @@
     <circle id="skrue_m4" r="2.0"/>
     <sheet name="Sidevanger og avstivningsplater" name2="3mm staalplater, tapp og hull" t="3">
         <!-- Vangeplate -->
-        <part name="Vangeplate H" x="550" y="-125">
+        <part name="Vangeplate V" x="550" y="-125">
             <solid>
                 <vangeprofil/>
             </solid>
         </part>
-        <part name="Vangeplate V" x="550" y="-675" f="flip_y">
+        <part name="Vangeplate H" x="550" y="-675" f="flip_y">
             <solid>
                 <vangeprofil/>
             </solid>
@@ -85,7 +85,7 @@
             <rectangle h="6.25" w="58" x="-470" y="55"/>
             <rectangle h="6.25" w="230" x="412" y="55"/>
             <!-- Tapphullene -->
-            <tapphull x="-426 -325 -155 75 370"/>
+            <tapphull x="-426 -325 -72 75 370"/>
         </solid>
         <shape id="akselhorn">
             <rectangle h="72" w="60" r="2" Y="-4"/>
@@ -125,11 +125,30 @@
         <!-- Plattformen -->
         <part name="Plattform" x="600" y="-425">
             <solid h="288" w="992">
-                <rectangle h="164.25" w="713" r="1" x="-72" y="0"/>
-                <rectangle h="100" w="100" r="40" x="-120" y="170 -170"/>
-                <rectangle h="25" w="21" r="3" x="-375" y="105 -105"/>
-                <rectangle h="5.2" w="15" r="0.2" x="290 -435" y="79.5 -79.5"/>
+                <kanten/>
             </solid>
+            <!-- Hoved rektangel -->
+            <solid h="288" w="992">
+                <!-- Hull for tanken -->
+                <rectangle h="164.25" w="713" r="1" x="-72" y="0"/>
+                <!-- Åpning for omstyringsarmen -->
+                <rectangle h="100" w="100" r="40" x="-120" y="170 -170"/>
+                <!-- Hull for damprør til sylinderene -->
+                <rectangle h="25" w="21" r="3" x="-375" y="105 -105"/>
+                <!-- Slisse for bue på toppen av sidevangene -->
+                <rectangle h="3.2" w="15" r="0.2" x="290 -435" y="80.5 -80.5"/>
+                <!-- Tapphull -->
+                <rectangle h="20.5" w="3.2" r="1" x="-426 -325 -72 75 370" y="-120 120"/>
+            </solid>
+            <!-- Tapphull -->
+            <rectangle h="20.5" w="3.2" r="1" x="-426 -325 -72 75 370" y="-120 120"/>
+        </part>
+        <!-- Plattformklanten -->
+        <shape id="kanten">
+            <!-- Ekstra utspring -->
+            <solid h="50" w="213" r="10" x="325.5" y="168 -168"/>
+            <!-- Bakre utspring -->
+            <solid h="48" w="341" r="10" x="325.5" y="144 -144"/>
             <!-- Fremre utspring -->
             <solid h="200" w="340" r="100" x="60" y="68">
                 <rectangle h="120" w="350" y="-46"/>
@@ -137,11 +156,7 @@
             <solid h="200" w="340" r="100" x="60" y="-68">
                 <rectangle h="120" w="350" y="46"/>
             </solid>
-            <!-- Bakre utspring -->
-            <solid h="48" w="341" r="10" x="325.5" y="144 -144"/>
-            <!-- Ekstra utspring -->
-            <solid h="50" w="213" r="10" x="325.5" y="168 -168"/>
-        </part>
+        </shape>
         <!-- Tanktaket -->
         <part name="Tanktak" x="425" y="-700">
             <solid h="154" w="500">

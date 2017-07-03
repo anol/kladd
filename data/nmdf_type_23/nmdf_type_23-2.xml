@@ -3,12 +3,12 @@
     <circle id="skrue_m4" r="2.0"/>
     <sheet name="Sidevanger og bufferplanker" name2="5mm staalplater" t="5">
         <!-- Vangeplate -->
-        <part name="Vangeplate H" x="550" y="-150">
+        <part name="Vangeplate V" x="550" y="-150">
             <solid>
                 <vangeprofil/>
             </solid>
         </part>
-        <part name="Vangeplate V" x="550" y="-350" f="flip_y">
+        <part name="Vangeplate H" x="550" y="-350" f="flip_y">
             <solid>
                 <vangeprofil/>
             </solid>
