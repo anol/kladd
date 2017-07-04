@@ -128,8 +128,6 @@
                 <kanten/>
                 <!-- Hull for tanken -->
                 <rectangle h="164.25" w="713" r="1" x="-72" y="0"/>
-                <!-- Åpning for omstyringsarmen -->
-                <rectangle h="100" w="100" r="40" x="-120" y="170 -170"/>
                 <!-- Hull for damprør til sylinderene -->
                 <rectangle h="25" w="21" r="3" x="-375" y="105 -105"/>
                 <!-- Slisse for bue på toppen av sidevangene -->
@@ -144,6 +142,8 @@
             <solid h="50" w="213" r="10" x="325.5" y="168 -168"/>
             <!-- Bakre utspring -->
             <solid h="48" w="341" r="10" x="325.5" y="144 -144"/>
+            <!-- Åpning for omstyringsarmen -->
+            <rectangle h="100" w="100" r="40" x="-120" y="170 -170"/>
             <!-- Fremre utspring -->
             <solid h="200" w="340" r="100" x="60" y="68">
                 <rectangle h="120" w="350" y="-46"/>
