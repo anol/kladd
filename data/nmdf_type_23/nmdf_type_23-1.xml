@@ -1,91 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<design name="NMDF Type 23-1" size="a0">
+<design name="NMDF Type 23-1 (tapp og hull)" size="a0">
     <circle id="skrue_m4" r="2.0"/>
-    <sheet name="Sidevanger og avstivningsplater" name2="3mm staalplater, tapp og hull" t="3">
+    <sheet name="Sidevanger og plattformen" name2="3mm staalplater" t="3">
         <!-- Vangeplate -->
-        <part name="Vangeplate V" x="550" y="-125">
+        <part name="Vangeplate H" x="600" y="-110" f="flip_y">
             <solid>
                 <vangeprofil/>
             </solid>
         </part>
-        <part name="Vangeplate H" x="550" y="-675" f="flip_y">
+        <!-- Plattformen -->
+        <part name="Plattform" x="600" y="-385">
+            <solid>
+                <plattform/>
+            </solid>
+        </part>
+        <!-- Vangeplate -->
+        <part name="Vangeplate V" x="600" y="-660">
             <solid>
                 <vangeprofil/>
             </solid>
         </part>
-        <!-- Avstivningsplater -->
-        <part name="Tverrplate A" x="175" y="-350">
-            <solid w="158" h="150"/>
-            <solid>
-                <tapp/>
-            </solid>
-        </part>
-        <part name="Tverrplate B" x="450" y="-300">
-            <solid w="158" h="148" y="-1">
-                <rectangle w="120" h="100" r="10"/>
-            </solid>
-            <solid>
-                <tapp/>
-            </solid>
-        </part>
-        <part name="Tverrplate C" x="725" y="-350">
-            <solid w="158" h="148" y="-1">
-                <rectangle w="120" h="100" r="10"/>
-            </solid>
-            <solid>
-                <tapp/>
-            </solid>
-        </part>
-        <part name="Tverrplate D" x="1000" y="-300">
-            <solid w="158" h="150"/>
-            <solid>
-                <tapp/>
-            </solid>
-        </part>
-        <part name="Tverrplate E" x="1000" y="-475">
-            <solid w="158" h="128" y="-11">
-                <rectangle w="100" h="80" y="-35" r="10"/>
-            </solid>
-            <solid>
-                <tapp/>
-            </solid>
-        </part>
-        <!-- Bufferplanker -->
-        <part name="Bufferplanke Front" x="200" y="-500">
-            <solid h="58" w="284">
-                <circle r="5" x="110 -110" y="-11"/>
-                <rectangle h="12" w="30" r="1" y="-11"/>
-            </solid>
-        </part>
-        <part name="Bufferplanke Bak" x="600" y="-500">
-            <solid h="58" w="312">
-                <circle r="5" x="110 -110" y="-11"/>
-                <rectangle h="12" w="50" r="1" y="-11"/>
-            </solid>
-        </part>
-        <!-- Komponenter -->
-        <solid id="vangeprofil" h="150" w="992">
+        <!-- Vangeprofil -->
+        <solid id="vangeprofil" h="150" w="1022">
             <!-- Komponentplasseringer -->
-            <sylinder x="-375" y="-44"/>
-            <akselhorn x="-215 -15 185" y="-40"/>
+            <sylinder x="-385" y="-44"/>
+            <akselhorn x="-217 -17 183" y="-40"/>
             <bremsefeste x="342" y="-62"/>
             <!-- Diverse hull -->
             <rectangle h="25" w="25" r="10" x="-280" y="-25"/>
-            <rectangle h="88" w="75" r="25" x="291" y="-75"/>
-            <rectangle h="40" w="50" r="15" x="105" y="20"/>
+            <rectangle h="40" w="50" r="15" x="110" y="20"/>
             <rectangle h="30" w="30" r="15" x="250" y="25"/>
-            <rectangle h="30" w="80" r="15" x="320" y="25"/>
-            <!-- Profilutsparinger -->
-            <rectangle h="40" w="136" r="25" x="-496" y="75"/>
-            <rectangle h="146" w="104" r="50" x="-496" y="-75"/>
+            <rectangle h="88" w="75" r="25" x="290" y="-75"/>
+            <rectangle h="30" w="60" r="15" x="320" y="25"/>
+            <!-- Profilutsparinger, front -->
+            <rectangle h="40" w="136" r="25" x="-516" y="75"/>
+            <rectangle h="146" w="104" r="50" x="-516" y="-75"/>
+            <!-- Profilutsparinger, bak -->
             <rectangle h="40" w="594" r="12.5" x="374" y="75"/>
             <rectangle h="146" w="200" r="50" x="480" y="-90"/>
             <rectangle h="146" w="200" r="50" x="490" y="-75" rotate="-10"/>
             <!-- Plattformutsparinger -->
-            <rectangle h="6.25" w="58" x="-470" y="55"/>
+            <rectangle h="6.25" w="58" x="-490" y="55"/>
             <rectangle h="6.25" w="230" x="412" y="55"/>
             <!-- Tapphullene -->
-            <tapphull x="-426 -325 -72 75 370"/>
+            <tapphull x="-446 -325 -72 75 370"/>
         </solid>
         <shape id="akselhorn">
             <rectangle h="72" w="60" r="2" Y="-4"/>
@@ -96,8 +54,83 @@
             <skrue_m4 x="-6 6" y="-6 6"/>
         </shape>
         <shape id="sylinder">
-            <rectangle h="34" w="60" r="10" y="6"/>
+            <rectangle h="34" w="80" r="10" y="6"/>
         </shape>
+        <shape id="tapphull">
+            <rectangle h="34.5" w="3.2" r="1" y="35"/>
+            <rectangle h="20.5" w="3.2" r="1" y="-10 -50"/>
+        </shape>
+        <!-- Plattformen -->
+        <solid id="plattform" h="288" w="1022">
+            <kanten/>
+            <!-- Hull for tanken -->
+            <rectangle h="164" w="730" r="1" x="-82" y="0"/>
+            <!-- Hull for damprør til sylinderene -->
+            <rectangle h="25" w="21" r="3" x="-385" y="105 -105"/>
+            <!-- Slisse for bue på toppen av sidevangene -->
+            <rectangle h="3.2" w="15" r="0.5" x="290 -454" y="80.4 -80.4"/>
+            <!-- Tapphull -->
+            <rectangle h="20.5" w="3.2" r="1" x="-446 -325 -72 75 370" y="-120 120"/>
+        </solid>
+        <!-- Plattformkanten -->
+        <shape id="kanten">
+            <!-- Ekstra utspring -->
+            <solid h="50" w="213" r="10" x="340.5" y="168 -168"/>
+            <!-- Bakre utspring -->
+            <solid h="48" w="341" r="10" x="340.5" y="144 -144"/>
+            <!-- Åpning for omstyringsarmen -->
+            <rectangle h="100" w="100" r="40" x="-120" y="170 -170"/>
+            <!-- Fremre utspring -->
+            <solid h="200" w="340" r="100" x="60" y="68">
+                <rectangle h="120" w="350" y="-46"/>
+            </solid>
+            <solid h="200" w="340" r="100" x="60" y="-68">
+                <rectangle h="120" w="350" y="46"/>
+            </solid>
+        </shape>
+    </sheet>
+    <sheet name="Tanktaket og avstivningsplater" name2="3mm staalplater" t="3">
+        <!-- Avstivningsplater -->
+        <part name="Tverrplate A" x="160" y="-140">
+            <solid w="158" h="150"/>
+            <solid>
+                <tapp/>
+            </solid>
+        </part>
+        <part name="Tverrplate B" x="450" y="-140">
+            <solid w="158" h="147" y="-1.5">
+                <rectangle w="120" h="100" r="10"/>
+            </solid>
+            <solid h="7" w="20" r="2" x="40 -40" y="72"/>
+            <solid>
+                <tapp/>
+            </solid>
+        </part>
+        <part name="Tverrplate C" x="740" y="-140">
+            <solid w="158" h="147" y="-1.5">
+                <rectangle w="120" h="100" r="10"/>
+            </solid>
+            <solid h="7" w="20" r="2" x="40 -40" y="72"/>
+            <solid>
+                <tapp/>
+            </solid>
+        </part>
+        <part name="Tverrplate D" x="1020" y="-140">
+            <solid w="158" h="150"/>
+            <solid>
+                <tapp/>
+            </solid>
+        </part>
+        <part name="Tverrplate E" x="1020" y="-340">
+            <solid w="158" h="128" y="-11">
+                <rectangle w="100" h="80" y="-35" r="10"/>
+            </solid>
+            <solid h="7" w="20" r="2" x="40 -40" y="53"/>
+            <solid>
+                <tapp/>
+            </solid>
+        </part>
+        <!-- Felles knekter og tapper -->
         <shape id="tapp">
             <solid h="20" w="7" r="2" x="79 -79" y="-10 -50"/>
             <solid>
@@ -116,45 +149,22 @@
                 <rectangle h="40" w="78" x="-18" y="18"/>
             </solid>
         </shape>
-        <shape id="tapphull">
-            <rectangle h="34.5" w="3.2" r="1" y="35"/>
-            <rectangle h="20.5" w="3.2" r="1" y="-10 -50"/>
-        </shape>
-    </sheet>
-    <sheet name="Plattformen og tanktaket" name2="3mm staalplater, tapp og hull" t="3">
-        <!-- Plattformen -->
-        <part name="Plattform" x="600" y="-425">
-            <solid h="288" w="992">
-                <kanten/>
-                <!-- Hull for tanken -->
-                <rectangle h="164.25" w="713" r="1" x="-72" y="0"/>
-                <!-- Hull for damprør til sylinderene -->
-                <rectangle h="25" w="21" r="3" x="-375" y="105 -105"/>
-                <!-- Slisse for bue på toppen av sidevangene -->
-                <rectangle h="3.2" w="15" r="0.2" x="290 -435" y="80.5 -80.5"/>
-                <!-- Tapphull -->
-                <rectangle h="20.5" w="3.2" r="1" x="-426 -325 -72 75 370" y="-120 120"/>
+        <!-- Bufferplanker -->
+        <part name="Bufferplanke Front" x="200" y="-500">
+            <solid h="58" w="284">
+                <circle r="5" x="110 -110" y="-11"/>
+                <rectangle h="12" w="30" r="1" y="-11"/>
             </solid>
         </part>
-        <!-- Plattformklanten -->
-        <shape id="kanten">
-            <!-- Ekstra utspring -->
-            <solid h="50" w="213" r="10" x="325.5" y="168 -168"/>
-            <!-- Bakre utspring -->
-            <solid h="48" w="341" r="10" x="325.5" y="144 -144"/>
-            <!-- Åpning for omstyringsarmen -->
-            <rectangle h="100" w="100" r="40" x="-120" y="170 -170"/>
-            <!-- Fremre utspring -->
-            <solid h="200" w="340" r="100" x="60" y="68">
-                <rectangle h="120" w="350" y="-46"/>
+        <part name="Bufferplanke Bak" x="600" y="-500">
+            <solid h="58" w="312">
+                <circle r="5" x="110 -110" y="-11"/>
+                <rectangle h="12" w="50" r="1" y="-11"/>
             </solid>
-            <solid h="200" w="340" r="100" x="60" y="-68">
-                <rectangle h="120" w="350" y="46"/>
-            </solid>
-        </shape>
+        </part>
         <!-- Tanktaket -->
         <part name="Tanktak" x="425" y="-700">
-            <solid h="154" w="500">
+            <solid h="158" w="505">
                 <rectangle h="120" w="60" r="12.5" x="-200"/>
             </solid>
         </part>
