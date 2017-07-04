@@ -150,15 +150,14 @@
         </shape>
         <shape id="knekt_h">
             <solid h="34" w="70" r="5" y="38" rotate="-20">
-                <rectangle h="40" w="100" x="18" y="18"/>
+                <rectangle h="40" w="78" x="18" y="18"/>
             </solid>
         </shape>
         <shape id="knekt_v">
             <solid h="34" w="70" r="5" y="38" rotate="20">
-                <rectangle h="40" w="100" x="-18" y="18"/>
+                <rectangle h="40" w="78" x="-18" y="18"/>
             </solid>
-        </shape>
-        <!-- Bufferplanker -->
+        </shape>        <!-- Bufferplanker -->
         <part name="Bufferplanke Front" x="200" y="-500">
             <solid h="58" w="284">
                 <circle r="5" x="110 -110" y="-11"/>
