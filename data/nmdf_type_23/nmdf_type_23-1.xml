@@ -20,6 +20,13 @@
                 <vangeprofil/>
             </solid>
         </part>
+        <!-- Tanktaket -->
+        <part name="Tanktak" x="408" y="-385">
+            <solid h="158" w="505">
+                <rectangle h="120" w="60" r="12.5" x="-210"/>
+                <rectangle h="20.5" w="3.2" r="1" x="-133 120" y="-40 40"/>
+            </solid>
+        </part>
         <!-- Vangeprofil -->
         <solid id="vangeprofil" h="150" w="1022">
             <!-- Komponentplasseringer -->
@@ -43,7 +50,7 @@
             <rectangle h="6.25" w="58" x="-490" y="55"/>
             <rectangle h="6.25" w="230" x="412" y="55"/>
             <!-- Tapphullene -->
-            <tapphull x="-446 -325 -72 75 370"/>
+            <tapphull x="-446 -325 -72 62 370"/>
         </solid>
         <shape id="akselhorn">
             <rectangle h="72" w="60" r="2" Y="-4"/>
@@ -64,13 +71,14 @@
         <solid id="plattform" h="288" w="1022">
             <kanten/>
             <!-- Hull for tanken -->
-            <rectangle h="164" w="730" r="1" x="-82" y="0"/>
+            <rectangle h="164" w="732" r="1" x="-82" y="0"/>
             <!-- Hull for damprør til sylinderene -->
             <rectangle h="25" w="21" r="3" x="-385" y="105 -105"/>
             <!-- Slisse for bue på toppen av sidevangene -->
             <rectangle h="3.2" w="15" r="0.5" x="290 -454" y="80.4 -80.4"/>
             <!-- Tapphull -->
-            <rectangle h="20.5" w="3.2" r="1" x="-446 -325 -72 75 370" y="-120 120"/>
+            <rectangle h="20.5" w="3.2" r="1" x="-446 -325 -72 62 370" y="-120 120"/>
+            <rectangle h="20.5" w="3.2" r="1" x="370" y="-40 40"/>
         </solid>
         <!-- Plattformkanten -->
         <shape id="kanten">
@@ -125,10 +133,11 @@
             <solid w="158" h="128" y="-11">
                 <rectangle w="100" h="80" y="-35" r="10"/>
             </solid>
-            <solid h="7" w="20" r="2" x="40 -40" y="53"/>
             <solid>
                 <tapp/>
+                <rectangle w="158" h="20" y="46"/>
             </solid>
+            <solid h="7" w="20" r="2" x="40 -40" y="36"/>
         </part>
         <!-- Felles knekter og tapper -->
         <shape id="tapp">
@@ -141,12 +150,12 @@
         </shape>
         <shape id="knekt_h">
             <solid h="34" w="70" r="5" y="38" rotate="-20">
-                <rectangle h="40" w="78" x="18" y="18"/>
+                <rectangle h="40" w="100" x="18" y="18"/>
             </solid>
         </shape>
         <shape id="knekt_v">
             <solid h="34" w="70" r="5" y="38" rotate="20">
-                <rectangle h="40" w="78" x="-18" y="18"/>
+                <rectangle h="40" w="100" x="-18" y="18"/>
             </solid>
         </shape>
         <!-- Bufferplanker -->
@@ -160,12 +169,6 @@
             <solid h="58" w="312">
                 <circle r="5" x="110 -110" y="-11"/>
                 <rectangle h="12" w="50" r="1" y="-11"/>
-            </solid>
-        </part>
-        <!-- Tanktaket -->
-        <part name="Tanktak" x="425" y="-700">
-            <solid h="158" w="505">
-                <rectangle h="120" w="60" r="12.5" x="-200"/>
             </solid>
         </part>
     </sheet>
