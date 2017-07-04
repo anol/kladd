@@ -36,7 +36,7 @@ public class DxfEntitiesSection extends DxfSection {
         printIntVariable(8, layer);
         printIntVariable(66, 1);
         // 39 = Thickness (optional; default = 0)
-        printIntVariable(39, 3);
+        // printIntVariable(39, 3);
         // 70 = Polyline flag (bit-coded); default is 0:
         // 1 = This is a closed polyline (or a polygon mesh closed in the M direction).
         // 2 = Curve-fit vertices have been added
@@ -109,7 +109,7 @@ public class DxfEntitiesSection extends DxfSection {
     public void splineTo(double dblX, double dblY, double dblX2, double dblY2, double dblX3, double dblY3, double dblX4, double dblY4) throws IOException {
         System.out.println("splineTo: " + dblX + ", " + dblY + ", " + dblX2 + ", " + dblY2 + ", " + dblX3 + ", " + dblY3 + ", " + dblX4 + ", " + dblY4);
         printVariable(0, "SPLINE");
-        printVariable(5, "38");
+        printVariable(5, "39");
         printIntVariable(8, layer);
         printVariable(210, 0.0, 220, 0.0, 230, 1.0);
         // 70 = Spline flag (bit coded):
@@ -118,7 +118,7 @@ public class DxfEntitiesSection extends DxfSection {
         // 4 = Rational spline
         // 8 = Planar
         // 16 = Linear (planar bit is also set)
-        printIntVariable(70, 9);
+        printIntVariable(70, 8);
         printIntVariable(71, 3); // 71 = Degree of the spline curve
         printIntVariable(72, 8); // 72 = Number of knots
         printIntVariable(73, 4); // 73 = Number of control points
@@ -136,7 +136,7 @@ public class DxfEntitiesSection extends DxfSection {
         printVariable(10, dblX, 20, dblY, 30, 0.0);
         printVariable(10, dblX2, 20, dblY2, 30, 0.0);
         printVariable(10, dblX3, 20, dblY3, 30, 0.0);
-        printVariable(10, dblX4, 20, dblY, 30, 0.0);
+        printVariable(10, dblX4, 20, dblY4, 30, 0.0);
     }
 
     public void close() throws IOException {
