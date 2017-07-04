@@ -51,6 +51,8 @@
             <rectangle h="6.25" w="230" x="412" y="55"/>
             <!-- Tapphullene -->
             <tapphull x="-446 -325 -72 62 370"/>
+            <!-- Tapp -->
+            <solid h="7" w="20" r="2" x="470" y="52"/>
         </solid>
         <shape id="akselhorn">
             <rectangle h="72" w="60" r="2" Y="-4"/>
@@ -79,6 +81,7 @@
             <!-- Tapphull -->
             <rectangle h="20.5" w="3.2" r="1" x="-446 -325 -72 62 370" y="-120 120"/>
             <rectangle h="20.5" w="3.2" r="1" x="370" y="-40 40"/>
+            <rectangle h="3.2" w="20" r="1" x="470" y="80.4 -80.4"/>
         </solid>
         <!-- Plattformkanten -->
         <shape id="kanten">
