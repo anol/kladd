@@ -48,12 +48,8 @@ public class ToDxf {
         dxfEntitiesSection.quadTo(dblX, dblY, dblX2, dblY2);
     }
 
-    public void cubicTo(double dblX, double dblY, double dblX2, double dblY2, double dblX3, double dblY3) throws IOException {
-        dxfEntitiesSection.cubicTo(dblX, dblY, dblX2, dblY2, dblX3, dblY3);
-    }
-
-    public void splineTo(double dblX, double dblY, double dblX2, double dblY2, double dblX3, double dblY3, double dblX4, double dblY4) throws IOException {
-        dxfEntitiesSection.splineTo(dblX, dblY, dblX2, dblY2, dblX3, dblY3, dblX4, dblY4);
+    public void roundTo(double dblX, double dblY, double dblX2, double dblY2, double dblX3, double dblY3, double dblX4, double dblY4) throws IOException {
+        dxfEntitiesSection.roundTo(dblX, dblY, dblX2, dblY2, dblX3, dblY3, dblX4, dblY4);
     }
 
     public void close() throws IOException {

@@ -3,9 +3,13 @@ package anol.dxf;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import static java.lang.Math.abs;
+import static java.lang.Math.floorDiv;
+
 
 public class DxfEntitiesSection extends DxfSection {
 
+    final double epsilon = 0.001;
     private int layer = 0;
     private String name = "P";
 
@@ -81,62 +85,135 @@ public class DxfEntitiesSection extends DxfSection {
         printVariable(10, dblX2, 20, dblY2, 30, 0.0);
     }
 
-    public void cubicTo(double dblX, double dblY, double dblX2, double dblY2, double dblX3, double dblY3) throws IOException {
-        // 70 = Vertex flags(optional; default = 0)
-        //   1 = Extra vertex created by curve-fitting
-        //   2 = Curve-fit tangent defined for this vertex.
-        //   A curve-fit tangent direction of 0 may be omitted from the DXF output, but is significant if this bit is set
-        //   4 = Unused (never set in DXF files)
-        //   8 = Spline vertex created by spline-fitting
-        //  16 = Spline frame control point
-        //  32 = 3D Polyline vertex
-        //  64 = 3D polygon mesh vertex
-        // 128 = Polyface mesh vertex
-        System.out.println("cubicTo: " + dblX + ", " + dblY + ", " + dblX2 + ", " + dblY2 + ", " + dblX3 + ", " + dblY3);
-        printVariable(0, "VERTEX");
-        printIntVariable(8, layer);
-        printIntVariable(70, 0);
-        printVariable(10, dblX, 20, dblY, 30, 0.0);
-        printVariable(0, "VERTEX");
-        printIntVariable(8, layer);
-        printIntVariable(70, 0);
-        printVariable(10, dblX2, 20, dblY2, 30, 0.0);
-        printVariable(0, "VERTEX");
-        printIntVariable(8, layer);
-        printVariable(10, dblX3, 20, dblY3, 30, 0.0);
+    public void semicircleTo(double dblX, double dblY, double dblX2, double dblY2, double dblX3, double dblY3, double dblX4, double dblY4) throws IOException {
+        double dblDX = dblX - dblX4;
+        double dblDY = dblY4 - dblY;
+        if (0.1 > abs(dblDX)) {
+            System.out.print("  X--> ");
+            lineTo(dblX4, dblY4);
+        } else if (0.1 > abs(dblDY)) {
+            System.out.print("  Y--> ");
+            lineTo(dblX4, dblY4);
+        } else {
+            System.out.print("  2~~> ");
+            lineTo(dblX4, dblY4);
+        }
     }
 
-    public void splineTo(double dblX, double dblY, double dblX2, double dblY2, double dblX3, double dblY3, double dblX4, double dblY4) throws IOException {
-        System.out.println("splineTo: " + dblX + ", " + dblY + ", " + dblX2 + ", " + dblY2 + ", " + dblX3 + ", " + dblY3 + ", " + dblX4 + ", " + dblY4);
-        printVariable(0, "SPLINE");
-        printVariable(5, "39");
-        printIntVariable(8, layer);
-        printVariable(210, 0.0, 220, 0.0, 230, 1.0);
-        // 70 = Spline flag (bit coded):
-        // 1 = Closed spline
-        // 2 = Periodic spline
-        // 4 = Rational spline
-        // 8 = Planar
-        // 16 = Linear (planar bit is also set)
-        printIntVariable(70, 8);
-        printIntVariable(71, 3); // 71 = Degree of the spline curve
-        printIntVariable(72, 8); // 72 = Number of knots
-        printIntVariable(73, 4); // 73 = Number of control points
-        printIntVariable(74, 0); // 74 = Number of fit points
-        printVariable(42, 0.000000001); // 42 = Knot tolerance (default = 0.0000001)
-        printVariable(43, 0.001); // 43 = Control-point tolerance (default = 0.0000001)
-        printVariable(40, 0.0); // 40 = Knot value (one entry per knot)
-        printVariable(40, 0.0);
-        printVariable(40, 0.0);
-        printVariable(40, 0.0);
-        printVariable(40, 1.0); // 40 = Knot value (one entry per knot)
-        printVariable(40, 1.0);
-        printVariable(40, 1.0);
-        printVariable(40, 1.0);
-        printVariable(10, dblX, 20, dblY, 30, 0.0);
-        printVariable(10, dblX2, 20, dblY2, 30, 0.0);
-        printVariable(10, dblX3, 20, dblY3, 30, 0.0);
-        printVariable(10, dblX4, 20, dblY4, 30, 0.0);
+    public void arcTo(double dblX, double dblDX, double dblY, double dblDY) throws IOException {
+        int segments = new Double(abs(dblDX) / 2).intValue();
+        if (100 < segments) {
+            lineTo(dblX + (dblDX * 0.92), dblY + (dblDY * 0.38));
+            lineTo(dblX + (dblDX * 0.71), dblY + (dblDY * 0.71));
+            lineTo(dblX + (dblDX * 0.38), dblY + (dblDY * 0.92));
+        } else {
+            lineTo(dblX + (dblDX * 0.71), dblY + (dblDY * 0.71));
+        }
+    }
+
+    public void quartcircleTo(int octant, double dblX, double dblY, double dblX4, double dblY4) throws IOException {
+        switch (octant) {
+            case 1:
+                arcTo(dblX4, dblX - dblX4, dblY, dblY4 - dblY);
+                break;
+            case 2:
+                arcTo(dblX, dblX4 - dblX, dblY4, dblY - dblY4);
+                break;
+            case 3:
+                arcTo(dblX, dblX4 - dblX, dblY4, dblY - dblY4);
+                break;
+            case 4:
+                arcTo(dblX4, dblX - dblX4, dblY, dblY4 - dblY);
+                break;
+            case 5:
+                arcTo(dblX, dblX4 - dblX, dblY4, dblY - dblY4);
+                break;
+            case 6:
+                arcTo(dblX4, dblX - dblX4, dblY, dblY4 - dblY);
+                break;
+            case 7:
+                arcTo(dblX4, dblX - dblX4, dblY, dblY4 - dblY);
+                break;
+            case 8:
+                arcTo(dblX, dblX4 - dblX, dblY4, dblY - dblY4);
+                break;
+            default:
+                System.out.print("  1~~> ");
+                break;
+        }
+        lineTo(dblX4, dblY4);
+    }
+
+    private int getOctant(double dblX, double dblY, double dblX2, double dblY2, double dblX3, double dblY3, double dblX4, double dblY4) {
+        double dblDX = dblX - dblX4;
+        double dblDY = dblY4 - dblY;
+        int octant = 0;
+        boolean reverse = false;
+        if (1 < dblDX && 1 < dblDY) {
+            octant = 1;
+            if ((dblX == dblX2) && (dblY > dblY2)) {
+                reverse = false; // 0
+            } else if ((dblX == dblX2) && (dblY < dblY2)) {
+                reverse = false; // 64
+            } else if ((dblX < dblX2) && (dblY == dblY2)) {
+                reverse = false; // 0
+            } else if ((dblX > dblX2) && (dblY == dblY2)) {
+                reverse = true; // <<<< 2
+            }
+        } else if (-1 > dblDX && 1 < dblDY) {
+            octant = 2;
+            if ((dblX == dblX2) && (dblY > dblY2)) {
+                reverse = false; // 0
+            } else if ((dblX == dblX2) && (dblY < dblY2)) {
+                reverse = true; // <<<< 2
+            } else if ((dblX < dblX2) && (dblY == dblY2)) {
+                reverse = false; // 62
+            } else if ((dblX > dblX2) && (dblY == dblY2)) {
+                reverse = false; // 0
+            }
+        } else if (1 < dblDX && -1 > dblDY) {
+            octant = 3;
+            if ((dblX == dblX2) && (dblY > dblY2)) {
+                reverse = true; // <<<< 1
+            } else if ((dblX == dblX2) && (dblY < dblY2)) {
+                reverse = false; // 0
+            } else if ((dblX < dblX2) && (dblY == dblY2)) {
+                reverse = false; // 0
+            } else if ((dblX > dblX2) && (dblY == dblY2)) {
+                reverse = false; // 63
+            }
+        } else if (-1 > dblDX && -1 > dblDY) {
+            octant = 4;
+            if ((dblX == dblX2) && (dblY > dblY2)) {
+                reverse = false; // 62
+            } else if ((dblX == dblX2) && (dblY < dblY2)) {
+                reverse = false; // 0
+            } else if ((dblX < dblX2) && (dblY == dblY2)) {
+                reverse = true; // <<<< 2
+            } else if ((dblX > dblX2) && (dblY == dblY2)) {
+                reverse = false; // 0
+            }
+        }
+        if (0 < octant && reverse) {
+            System.out.println("vvvvvvvvvvv");
+            octant += 4;
+        }
+        return octant;
+    }
+
+    public void roundTo(double dblX, double dblY, double dblX2, double dblY2, double dblX3, double dblY3, double dblX4, double dblY4) throws IOException {
+        double dblDX = dblX - dblX4;
+        double dblDY = dblY4 - dblY;
+        int octant = getOctant(dblX, dblY, dblX2, dblY2, dblX3, dblY3, dblX4, dblY4);
+        System.out.println("roundTo: " + octant + "," + dblX + ", " + dblY + ", " + dblX2 + ", " + dblY2 + ", " + dblX3 + ", " + dblY3 + ", " + dblX4 + ", " + dblY4 + ", dx=" + dblDX + ", dy=" + dblDY);
+        if ((1.1 > abs(dblDX)) && (1.1 > abs(dblDX))) {
+            System.out.print("  0--> ");
+            lineTo(dblX4, dblY4);
+        } else if ((0.1 > abs(dblDX)) || (0.1 > abs(dblDX))) {
+            semicircleTo(dblX, dblY, dblX2, dblY2, dblX3, dblY3, dblX4, dblY4);
+        } else {
+            quartcircleTo(octant, dblX, dblY, dblX4, dblY4);
+        }
     }
 
     public void close() throws IOException {
