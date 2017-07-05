@@ -69,8 +69,6 @@ public class DxfConverter extends Converter {
 
     private void writeShape(ToDxf toDxf, ConcretePart part) throws IOException {
         Element polygon = null;
-        double oldX = 0.0;
-        double oldY = 0.0;
         for (PathIterator pi = part.getPathIterator(); !pi.isDone(); pi.next()) {
             double[] coords = new double[6];
             int type = pi.currentSegment(coords);
@@ -78,28 +76,18 @@ public class DxfConverter extends Converter {
                 case SEG_MOVETO: // 1 point
                     toDxf.open("P", 0);
                     toDxf.moveTo(coords[0], coords[1]);
-                    oldX = coords[0];
-                    oldY = coords[1];
                     break;
                 case SEG_LINETO: // 1 point
                     toDxf.lineTo(coords[0], coords[1]);
-                    oldX = coords[0];
-                    oldY = coords[1];
                     break;
                 case SEG_QUADTO: // 2 point
                     toDxf.quadTo(coords[0], coords[1], coords[2], coords[3]);
-                    oldX = coords[2];
-                    oldY = coords[3];
                     break;
                 case SEG_CUBICTO: // 3 points
-                    toDxf.roundTo(oldX, oldY, coords[0], coords[1], coords[2], coords[3], coords[4], coords[5]);
-                    oldX = coords[4];
-                    oldY = coords[5];
+                    toDxf.cubicTo( coords[0], coords[1], coords[2], coords[3], coords[4], coords[5]);
                     break;
                 case SEG_CLOSE: // 0 points
                     toDxf.close();
-                    oldX = 0.0;
-                    oldY = 0.0;
                     break;
                 default:
                     System.out.print("?");

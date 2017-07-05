@@ -12,6 +12,9 @@ public class ToDxf {
     DxfHeaderSection dxfHeaderSection;
     DxfEntitiesSection dxfEntitiesSection;
 
+    private double dblX0 = 0;
+    private double dblY0 = 0;
+
     public ToDxf(BufferedWriter writer) throws IOException {
         this.writer = writer;
         dxfHeaderSection = new DxfHeaderSectionAC1009(writer);
@@ -32,24 +35,32 @@ public class ToDxf {
         dxfEntitiesSection.open(name, layer);
     }
 
-    public void moveTo(double dblX, double dblY) throws IOException {
-        dxfEntitiesSection.moveTo(dblX, dblY);
+    public void moveTo(double dblX1, double dblY1) throws IOException {
+        dblX0 = dblX1;
+        dblY0 = dblY1;
+        dxfEntitiesSection.moveTo(dblX1, dblY1);
     }
 
-    public void lineTo(double dblX, double dblY) throws IOException {
-        dxfEntitiesSection.lineTo(dblX, dblY);
+    public void lineTo(double dblX1, double dblY1) throws IOException {
+        dblX0 = dblX1;
+        dblY0 = dblY1;
+        dxfEntitiesSection.lineTo(dblX1, dblY1);
     }
 
-    public void bulgeTo(double bulge, double dblX, double dblY) throws IOException {
-        dxfEntitiesSection.bulgeTo(bulge, dblX, dblY);
+    public void bulgeTo(double bulge, double dblX1, double dblY1) throws IOException {
+        dblX0 = dblX1;
+        dblY0 = dblY1;
+        dxfEntitiesSection.bulgeTo(bulge, dblX1, dblY1);
     }
 
-    public void quadTo(double dblX, double dblY, double dblX2, double dblY2) throws IOException {
-        dxfEntitiesSection.quadTo(dblX, dblY, dblX2, dblY2);
+    public void quadTo(double dblX1, double dblY1, double dblX2, double dblY2) throws IOException {
+        dblX0 = dblX1;
+        dblY0 = dblY1;
+        dxfEntitiesSection.quadTo(dblX1, dblY1, dblX2, dblY2);
     }
 
-    public void roundTo(double dblX, double dblY, double dblX2, double dblY2, double dblX3, double dblY3, double dblX4, double dblY4) throws IOException {
-        dxfEntitiesSection.roundTo(dblX, dblY, dblX2, dblY2, dblX3, dblY3, dblX4, dblY4);
+    public void cubicTo(double dblX1, double dblY1, double dblX2, double dblY2, double dblX3, double dblY3) throws IOException {
+        dxfEntitiesSection.roundTo(this.dblX0, this.dblY0, dblX1, dblY1, dblX2, dblY2, dblX3, dblY3);
     }
 
     public void close() throws IOException {
