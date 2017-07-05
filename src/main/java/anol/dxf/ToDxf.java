@@ -36,31 +36,33 @@ public class ToDxf {
     }
 
     public void moveTo(double dblX1, double dblY1) throws IOException {
+        dxfEntitiesSection.moveTo(dblX1, dblY1);
         dblX0 = dblX1;
         dblY0 = dblY1;
-        dxfEntitiesSection.moveTo(dblX1, dblY1);
     }
 
     public void lineTo(double dblX1, double dblY1) throws IOException {
+        dxfEntitiesSection.lineTo(dblX1, dblY1);
         dblX0 = dblX1;
         dblY0 = dblY1;
-        dxfEntitiesSection.lineTo(dblX1, dblY1);
     }
 
     public void bulgeTo(double bulge, double dblX1, double dblY1) throws IOException {
+        dxfEntitiesSection.bulgeTo(bulge, dblX1, dblY1);
         dblX0 = dblX1;
         dblY0 = dblY1;
-        dxfEntitiesSection.bulgeTo(bulge, dblX1, dblY1);
     }
 
     public void quadTo(double dblX1, double dblY1, double dblX2, double dblY2) throws IOException {
-        dblX0 = dblX1;
-        dblY0 = dblY1;
         dxfEntitiesSection.quadTo(dblX1, dblY1, dblX2, dblY2);
+        dblX0 = dblX2;
+        dblY0 = dblY2;
     }
 
     public void cubicTo(double dblX1, double dblY1, double dblX2, double dblY2, double dblX3, double dblY3) throws IOException {
         dxfEntitiesSection.roundTo(this.dblX0, this.dblY0, dblX1, dblY1, dblX2, dblY2, dblX3, dblY3);
+        dblX0 = dblX3;
+        dblY0 = dblY3;
     }
 
     public void close() throws IOException {

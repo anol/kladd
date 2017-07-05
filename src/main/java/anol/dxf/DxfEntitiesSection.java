@@ -9,7 +9,6 @@ import static java.lang.Math.floorDiv;
 
 public class DxfEntitiesSection extends DxfSection {
 
-    final double epsilon = 0.001;
     private int layer = 0;
     private String name = "P";
 
@@ -144,6 +143,10 @@ public class DxfEntitiesSection extends DxfSection {
         lineTo(dblX4, dblY4);
     }
 
+    private boolean near(double a, double b) {
+        return 0.01 > abs(a - b);
+    }
+
     private int getOctant(double dblX, double dblY, double dblX2, double dblY2, double dblX3, double dblY3, double dblX4, double dblY4) {
         double dblDX = dblX - dblX4;
         double dblDY = dblY4 - dblY;
@@ -151,20 +154,20 @@ public class DxfEntitiesSection extends DxfSection {
         boolean reverse = false;
         if (1 < dblDX && 1 < dblDY) {
             octant = 1;
-            if ((dblX == dblX2) && (dblY > dblY2)) {
+            if ((near(dblX, dblX2)) && (near(dblY, dblY2))) {
                 reverse = false; // 0
-            } else if ((dblX == dblX2) && (dblY < dblY2)) {
+            } else if ((near(dblX, dblX2)) && (dblY < dblY2)) {
                 reverse = false; // 64
             } else if ((dblX < dblX2) && (dblY == dblY2)) {
                 reverse = false; // 0
             } else if ((dblX > dblX2) && (dblY == dblY2)) {
-                reverse = true; // <<<< 2
+                reverse = false; // <<<< 2
             }
         } else if (-1 > dblDX && 1 < dblDY) {
             octant = 2;
-            if ((dblX == dblX2) && (dblY > dblY2)) {
+            if ((near(dblX, dblX2)) && (near(dblY, dblY2))) {
                 reverse = false; // 0
-            } else if ((dblX == dblX2) && (dblY < dblY2)) {
+            } else if ((near(dblX, dblX2)) && (dblY < dblY2)) {
                 reverse = true; // <<<< 2
             } else if ((dblX < dblX2) && (dblY == dblY2)) {
                 reverse = false; // 62
@@ -173,9 +176,9 @@ public class DxfEntitiesSection extends DxfSection {
             }
         } else if (1 < dblDX && -1 > dblDY) {
             octant = 3;
-            if ((dblX == dblX2) && (dblY > dblY2)) {
+            if ((near(dblX, dblX2)) && (near(dblY, dblY2))) {
                 reverse = true; // <<<< 1
-            } else if ((dblX == dblX2) && (dblY < dblY2)) {
+            } else if ((near(dblX, dblX2)) && (dblY < dblY2)) {
                 reverse = false; // 0
             } else if ((dblX < dblX2) && (dblY == dblY2)) {
                 reverse = false; // 0
@@ -184,9 +187,9 @@ public class DxfEntitiesSection extends DxfSection {
             }
         } else if (-1 > dblDX && -1 > dblDY) {
             octant = 4;
-            if ((dblX == dblX2) && (dblY > dblY2)) {
+            if ((near(dblX, dblX2)) && (near(dblY, dblY2))) {
                 reverse = false; // 62
-            } else if ((dblX == dblX2) && (dblY < dblY2)) {
+            } else if ((near(dblX, dblX2)) && (dblY < dblY2)) {
                 reverse = false; // 0
             } else if ((dblX < dblX2) && (dblY == dblY2)) {
                 reverse = true; // <<<< 2
@@ -206,10 +209,10 @@ public class DxfEntitiesSection extends DxfSection {
         double dblDY = dblY4 - dblY;
         int octant = getOctant(dblX, dblY, dblX2, dblY2, dblX3, dblY3, dblX4, dblY4);
         System.out.println("roundTo: " + octant + "," + dblX + ", " + dblY + ", " + dblX2 + ", " + dblY2 + ", " + dblX3 + ", " + dblY3 + ", " + dblX4 + ", " + dblY4 + ", dx=" + dblDX + ", dy=" + dblDY);
-        if ((1.1 > abs(dblDX)) && (1.1 > abs(dblDX))) {
+        if ((1.1 > abs(dblDX)) && (1.1 > abs(dblDY))) {
             System.out.print("  0--> ");
             lineTo(dblX4, dblY4);
-        } else if ((0.1 > abs(dblDX)) || (0.1 > abs(dblDX))) {
+        } else if ((0.1 > abs(dblDX)) || (0.1 > abs(dblDY))) {
             semicircleTo(dblX, dblY, dblX2, dblY2, dblX3, dblY3, dblX4, dblY4);
         } else {
             quartcircleTo(octant, dblX, dblY, dblX4, dblY4);
