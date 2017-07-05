@@ -99,12 +99,51 @@ public class DxfEntitiesSection extends DxfSection {
         }
     }
 
-    public void arcTo(double dblX, double dblDX, double dblY, double dblDY) throws IOException {
+    public void arcTo(int octant, double dblX, double dblDX, double dblY, double dblDY) throws IOException {
         int segments = new Double(abs(dblDX) / 2).intValue();
-        if (100 < segments) {
-            lineTo(dblX + (dblDX * 0.92), dblY + (dblDY * 0.38));
-            lineTo(dblX + (dblDX * 0.71), dblY + (dblDY * 0.71));
-            lineTo(dblX + (dblDX * 0.38), dblY + (dblDY * 0.92));
+        if (1 < segments) {
+            switch (octant) {
+                case 1:
+                    lineTo(dblX + (dblDX * 0.92), dblY + (dblDY * 0.38));
+                    lineTo(dblX + (dblDX * 0.71), dblY + (dblDY * 0.71));
+                    lineTo(dblX + (dblDX * 0.38), dblY + (dblDY * 0.92));
+                    break;
+                case 2:
+                    lineTo(dblX + (dblDX * 0.38), dblY + (dblDY * 0.92));
+                    lineTo(dblX + (dblDX * 0.71), dblY + (dblDY * 0.71));
+                    lineTo(dblX + (dblDX * 0.92), dblY + (dblDY * 0.38));
+                    break;
+                case 3:
+                    lineTo(dblX + (dblDX * 0.38), dblY + (dblDY * 0.92));
+                    lineTo(dblX + (dblDX * 0.71), dblY + (dblDY * 0.71));
+                    lineTo(dblX + (dblDX * 0.92), dblY + (dblDY * 0.38));
+                    break;
+                case 4:
+                    lineTo(dblX + (dblDX * 0.92), dblY + (dblDY * 0.38));
+                    lineTo(dblX + (dblDX * 0.71), dblY + (dblDY * 0.71));
+                    lineTo(dblX + (dblDX * 0.38), dblY + (dblDY * 0.92));
+                    break;
+                case 5:
+                    lineTo(dblX + (dblDX * 0.38), dblY + (dblDY * 0.92));
+                    lineTo(dblX + (dblDX * 0.71), dblY + (dblDY * 0.71));
+                    lineTo(dblX + (dblDX * 0.92), dblY + (dblDY * 0.38));
+                    break;
+                case 6:
+                    lineTo(dblX + (dblDX * 0.92), dblY + (dblDY * 0.38));
+                    lineTo(dblX + (dblDX * 0.71), dblY + (dblDY * 0.71));
+                    lineTo(dblX + (dblDX * 0.38), dblY + (dblDY * 0.92));
+                    break;
+                case 7:
+                    lineTo(dblX + (dblDX * 0.92), dblY + (dblDY * 0.38));
+                    lineTo(dblX + (dblDX * 0.71), dblY + (dblDY * 0.71));
+                    lineTo(dblX + (dblDX * 0.38), dblY + (dblDY * 0.92));
+                    break;
+                case 8:
+                    lineTo(dblX + (dblDX * 0.38), dblY + (dblDY * 0.92));
+                    lineTo(dblX + (dblDX * 0.71), dblY + (dblDY * 0.71));
+                    lineTo(dblX + (dblDX * 0.92), dblY + (dblDY * 0.38));
+                    break;
+            }
         } else {
             lineTo(dblX + (dblDX * 0.71), dblY + (dblDY * 0.71));
         }
@@ -113,28 +152,28 @@ public class DxfEntitiesSection extends DxfSection {
     public void quartcircleTo(int octant, double dblX, double dblY, double dblX4, double dblY4) throws IOException {
         switch (octant) {
             case 1:
-                arcTo(dblX4, dblX - dblX4, dblY, dblY4 - dblY);
+                arcTo(octant, dblX4, dblX - dblX4, dblY, dblY4 - dblY);
                 break;
             case 2:
-                arcTo(dblX, dblX4 - dblX, dblY4, dblY - dblY4);
+                arcTo(octant, dblX, dblX4 - dblX, dblY4, dblY - dblY4);
                 break;
             case 3:
-                arcTo(dblX, dblX4 - dblX, dblY4, dblY - dblY4);
+                arcTo(octant, dblX, dblX4 - dblX, dblY4, dblY - dblY4);
                 break;
             case 4:
-                arcTo(dblX4, dblX - dblX4, dblY, dblY4 - dblY);
+                arcTo(octant, dblX4, dblX - dblX4, dblY, dblY4 - dblY);
                 break;
             case 5:
-                arcTo(dblX, dblX4 - dblX, dblY4, dblY - dblY4);
+                arcTo(octant, dblX, dblX4 - dblX, dblY4, dblY - dblY4);
                 break;
             case 6:
-                arcTo(dblX4, dblX - dblX4, dblY, dblY4 - dblY);
+                arcTo(octant, dblX4, dblX - dblX4, dblY, dblY4 - dblY);
                 break;
             case 7:
-                arcTo(dblX4, dblX - dblX4, dblY, dblY4 - dblY);
+                arcTo(octant, dblX4, dblX - dblX4, dblY, dblY4 - dblY);
                 break;
             case 8:
-                arcTo(dblX, dblX4 - dblX, dblY4, dblY - dblY4);
+                arcTo(octant, dblX, dblX4 - dblX, dblY4, dblY - dblY4);
                 break;
             default:
                 System.out.print("  1~~> ");
