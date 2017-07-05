@@ -162,6 +162,8 @@ public class DxfEntitiesSection extends DxfSection {
                 reverse = false; // 0
             } else if ((dblX > dblX2) && (dblY == dblY2)) {
                 reverse = false; // <<<< 2
+            } else {
+                reverse = true;
             }
         } else if (-1 > dblDX && 1 < dblDY) {
             octant = 2;
@@ -184,6 +186,8 @@ public class DxfEntitiesSection extends DxfSection {
                 reverse = false; // 0
             } else if ((dblX > dblX2) && (dblY == dblY2)) {
                 reverse = false; // 63
+            } else {
+                reverse = true;
             }
         } else if (-1 > dblDX && -1 > dblDY) {
             octant = 4;
