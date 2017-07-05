@@ -43,7 +43,7 @@
             <rectangle h="40" w="136" r="25" x="-516" y="75"/>
             <rectangle h="146" w="104" r="50" x="-516" y="-75"/>
             <!-- Profilutsparinger, bak -->
-            <rectangle h="40" w="594" r="12.5" x="374" y="75"/>
+            <rectangle h="40" w="594" r="12.5" x="361" y="75"/>
             <rectangle h="146" w="200" r="50" x="480" y="-90"/>
             <rectangle h="146" w="200" r="50" x="490" y="-75" rotate="-10"/>
             <!-- Plattformutsparinger -->
@@ -100,7 +100,7 @@
             </solid>
         </shape>
     </sheet>
-    <sheet name="Tanktaket og avstivningsplater" name2="3mm staalplater" t="3">
+    <sheet name="Avstivningsplater og bufferplankene" name2="3mm staalplater" t="3">
         <!-- Avstivningsplater -->
         <part name="Tverrplate A" x="160" y="-140">
             <solid w="158" h="150"/>
@@ -138,7 +138,7 @@
             </solid>
             <solid>
                 <tapp/>
-                <rectangle w="158" h="20" y="46"/>
+                <rectangle w="180" h="20" y="62"/>
             </solid>
             <solid h="7" w="20" r="2" x="40 -40" y="36"/>
         </part>
@@ -146,10 +146,10 @@
         <shape id="tapp">
             <solid h="20" w="7" r="2" x="79 -79" y="-10 -50"/>
             <solid>
-                <knekt_h x="100"/>
-                <knekt_v x="-100"/>
+                <knekt_h x="100" y="16"/>
+                <knekt_v x="-100" y="16"/>
             </solid>
-            <solid h="7" w="20" r="2" x="120 -120" y="36"/>
+            <solid h="7" w="20" r="2" x="120 -120" y="52"/>
         </shape>
         <shape id="knekt_h">
             <solid h="34" w="70" r="5" y="38" rotate="-20">
