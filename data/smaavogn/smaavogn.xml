@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<design name="Smaavogn" size="a0">
+    <circle id="skrue_m4" r="1.6"/>
+    <sheet name="Buffertplanke og vanger" name2="10mm staalplater" t="3">
+        <!-- Buffertplanke -->
+        <part name="Buffertplanke" x="600" y="-110">
+            <solid>
+                <plankeprofil/>
+            </solid>
+        </part>
+        <!-- Sidevange -->
+        <part name="Sidevange" x="600" y="-385">
+            <solid>
+                <vangeprofil/>
+            </solid>
+        </part>
+        <!-- Tverrstag -->
+        <part name="Tverrstag" x="600" y="-660">
+            <solid>
+                <stagprofil/>
+            </solid>
+        </part>
+        <!-- Buffertplanke profil -->
+        <solid id="plankeprofil" h="30" w="350">
+            <buffertfeste x="-110 110" Y="0"/>
+            <krokfeste x="0" Y="0" />
+            <tapphull x="-130 130"/>
+            <rectangle h="20" w="100" x="-160" y="-75" rotate="-15"/>
+            <rectangle h="20" w="100" x="160" y="-75" rotate="15"/>
+        </solid>
+        <shape id="buffertfeste">
+            <circle r="4"/>
+            <skrue_m4 x="-10 10" y="-10 10"/>
+        </shape>
+        <shape id="krokfeste">
+            <circle r="4"/>
+            <skrue_m4 x="-15 15" y="-10 10"/>
+        </shape>
+        <shape id="tapphull">
+            <circle r="4" y="-4"/>
+            <rectangle h="12" w="8" y="-9"/>
+        </shape>
+    </sheet>
+</design>
