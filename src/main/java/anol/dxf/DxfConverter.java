@@ -4,8 +4,6 @@ import anol.awg.ToAwt;
 import anol.converter.ConcretePart;
 import anol.converter.ConcretePartList;
 import anol.converter.Converter;
-import com.sun.org.apache.xml.internal.serialize.OutputFormat;
-import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 

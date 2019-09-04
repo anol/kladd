@@ -4,8 +4,7 @@ import anol.awg.ToAwt;
 import anol.converter.ConcretePart;
 import anol.converter.ConcretePartList;
 import anol.converter.Converter;
-import com.sun.org.apache.xml.internal.serialize.OutputFormat;
-import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
+import org.w3c.dom.ls.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -93,6 +92,7 @@ public class SvgConverter extends Converter {
     }
 
     private String serialize(Document document) throws IOException {
+        /*
         ByteArrayOutputStream data = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(data);
         OutputFormat of = new OutputFormat("XML", "ISO-8859-1", true);
@@ -102,5 +102,11 @@ public class SvgConverter extends Converter {
         serializer.asDOMSerializer();
         serializer.serialize(document);
         return data.toString();
+        */
+        String resultXmlStr;
+        DOMImplementationLS domImplLS = (DOMImplementationLS) document.getImplementation();
+        LSSerializer serializer = domImplLS.createLSSerializer();
+        resultXmlStr = serializer.writeToString(document);
+        return resultXmlStr;
     }
 }
