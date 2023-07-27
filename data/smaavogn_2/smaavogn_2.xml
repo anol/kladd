@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<design name="Smaavogn L=60cm B=35cm" size="a1">
+    <circle id="skrue_m4" r="1.6"/>
+    <sheet name="Buffertplanke, sidevange og tverrstag" name2="10mm staalplater" t="10">
+        <!-- Buffertplanke -->
+        <part name="Buffertplanke" x="400" y="-100">
+            <solid>
+                <plankeprofil/>
+            </solid>
+        </part>
+        <!-- Tverrstag -->
+        <part name="Tverrstag" x="400" y="-200">
+            <solid h="30" w="250">
+                <skrue_m4 x="-100 -50 0 50 100" y="-7 7"/>
+            </solid>
+            <solid h="28" w="10" x="-130 130"/>
+        </part>
+        <!-- Sidevange -->
+        <part name="Sidevange" x="400" y="-300">
+            <solid h="30" w="600">
+                <skrue_m4 x="-260 260" y="7"/>
+                <skrue_m4 x="-140 -60 0 60 140" y="-7 7"/>
+                <rectangle h="2" w="20" x="-300 300" y="15"/>
+                <rectangle h="10" w="28" x="-200 200" y="10.5"/>
+                <rectangle h="20" w="100" x="-280" y="-15" rotate="15"/>
+                <rectangle h="20" w="100" x="280" y="-15" rotate="-15"/>
+                <akselplate x="-200 200" y="-23.35"/>
+            </solid>
+        </part>
+        <!-- Buffertplanke profil -->
+        <solid id="plankeprofil" h="30" w="350">
+            <skrue_m4 x="-155 -60 60 155" y="7"/>
+            <buffertfeste x="-110 110" Y="0"/>
+            <krokfeste x="0" Y="0"/>
+            <rectangle h="12" w="10" x="-130 130" y="-9"/>
+            <rectangle h="20" w="100" x="-175" y="-15" rotate="15"/>
+            <rectangle h="20" w="100" x="175" y="-15" rotate="-15"/>
+        </solid>
+        <shape id="akselplate">
+            <solid h="20" w="80" >
+                <rectangle h="40" w="60" x="-33" y="-27" rotate="45"/>
+                <rectangle h="40" w="60" x="33" y="-27" rotate="-45"/>
+            </solid>
+        </shape>
+        <shape id="buffertfeste">
+            <circle r="4"/>
+            <skrue_m4 x="-11 11" y="-11 11"/>
+        </shape>
+        <shape id="krokfeste">
+            <rectangle h="8" w="30"/>
+            <skrue_m4 x="-20 20" y="-10 10"/>
+        </shape>
+    </sheet>
+</design>

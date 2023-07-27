@@ -35,32 +35,49 @@ public class ToDxf {
         dxfEntitiesSection.open(name, layer);
     }
 
+    public double prune(double value) {
+        double decimals = 3;
+        value = value * Math.pow(10, decimals);
+        value = Math.floor(value);
+        value = value / Math.pow(10, decimals);
+        return value;
+    }
+
     public void moveTo(double dblX1, double dblY1) throws IOException {
-        dxfEntitiesSection.moveTo(dblX1, dblY1);
+        dxfEntitiesSection.moveTo(
+                prune(dblX1), prune(dblY1));
         dblX0 = dblX1;
         dblY0 = dblY1;
     }
 
     public void lineTo(double dblX1, double dblY1) throws IOException {
-        dxfEntitiesSection.lineTo(dblX1, dblY1);
+        dxfEntitiesSection.lineTo(
+                prune(dblX1), prune(dblY1));
         dblX0 = dblX1;
         dblY0 = dblY1;
     }
 
     public void bulgeTo(double bulge, double dblX1, double dblY1) throws IOException {
-        dxfEntitiesSection.bulgeTo(bulge, dblX1, dblY1);
+        dxfEntitiesSection.bulgeTo(prune(bulge),
+                prune(dblX1), prune(dblY1));
         dblX0 = dblX1;
         dblY0 = dblY1;
     }
 
     public void quadTo(double dblX1, double dblY1, double dblX2, double dblY2) throws IOException {
-        dxfEntitiesSection.quadTo(dblX1, dblY1, dblX2, dblY2);
+        dxfEntitiesSection.quadTo(
+                prune(dblX1), prune(dblY1),
+                prune(dblX2), prune(dblY2));
         dblX0 = dblX2;
         dblY0 = dblY2;
     }
 
     public void cubicTo(double dblX1, double dblY1, double dblX2, double dblY2, double dblX3, double dblY3) throws IOException {
-        dxfEntitiesSection.roundTo(this.dblX0, this.dblY0, dblX1, dblY1, dblX2, dblY2, dblX3, dblY3);
+        dxfEntitiesSection.roundTo(
+                prune(this.dblX0), prune(this.dblY0),
+                prune(dblX1), prune(dblY1),
+                prune(dblX2), prune(dblY2),
+                prune(dblX3), prune(dblY3));
         dblX0 = dblX3;
         dblY0 = dblY3;
     }
